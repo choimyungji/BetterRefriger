@@ -1,0 +1,10 @@
+
+*.xcworkspacedata
+
+*.xcscmblueprint
+
+*.xcuserstate
+
+*.xcscheme
+
+ios/BetterRefriger.xcodeproj/xcuserdata/maeng.xcuserdatad/xcschemes/xcschememanagement.plist
