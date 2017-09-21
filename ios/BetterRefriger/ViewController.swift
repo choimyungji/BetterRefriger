@@ -44,7 +44,7 @@ class ViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func touchPlusButton(_ sender: AnyObject)
+    @objc func touchPlusButton(_ sender: AnyObject)
     {
         let alert = UIAlertController(title: "New Name", message: "Add a new name", preferredStyle: .alert)
         let saveAction = UIAlertAction(title: "Save", style: .default, handler: { action -> Void in
