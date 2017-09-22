@@ -41,10 +41,10 @@
             </objects>
             <point key="canvasLocation" x="1600.8" y="293.70314842578711"/>
         </scene>
-        <!--View Controller-->
+        <!--Food Input View Controller-->
         <scene sceneID="e5U-nl-gUw">
             <objects>
-                <viewController id="bqe-TF-ODM" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FoodInputViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bqe-TF-ODM" customClass="FoodInputViewController" customModule="BetterRefriger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hki-c0-J92"/>
                         <viewControllerLayoutGuide type="bottom" id="BBk-v7-pfq"/>

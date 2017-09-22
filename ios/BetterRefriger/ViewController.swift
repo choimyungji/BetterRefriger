@@ -46,24 +46,29 @@ class ViewController: UITableViewController {
     
     @objc func touchPlusButton(_ sender: AnyObject)
     {
-        let alert = UIAlertController(title: "New Name", message: "Add a new name", preferredStyle: .alert)
-        let saveAction = UIAlertAction(title: "Save", style: .default, handler: { action -> Void in
-            guard let textField = alert.textFields?.first, let nameToSave = textField.text else {
-                return
-            }
-            
-            self.save(name: nameToSave)
-            self.tableView.reloadData()
-        })
+        let storyboard = UIStoryboard(name:"Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "FoodInputViewController") as! FoodInputViewController
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        self.navigationController?.pushViewController(vc, animated: true)
         
-        alert.addTextField()
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true)
+//        let alert = UIAlertController(title: "New Name", message: "Add a new name", preferredStyle: .alert)
+//        let saveAction = UIAlertAction(title: "Save", style: .default, handler: { action -> Void in
+//            guard let textField = alert.textFields?.first, let nameToSave = textField.text else {
+//                return
+//            }
+//
+//            self.save(name: nameToSave)
+//            self.tableView.reloadData()
+//        })
+//
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+//
+//        alert.addTextField()
+//
+//        alert.addAction(saveAction)
+//        alert.addAction(cancelAction)
+//
+//        present(alert, animated: true)
     }
     
     func save(name: String) {

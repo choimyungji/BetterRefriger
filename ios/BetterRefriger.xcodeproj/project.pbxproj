@@ -13,6 +13,7 @@
 		FA319BB01E506DD500402ECA /* BetterRefriger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA319BAE1E506DD500402ECA /* BetterRefriger.xcdatamodeld */; };
 		FA319BB21E506DD500402ECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA319BB11E506DD500402ECA /* Assets.xcassets */; };
 		FA319BB51E506DD500402ECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA319BB31E506DD500402ECA /* LaunchScreen.storyboard */; };
+		FAA3EC461F754A81007F743E /* FoodInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3EC451F754A81007F743E /* FoodInputViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		FA319BB11E506DD500402ECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA319BB41E506DD500402ECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA319BB61E506DD500402ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAA3EC451F754A81007F743E /* FoodInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInputViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				FA319BA71E506DD500402ECA /* AppDelegate.swift */,
 				FA319BA91E506DD500402ECA /* ViewController.swift */,
+				FAA3EC451F754A81007F743E /* FoodInputViewController.swift */,
 				FA319BAB1E506DD500402ECA /* Main.storyboard */,
 				FA319BB11E506DD500402ECA /* Assets.xcassets */,
 				FA319BB31E506DD500402ECA /* LaunchScreen.storyboard */,
@@ -144,6 +147,7 @@
 				FA319BB01E506DD500402ECA /* BetterRefriger.xcdatamodeld in Sources */,
 				FA319BAA1E506DD500402ECA /* ViewController.swift in Sources */,
 				FA319BA81E506DD500402ECA /* AppDelegate.swift in Sources */,
+				FAA3EC461F754A81007F743E /* FoodInputViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
