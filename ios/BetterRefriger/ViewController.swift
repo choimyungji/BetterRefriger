@@ -46,9 +46,10 @@ class ViewController: UITableViewController {
     
     @objc func touchPlusButton(_ sender: AnyObject)
     {
-        let storyboard = UIStoryboard(name:"Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "FoodInputViewController") as! FoodInputViewController
-        
+        let vc = FoodInputViewController()
+//        let storyboard = UIStoryboard(name:"Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "FoodInputViewController") as! FoodInputViewController
+//
         self.navigationController?.pushViewController(vc, animated: true)
         
 //        let alert = UIAlertController(title: "New Name", message: "Add a new name", preferredStyle: .alert)

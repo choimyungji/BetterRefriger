@@ -33,85 +33,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="oth-LV-kbr"/>
-                    <connections>
-                        <segue destination="bqe-TF-ODM" kind="showDetail" id="W3T-y9-ax2"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RJc-8k-k1r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1600.8" y="293.70314842578711"/>
-        </scene>
-        <!--Food Input View Controller-->
-        <scene sceneID="e5U-nl-gUw">
-            <objects>
-                <viewController storyboardIdentifier="FoodInputViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bqe-TF-ODM" customClass="FoodInputViewController" customModule="BetterRefriger" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Hki-c0-J92"/>
-                        <viewControllerLayoutGuide type="bottom" id="BBk-v7-pfq"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="r2O-7t-p0K">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QX0-0q-XBC">
-                                <rect key="frame" x="16" y="36" width="30" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FLa-Az-uai">
-                                <rect key="frame" x="16" y="65" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CmZ-he-WBd">
-                                <rect key="frame" x="16" y="180" width="343" height="216"/>
-                                <date key="date" timeIntervalSinceReferenceDate="512198926.66645098">
-                                    <!--2017-03-26 05:28:46 +0000-->
-                                </date>
-                            </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hp-UW-TQY">
-                                <rect key="frame" x="16" y="127" width="30" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpu-BA-mGm">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <color key="backgroundColor" red="0.15686274510000001" green="0.50588235290000005" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="cyU-Ky-ZeJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="완료">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="CmZ-he-WBd" secondAttribute="trailing" constant="16" id="6XL-nn-ZxW"/>
-                            <constraint firstAttribute="trailing" secondItem="cpu-BA-mGm" secondAttribute="trailing" id="6YP-Rk-t8j"/>
-                            <constraint firstItem="CmZ-he-WBd" firstAttribute="top" secondItem="2Hp-UW-TQY" secondAttribute="bottom" constant="32" id="7oX-nn-a3F"/>
-                            <constraint firstItem="BBk-v7-pfq" firstAttribute="top" secondItem="cpu-BA-mGm" secondAttribute="bottom" id="9V1-90-D5c"/>
-                            <constraint firstItem="QX0-0q-XBC" firstAttribute="leading" secondItem="r2O-7t-p0K" secondAttribute="leading" constant="16" id="GcR-lV-7Ja"/>
-                            <constraint firstItem="FLa-Az-uai" firstAttribute="top" secondItem="QX0-0q-XBC" secondAttribute="bottom" constant="8" id="KB9-c0-IF6"/>
-                            <constraint firstItem="2Hp-UW-TQY" firstAttribute="leading" secondItem="FLa-Az-uai" secondAttribute="leading" id="KEd-5c-tZF"/>
-                            <constraint firstItem="cpu-BA-mGm" firstAttribute="leading" secondItem="r2O-7t-p0K" secondAttribute="leading" id="Pgp-Rp-Dih"/>
-                            <constraint firstItem="2Hp-UW-TQY" firstAttribute="top" secondItem="FLa-Az-uai" secondAttribute="bottom" constant="32" id="QIK-6F-OJJ"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2Hp-UW-TQY" secondAttribute="trailing" constant="20" symbolic="YES" id="ZJ1-7o-ZnH"/>
-                            <constraint firstItem="FLa-Az-uai" firstAttribute="leading" secondItem="QX0-0q-XBC" secondAttribute="leading" id="cq7-85-3fG"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QX0-0q-XBC" secondAttribute="trailing" constant="20" symbolic="YES" id="hAC-Lv-cjZ"/>
-                            <constraint firstAttribute="trailing" secondItem="FLa-Az-uai" secondAttribute="trailing" constant="16" id="kze-Eu-0U6"/>
-                            <constraint firstItem="CmZ-he-WBd" firstAttribute="leading" secondItem="r2O-7t-p0K" secondAttribute="leading" constant="16" id="ngy-zd-5OK"/>
-                            <constraint firstItem="QX0-0q-XBC" firstAttribute="top" secondItem="Hki-c0-J92" secondAttribute="bottom" constant="16" id="uSc-Ei-Tl6"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GZ1-97-OHx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2535" y="294"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NLF-tb-Orr">

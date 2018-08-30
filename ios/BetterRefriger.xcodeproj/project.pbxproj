@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D5448BB9DFC1F54BFEF4DB70 /* Pods_BetterRefriger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55503C3B39F686E7611DFB40 /* Pods_BetterRefriger.framework */; };
 		FA319BA81E506DD500402ECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA319BA71E506DD500402ECA /* AppDelegate.swift */; };
 		FA319BAA1E506DD500402ECA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA319BA91E506DD500402ECA /* ViewController.swift */; };
 		FA319BAD1E506DD500402ECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA319BAB1E506DD500402ECA /* Main.storyboard */; };
@@ -14,9 +15,13 @@
 		FA319BB21E506DD500402ECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA319BB11E506DD500402ECA /* Assets.xcassets */; };
 		FA319BB51E506DD500402ECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA319BB31E506DD500402ECA /* LaunchScreen.storyboard */; };
 		FAA3EC461F754A81007F743E /* FoodInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3EC451F754A81007F743E /* FoodInputViewController.swift */; };
+		FADE5B6F21381D090023BFF7 /* MJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE5B6E21381D090023BFF7 /* MJTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55503C3B39F686E7611DFB40 /* Pods_BetterRefriger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BetterRefriger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9824B7B4658D5C874FE81DCD /* Pods-BetterRefriger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefriger.release.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger.release.xcconfig"; sourceTree = "<group>"; };
+		B75DF2EB9ACD5B0FF7A4B3C9 /* Pods-BetterRefriger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefriger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger.debug.xcconfig"; sourceTree = "<group>"; };
 		FA319BA41E506DD500402ECA /* BetterRefriger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterRefriger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA319BA71E506DD500402ECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA319BA91E506DD500402ECA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,7 +30,8 @@
 		FA319BB11E506DD500402ECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA319BB41E506DD500402ECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA319BB61E506DD500402ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FAA3EC451F754A81007F743E /* FoodInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInputViewController.swift; sourceTree = "<group>"; };
+		FAA3EC451F754A81007F743E /* FoodInputViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodInputViewController.swift; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
+		FADE5B6E21381D090023BFF7 /* MJTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5448BB9DFC1F54BFEF4DB70 /* Pods_BetterRefriger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		800500C82E6464A70D214F96 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55503C3B39F686E7611DFB40 /* Pods_BetterRefriger.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		97EFD72D3AC6C43380822605 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B75DF2EB9ACD5B0FF7A4B3C9 /* Pods-BetterRefriger.debug.xcconfig */,
+				9824B7B4658D5C874FE81DCD /* Pods-BetterRefriger.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FA319B9B1E506DD500402ECA = {
 			isa = PBXGroup;
 			children = (
 				FA319BA61E506DD500402ECA /* BetterRefriger */,
 				FA319BA51E506DD500402ECA /* Products */,
+				97EFD72D3AC6C43380822605 /* Pods */,
+				800500C82E6464A70D214F96 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +92,7 @@
 				FA319BB31E506DD500402ECA /* LaunchScreen.storyboard */,
 				FA319BB61E506DD500402ECA /* Info.plist */,
 				FA319BAE1E506DD500402ECA /* BetterRefriger.xcdatamodeld */,
+				FADE5B6E21381D090023BFF7 /* MJTextField.swift */,
 			);
 			path = BetterRefriger;
 			sourceTree = "<group>";
@@ -77,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA319BB91E506DD500402ECA /* Build configuration list for PBXNativeTarget "BetterRefriger" */;
 			buildPhases = (
+				B934834F502ED5C32C86BB22 /* [CP] Check Pods Manifest.lock */,
 				FA319BA01E506DD500402ECA /* Sources */,
 				FA319BA11E506DD500402ECA /* Frameworks */,
 				FA319BA21E506DD500402ECA /* Resources */,
+				4DCDD3D5F5C190809709AC34 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -139,6 +168,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4DCDD3D5F5C190809709AC34 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B934834F502ED5C32C86BB22 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BetterRefriger-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FA319BA01E506DD500402ECA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -148,6 +220,7 @@
 				FA319BAA1E506DD500402ECA /* ViewController.swift in Sources */,
 				FA319BA81E506DD500402ECA /* AppDelegate.swift in Sources */,
 				FAA3EC461F754A81007F743E /* FoodInputViewController.swift in Sources */,
+				FADE5B6F21381D090023BFF7 /* MJTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +357,7 @@
 		};
 		FA319BBA1E506DD500402ECA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B75DF2EB9ACD5B0FF7A4B3C9 /* Pods-BetterRefriger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JVM82SQA75;
@@ -298,6 +372,7 @@
 		};
 		FA319BBB1E506DD500402ECA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9824B7B4658D5C874FE81DCD /* Pods-BetterRefriger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JVM82SQA75;
