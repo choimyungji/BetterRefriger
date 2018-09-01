@@ -7,17 +7,16 @@
 //
 
 import UIKit
+import SnapKit
 
 class MJTextField: UITextField {
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.darkGray.cgColor
-        layer.cornerRadius = 8
-    }
+  override func draw(_ rect: CGRect) {
+    layer.borderWidth = 0.333
+    layer.borderColor = UIColor.lightGray.cgColor
+    layer.cornerRadius = 8
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    self.leftView = UIView.init(frame:CGRect(x: 0, y: 0, width: 10, height: 16))
+    self.leftViewMode = .always
+  }
 }
+

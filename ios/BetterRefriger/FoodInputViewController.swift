@@ -10,10 +10,11 @@ import UIKit
 import Foundation
 import SnapKit
 
-class FoodInputViewController : UIViewController {
+class FoodInputViewController: UIViewController {
   var txtFoodName = MJTextField()
   var txtRegisterDate = MJTextField()
   var txtExpireDate = MJTextField()
+  var btnRegister = UIButton()
   
   func touchInputComplete(_ sender: UIButton) {
   }
@@ -77,6 +78,17 @@ class FoodInputViewController : UIViewController {
       m.left.equalToSuperview().offset(16)
       m.right.equalToSuperview().offset(-16)
       m.height.equalTo(48)
+    }
+    
+    view.addSubview(btnRegister)
+    btnRegister.setTitle("등록", for: .normal)
+    btnRegister.setTitleColor(.white, for: .normal)
+    btnRegister.backgroundColor = .blue
+    btnRegister.snp.makeConstraints { maker in
+      maker.left.equalToSuperview()
+      maker.right.equalToSuperview()
+      maker.bottom.equalToSuperview()
+      maker.height.equalTo(48)
     }
   }
 }
