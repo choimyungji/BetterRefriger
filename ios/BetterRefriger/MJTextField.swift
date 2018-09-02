@@ -14,9 +14,8 @@ class MJTextField: UITextField {
     layer.borderWidth = 0.333
     layer.borderColor = UIColor.lightGray.cgColor
     layer.cornerRadius = 8
-    
-    self.leftView = UIView.init(frame:CGRect(x: 0, y: 0, width: 10, height: 16))
+
+    self.leftView = UIView.init(frame: CGRect(x: 0, y: 0, width: 10, height: 16))
     self.leftViewMode = .always
   }
 }
-
