@@ -11,6 +11,8 @@ import Foundation
 import SnapKit
 
 class FoodInputViewController: UIViewController {
+  var scrollView = UIScrollView()
+  var contentsView = UIView()
   var txtFoodName = MJTextField()
   var txtRegisterDate = MJTextField()
   var txtExpireDate = MJTextField()
@@ -23,11 +25,34 @@ class FoodInputViewController: UIViewController {
     drawUI()
   }
 
+  override func viewDidLayoutSubviews() {
+
+  }
+
   func drawUI() {
     view.backgroundColor = .white
+    view.addSubview(scrollView)
+    scrollView.snp.makeConstraints { maker in
+      maker.edges.equalToSuperview()
+    }
+
+    scrollView.addSubview(contentsView)
+    contentsView.snp.makeConstraints { maker in
+      maker.edges.equalToSuperview()
+      maker.width.equalToSuperview()
+      maker.height.greaterThanOrEqualToSuperview()
+    }
+
+    view.addSubview(btnRegister)
 
     let lblName = UILabel()
-    view.addSubview(lblName)
+    let lblRegister = UILabel()
+    let lblExpire = UILabel()
+    [lblName, txtFoodName, lblRegister, txtRegisterDate, lblExpire, txtExpireDate]
+      .forEach {
+        contentsView.addSubview($0)
+    }
+
     lblName.text = "이름"
     lblName.snp.makeConstraints { maker in
       maker.top.equalTo(topLayoutGuide.snp.bottom).offset(10)
@@ -36,7 +61,6 @@ class FoodInputViewController: UIViewController {
     }
     lblName.font = UIFont.systemFont(ofSize: 17)
 
-    view.addSubview(txtFoodName)
     txtFoodName.snp.makeConstraints { maker in
       maker.top.equalTo(lblName.snp.bottom).offset(8)
       maker.left.equalToSuperview().offset(16)
@@ -44,8 +68,6 @@ class FoodInputViewController: UIViewController {
       maker.height.equalTo(48)
     }
 
-    let lblRegister = UILabel()
-    view.addSubview(lblRegister)
     lblRegister.text = "등록일"
     lblRegister.snp.makeConstraints { maker in
       maker.top.equalTo(txtFoodName.snp.bottom).offset(10)
@@ -54,7 +76,6 @@ class FoodInputViewController: UIViewController {
     }
     lblRegister.font = UIFont.systemFont(ofSize: 17)
 
-    view.addSubview(txtRegisterDate)
     txtRegisterDate.snp.makeConstraints { maker in
       maker.top.equalTo(lblRegister.snp.bottom).offset(8)
       maker.left.equalToSuperview().offset(16)
@@ -62,8 +83,6 @@ class FoodInputViewController: UIViewController {
       maker.height.equalTo(48)
     }
 
-    let lblExpire = UILabel()
-    view.addSubview(lblExpire)
     lblExpire.text = "유통기한"
     lblExpire.snp.makeConstraints { maker in
       maker.top.equalTo(txtRegisterDate.snp.bottom).offset(10)
@@ -72,7 +91,6 @@ class FoodInputViewController: UIViewController {
     }
     lblName.font = UIFont.systemFont(ofSize: 17)
 
-    view.addSubview(txtExpireDate)
     txtExpireDate.snp.makeConstraints { maker in
       maker.top.equalTo(lblExpire.snp.bottom).offset(8)
       maker.left.equalToSuperview().offset(16)
@@ -80,7 +98,6 @@ class FoodInputViewController: UIViewController {
       maker.height.equalTo(48)
     }
 
-    view.addSubview(btnRegister)
     btnRegister.setTitle("등록", for: .normal)
     btnRegister.setTitleColor(.white, for: .normal)
     btnRegister.backgroundColor = .blue
