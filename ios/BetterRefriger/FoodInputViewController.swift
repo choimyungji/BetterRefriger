@@ -11,12 +11,13 @@ import Foundation
 import SnapKit
 
 class FoodInputViewController: UIViewController {
-  var scrollView = UIScrollView()
-  var contentsView = UIView()
-  var txtFoodName = MJTextField()
-  var txtRegisterDate = MJTextField()
-  var txtExpireDate = MJTextField()
-  var btnRegister = UIButton()
+  private var activeField: MJTextField?
+  private lazy var scrollView = UIScrollView()
+  private lazy var contentsView = UIView()
+  private lazy var txtFoodName = MJTextField()
+  private lazy var txtRegisterDate = MJTextField()
+  private lazy var txtExpireDate = MJTextField()
+  private lazy var btnRegister = UIButton()
 
   func touchInputComplete(_ sender: UIButton) {
   }
@@ -25,12 +26,23 @@ class FoodInputViewController: UIViewController {
     drawUI()
   }
 
-  override func viewDidLayoutSubviews() {
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
 
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)),
+                                           name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)),
+                                           name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+  }
+
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    NotificationCenter.default.removeObserver(self)
   }
 
   func drawUI() {
     view.backgroundColor = .white
+    activeField = txtExpireDate
     view.addSubview(scrollView)
     scrollView.snp.makeConstraints { maker in
       maker.edges.equalToSuperview()
@@ -40,7 +52,6 @@ class FoodInputViewController: UIViewController {
     contentsView.snp.makeConstraints { maker in
       maker.edges.equalToSuperview()
       maker.width.equalToSuperview()
-      maker.height.greaterThanOrEqualToSuperview()
     }
 
     view.addSubview(btnRegister)
@@ -55,7 +66,7 @@ class FoodInputViewController: UIViewController {
 
     lblName.text = "이름"
     lblName.snp.makeConstraints { maker in
-      maker.top.equalTo(topLayoutGuide.snp.bottom).offset(10)
+      maker.top.equalToSuperview().offset(10)
       maker.left.equalToSuperview().offset(16)
       maker.right.equalToSuperview().offset(-16)
     }
@@ -96,6 +107,7 @@ class FoodInputViewController: UIViewController {
       maker.left.equalToSuperview().offset(16)
       maker.right.equalToSuperview().offset(-16)
       maker.height.equalTo(48)
+      maker.bottom.equalToSuperview().offset(-16)
     }
 
     btnRegister.setTitle("등록", for: .normal)
@@ -107,5 +119,28 @@ class FoodInputViewController: UIViewController {
       maker.bottom.equalToSuperview()
       maker.height.equalTo(48)
     }
+  }
+
+  @objc func keyboardWillShow(_ notification: Notification) {
+    let userInfo: NSDictionary = (notification as NSNotification).userInfo! as NSDictionary
+    let keyboardSize = (userInfo.object(forKey: UIKeyboardFrameBeginUserInfoKey)! as AnyObject).cgRectValue.size
+    let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+
+    scrollView.contentInset = contentInsets
+    scrollView.scrollIndicatorInsets = contentInsets
+
+    var viewRect = view.frame
+    viewRect.size.height -= keyboardSize.height
+    if viewRect.contains(activeField!.frame.origin) {
+      let scrollPoint = CGPoint(x: 0, y: activeField!.frame.origin.y - keyboardSize.height)
+      if scrollPoint.y > 0 {
+        scrollView.setContentOffset(scrollPoint, animated: true)
+      }
+    }
+  }
+
+  @objc func keyboardWillHide(_ notification: Notification) {
+    scrollView.contentInset = UIEdgeInsets.zero
+    scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
   }
 }
