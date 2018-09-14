@@ -19,16 +19,16 @@ class FoodInputViewController: UIViewController {
   private lazy var txtExpireDate = MJTextField()
   private lazy var btnRegister = UIButton()
 
-  func touchInputComplete(_ sender: UIButton) {
+  @objc func touchInputComplete(_ sender: UIButton) {
   }
 
   override func viewDidLoad() {
+    setTabBackGround()
     drawUI()
   }
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)),
                                            name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)),
@@ -38,6 +38,16 @@ class FoodInputViewController: UIViewController {
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     NotificationCenter.default.removeObserver(self)
+  }
+
+  func setTabBackGround() {
+    let tapBackground = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
+    tapBackground.numberOfTapsRequired = 1
+    self.view.addGestureRecognizer(tapBackground)
+  }
+
+  @objc func dismissKeyboard(_ sender: AnyObject) {
+    self.view.endEditing(true)
   }
 
   func drawUI() {
@@ -52,6 +62,7 @@ class FoodInputViewController: UIViewController {
     contentsView.snp.makeConstraints { maker in
       maker.edges.equalToSuperview()
       maker.width.equalToSuperview()
+      maker.height.greaterThanOrEqualToSuperview()
     }
 
     view.addSubview(btnRegister)
@@ -107,12 +118,12 @@ class FoodInputViewController: UIViewController {
       maker.left.equalToSuperview().offset(16)
       maker.right.equalToSuperview().offset(-16)
       maker.height.equalTo(48)
-      maker.bottom.equalToSuperview().offset(-16)
     }
 
     btnRegister.setTitle("등록", for: .normal)
     btnRegister.setTitleColor(.white, for: .normal)
     btnRegister.backgroundColor = .blue
+    btnRegister.addTarget(self, action: #selector(touchInputComplete(_:)), for: .touchUpInside)
     btnRegister.snp.makeConstraints { maker in
       maker.left.equalToSuperview()
       maker.right.equalToSuperview()
@@ -129,6 +140,10 @@ class FoodInputViewController: UIViewController {
     scrollView.contentInset = contentInsets
     scrollView.scrollIndicatorInsets = contentInsets
 
+    btnRegister.snp.updateConstraints { maker in
+      maker.bottom.equalToSuperview().offset(-keyboardSize.height)
+    }
+
     var viewRect = view.frame
     viewRect.size.height -= keyboardSize.height
     if viewRect.contains(activeField!.frame.origin) {
@@ -142,5 +157,9 @@ class FoodInputViewController: UIViewController {
   @objc func keyboardWillHide(_ notification: Notification) {
     scrollView.contentInset = UIEdgeInsets.zero
     scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
+
+    btnRegister.snp.updateConstraints { maker in
+      maker.bottom.equalToSuperview()
+    }
   }
 }
