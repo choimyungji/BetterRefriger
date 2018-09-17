@@ -10,7 +10,13 @@ import UIKit
 import Foundation
 import SnapKit
 
-class FoodInputViewController: UIViewController {
+public protocol FoodInputViewControllerDelegate : NSObjectProtocol {
+  func inputFoodCompleted(_ foodName: String, registerDate: String, expireDate: String)
+}
+
+class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFieldDelegate {
+  weak var delegate: FoodInputViewControllerDelegate?
+
   private var activeField: MJTextField?
   private lazy var scrollView = UIScrollView()
   private lazy var contentsView = UIView()
@@ -19,7 +25,12 @@ class FoodInputViewController: UIViewController {
   private lazy var txtExpireDate = MJTextField()
   private lazy var btnRegister = UIButton()
 
+  private let datePicker = UIDatePicker()
+  private var selectedDate: String?
+
   @objc func touchInputComplete(_ sender: UIButton) {
+    delegate?.inputFoodCompleted(txtFoodName.text!, registerDate: txtRegisterDate.text!, expireDate: txtExpireDate.text!)
+    self.navigationController?.popViewController(animated: true)
   }
 
   override func viewDidLoad() {
@@ -98,6 +109,7 @@ class FoodInputViewController: UIViewController {
     }
     lblRegister.font = UIFont.systemFont(ofSize: 17)
 
+    txtRegisterDate.delegate = self
     txtRegisterDate.snp.makeConstraints { maker in
       maker.top.equalTo(lblRegister.snp.bottom).offset(8)
       maker.left.equalToSuperview().offset(16)
@@ -113,6 +125,7 @@ class FoodInputViewController: UIViewController {
     }
     lblName.font = UIFont.systemFont(ofSize: 17)
 
+    txtExpireDate.delegate = self
     txtExpireDate.snp.makeConstraints { maker in
       maker.top.equalTo(lblExpire.snp.bottom).offset(8)
       maker.left.equalToSuperview().offset(16)
@@ -161,5 +174,44 @@ class FoodInputViewController: UIViewController {
     btnRegister.snp.updateConstraints { maker in
       maker.bottom.equalToSuperview()
     }
+  }
+
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    activeField = textField as? MJTextField
+
+    if textField == txtRegisterDate {
+      let datePicker = UIDatePicker()
+      datePicker.datePickerMode = .date
+      datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControlEvents.valueChanged)
+
+      txtRegisterDate.inputView = datePicker
+      let toolBar = UIToolbar().toolbarPicker(mySelect: #selector(dismissPicker))
+      textField.inputAccessoryView = toolBar
+    }
+
+    if textField == txtExpireDate {
+      let datePicker = UIDatePicker()
+      datePicker.datePickerMode = .date
+      datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControlEvents.valueChanged)
+
+      txtExpireDate.inputView = datePicker
+      let toolBar = UIToolbar().toolbarPicker(mySelect: #selector(dismissPicker))
+      textField.inputAccessoryView = toolBar
+    }
+  }
+
+  @objc func handleDatePicker(_ sender: UIDatePicker) {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    selectedDate = dateFormatter.string(from: sender.date)
+  }
+
+  @objc func dismissPicker() {
+    if activeField == txtRegisterDate {
+      txtRegisterDate.text = selectedDate
+    } else if activeField == txtExpireDate {
+      txtExpireDate.text = selectedDate
+    }
+    view.endEditing(true)
   }
 }

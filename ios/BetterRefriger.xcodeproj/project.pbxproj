@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D5448BB9DFC1F54BFEF4DB70 /* Pods_BetterRefriger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55503C3B39F686E7611DFB40 /* Pods_BetterRefriger.framework */; };
+		FA26C34F214FEA400081A506 /* UIToolbar+PickerOKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA26C34E214FEA400081A506 /* UIToolbar+PickerOKButton.swift */; };
 		FA319BA81E506DD500402ECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA319BA71E506DD500402ECA /* AppDelegate.swift */; };
 		FA319BAA1E506DD500402ECA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA319BA91E506DD500402ECA /* ViewController.swift */; };
 		FA319BAD1E506DD500402ECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA319BAB1E506DD500402ECA /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		55503C3B39F686E7611DFB40 /* Pods_BetterRefriger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BetterRefriger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9824B7B4658D5C874FE81DCD /* Pods-BetterRefriger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefriger.release.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger.release.xcconfig"; sourceTree = "<group>"; };
 		B75DF2EB9ACD5B0FF7A4B3C9 /* Pods-BetterRefriger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefriger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger.debug.xcconfig"; sourceTree = "<group>"; };
+		FA26C34E214FEA400081A506 /* UIToolbar+PickerOKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIToolbar+PickerOKButton.swift"; sourceTree = "<group>"; };
 		FA319BA41E506DD500402ECA /* BetterRefriger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterRefriger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA319BA71E506DD500402ECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA319BA91E506DD500402ECA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				FA319BAE1E506DD500402ECA /* BetterRefriger.xcdatamodeld */,
 				FADE5B6E21381D090023BFF7 /* MJTextField.swift */,
 				FADE5BAB213A4E8A0023BFF7 /* UIColor+MJColor.swift */,
+				FA26C34E214FEA400081A506 /* UIToolbar+PickerOKButton.swift */,
 			);
 			path = BetterRefriger;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				FA319BAA1E506DD500402ECA /* ViewController.swift in Sources */,
 				FADE5BAC213A4E8A0023BFF7 /* UIColor+MJColor.swift in Sources */,
 				FA319BA81E506DD500402ECA /* AppDelegate.swift in Sources */,
+				FA26C34F214FEA400081A506 /* UIToolbar+PickerOKButton.swift in Sources */,
 				FAA3EC461F754A81007F743E /* FoodInputViewController.swift in Sources */,
 				FADE5B6F21381D090023BFF7 /* MJTextField.swift in Sources */,
 			);
