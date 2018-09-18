@@ -9,7 +9,10 @@
 import UIKit
 import CoreData
 
-class ViewController: UITableViewController {
+class ViewController: UITableViewController, FoodInputViewControllerDelegate {
+    func inputFoodCompleted(_ foodName: String, registerDate: String, expireDate: String) {
+        print(foodName, registerDate, expireDate)
+    }
 
     var foods: [NSManagedObject] = []
 
@@ -47,6 +50,7 @@ class ViewController: UITableViewController {
 
     @objc func touchPlusButton(_ sender: AnyObject) {
         let foodInputVC = FoodInputViewController()
+        foodInputVC.delegate = self
         self.navigationController?.pushViewController(foodInputVC, animated: true)
 
 //        let alert = UIAlertController(title: "New Name", message: "Add a new name", preferredStyle: .alert)
