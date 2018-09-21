@@ -182,7 +182,7 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
     if textField == txtRegisterDate {
       let datePicker = UIDatePicker()
       datePicker.datePickerMode = .date
-      datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControlEvents.valueChanged)
+      datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControl.Event.valueChanged)
 
       txtRegisterDate.inputView = datePicker
       let toolBar = UIToolbar().toolbarPicker(mySelect: #selector(dismissPicker))
@@ -192,7 +192,7 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
     if textField == txtExpireDate {
       let datePicker = UIDatePicker()
       datePicker.datePickerMode = .date
-      datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControlEvents.valueChanged)
+      datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControl.Event.valueChanged)
 
       txtExpireDate.inputView = datePicker
       let toolBar = UIToolbar().toolbarPicker(mySelect: #selector(dismissPicker))
