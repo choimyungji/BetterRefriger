@@ -12,6 +12,8 @@ import CoreData
 class ViewController: UITableViewController, FoodInputViewControllerDelegate {
     func inputFoodCompleted(_ foodName: String, registerDate: String, expireDate: String) {
         print(foodName, registerDate, expireDate)
+        save(name: foodName)
+        tableView.reloadData()
     }
 
     var foods: [NSManagedObject] = []
@@ -52,33 +54,14 @@ class ViewController: UITableViewController, FoodInputViewControllerDelegate {
         let foodInputVC = FoodInputViewController()
         foodInputVC.delegate = self
         self.navigationController?.pushViewController(foodInputVC, animated: true)
-
-//        let alert = UIAlertController(title: "New Name", message: "Add a new name", preferredStyle: .alert)
-//        let saveAction = UIAlertAction(title: "Save", style: .default, handler: { action -> Void in
-//            guard let textField = alert.textFields?.first, let nameToSave = textField.text else {
-//                return
-//            }
-//
-//            self.save(name: nameToSave)
-//            self.tableView.reloadData()
-//        })
-//
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-//
-//        alert.addTextField()
-//
-//        alert.addAction(saveAction)
-//        alert.addAction(cancelAction)
-//
-//        present(alert, animated: true)
     }
 
     func save(name: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-        let managedContext = appDelegate.persistentContainer.viewContext
 
+        let managedContext = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Food", in: managedContext)!
         let food = NSManagedObject(entity: entity, insertInto: managedContext)
 
