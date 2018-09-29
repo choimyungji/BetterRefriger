@@ -10,9 +10,9 @@ import UIKit
 import CoreData
 
 class ViewController: UITableViewController, FoodInputViewControllerDelegate {
-    func inputFoodCompleted(_ foodName: String, registerDate: String, expireDate: String) {
+    func inputFoodCompleted(_ foodName: String, registerDate: Date, expireDate: Date) {
         print(foodName, registerDate, expireDate)
-        save(name: foodName)
+        save(name: foodName, registerDate: registerDate, expireDate: expireDate )
         tableView.reloadData()
     }
 
@@ -26,7 +26,7 @@ class ViewController: UITableViewController, FoodInputViewControllerDelegate {
                                             target: self, action: #selector(touchPlusButton(_:)))
         self.navigationItem.rightBarButtonItem = anotherButton
 
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +45,7 @@ class ViewController: UITableViewController, FoodInputViewControllerDelegate {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -56,7 +57,7 @@ class ViewController: UITableViewController, FoodInputViewControllerDelegate {
         self.navigationController?.pushViewController(foodInputVC, animated: true)
     }
 
-    func save(name: String) {
+    func save(name: String, registerDate: Date, expireDate: Date) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -66,6 +67,8 @@ class ViewController: UITableViewController, FoodInputViewControllerDelegate {
         let food = NSManagedObject(entity: entity, insertInto: managedContext)
 
         food.setValue(name, forKey: "name")
+        food.setValue(registerDate, forKey: "registerDate")
+        food.setValue(expireDate, forKey: "expireDate")
 
         do {
             try managedContext.save()
@@ -81,9 +84,26 @@ class ViewController: UITableViewController, FoodInputViewControllerDelegate {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let food = foods[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = food.value(forKey: "name") as? String
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        cell!.textLabel?.text = food.value(forKey: "name") as? String
 
-        return cell
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        if let registerDate = food.value(forKey: "registerDate") as? Date,
+            let expireDate = food.value(forKey: "expireDate") as? Date {
+        cell?.detailTextLabel?.text = dateFormatter.string(from: registerDate)
+            + " " + dateFormatter.string(from: expireDate)
+        }
+        return cell!
+    }
+}
+
+class SubtitleTableViewCell: UITableViewCell {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 import SnapKit
 
 public protocol FoodInputViewControllerDelegate : NSObjectProtocol {
-  func inputFoodCompleted(_ foodName: String, registerDate: String, expireDate: String)
+  func inputFoodCompleted(_ foodName: String, registerDate: Date, expireDate: Date)
 }
 
 class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFieldDelegate {
@@ -26,10 +26,13 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
   private lazy var btnRegister = UIButton()
 
   private let datePicker = UIDatePicker()
-  private var selectedDate: String?
+  private var selectedDate: Date?
+  private var registerDate: Date?
+  private var expireDate: Date?
+
 
   @objc func touchInputComplete(_ sender: UIButton) {
-    delegate?.inputFoodCompleted(txtFoodName.text!, registerDate: txtRegisterDate.text!, expireDate: txtExpireDate.text!)
+    delegate?.inputFoodCompleted(txtFoodName.text!, registerDate: registerDate!, expireDate: expireDate!)
     self.navigationController?.popViewController(animated: true)
   }
 
@@ -71,8 +74,8 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
 
     scrollView.addSubview(contentsView)
     contentsView.snp.makeConstraints { maker in
-      maker.edges.equalToSuperview()
-      maker.width.equalToSuperview()
+      maker.edges.width.equalToSuperview()
+//      maker.width.equalToSuperview()
       maker.height.greaterThanOrEqualToSuperview()
     }
 
@@ -138,9 +141,9 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
     btnRegister.backgroundColor = .blue
     btnRegister.addTarget(self, action: #selector(touchInputComplete(_:)), for: .touchUpInside)
     btnRegister.snp.makeConstraints { maker in
-      maker.left.equalToSuperview()
-      maker.right.equalToSuperview()
-      maker.bottom.equalToSuperview()
+      maker.left.right.bottom.equalToSuperview()
+//      maker.right.equalToSuperview()
+//      maker.bottom.equalToSuperview()
       maker.height.equalTo(48)
     }
   }
@@ -201,17 +204,25 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
   }
 
   @objc func handleDatePicker(_ sender: UIDatePicker) {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    selectedDate = dateFormatter.string(from: sender.date)
+    selectedDate = sender.date
   }
 
   @objc func dismissPicker() {
-    if activeField == txtRegisterDate {
-      txtRegisterDate.text = selectedDate
-    } else if activeField == txtExpireDate {
-      txtExpireDate.text = selectedDate
+    guard let selectedDate = selectedDate else {
+      return
     }
+
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+
+    if activeField == txtRegisterDate {
+      registerDate = selectedDate
+      txtRegisterDate.text = dateFormatter.string(from: selectedDate)
+    } else if activeField == txtExpireDate {
+      expireDate = selectedDate
+      txtExpireDate.text = dateFormatter.string(from: selectedDate)
+    }
+
     view.endEditing(true)
   }
 }
