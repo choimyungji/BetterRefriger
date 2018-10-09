@@ -7,10 +7,11 @@
 //
 
 import UIKit
-import Foundation
+import RxCocoa
+import RxSwift
 import SnapKit
 
-public protocol FoodInputViewControllerDelegate : NSObjectProtocol {
+public protocol FoodInputViewControllerDelegate: NSObjectProtocol {
   func inputFoodCompleted(_ foodName: String, registerDate: Date, expireDate: Date)
 }
 
@@ -30,13 +31,21 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
   private var registerDate: Date?
   private var expireDate: Date?
 
-
-  @objc func touchInputComplete(_ sender: UIButton) {
-    delegate?.inputFoodCompleted(txtFoodName.text!, registerDate: registerDate!, expireDate: expireDate!)
-    self.navigationController?.popViewController(animated: true)
-  }
+  private var disposeBag = DisposeBag()
 
   override func viewDidLoad() {
+    super.viewDidLoad()
+
+    btnRegister.rx.tap
+      .subscribe(onNext: { [weak self] _ in
+        self?.delegate?.inputFoodCompleted(self!.txtFoodName.text!,
+                                     registerDate: self!.registerDate!,
+                                     expireDate: self!.expireDate!)
+        self?.navigationController?.popViewController(animated: true)
+      })
+      .disposed(by: disposeBag)
+
+
     setTabBackGround()
     drawUI()
   }
@@ -75,7 +84,6 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
     scrollView.addSubview(contentsView)
     contentsView.snp.makeConstraints { maker in
       maker.edges.width.equalToSuperview()
-//      maker.width.equalToSuperview()
       maker.height.greaterThanOrEqualToSuperview()
     }
 
@@ -139,11 +147,8 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
     btnRegister.setTitle("등록", for: .normal)
     btnRegister.setTitleColor(.white, for: .normal)
     btnRegister.backgroundColor = .blue
-    btnRegister.addTarget(self, action: #selector(touchInputComplete(_:)), for: .touchUpInside)
     btnRegister.snp.makeConstraints { maker in
       maker.left.right.bottom.equalToSuperview()
-//      maker.right.equalToSuperview()
-//      maker.bottom.equalToSuperview()
       maker.height.equalTo(48)
     }
   }
