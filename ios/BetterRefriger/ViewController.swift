@@ -10,13 +10,12 @@ import UIKit
 import CoreData
 
 class ViewController: UITableViewController, FoodInputViewControllerDelegate {
+    var foods: [NSManagedObject] = []
+
     func inputFoodCompleted(_ foodName: String, registerDate: Date, expireDate: Date) {
-        print(foodName, registerDate, expireDate)
         save(name: foodName, registerDate: registerDate, expireDate: expireDate )
         tableView.reloadData()
     }
-
-    var foods: [NSManagedObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()

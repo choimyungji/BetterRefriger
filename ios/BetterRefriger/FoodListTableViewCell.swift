@@ -19,8 +19,6 @@ class FoodListTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-
         lblFoodName.frame = CGRect(x: 5, y: 5, width: 100, height: 40)
         lblFoodRegisterDate.frame = CGRect(x: 5, y: 50, width: 100, height: 20)
         lblFoodExpireDate.frame = CGRect(x: 110, y: 50, width: 100, height: 20)

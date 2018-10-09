@@ -10,7 +10,7 @@ import UIKit
 
 extension UIToolbar {
 
-    func toolbarPicker(mySelect : Selector) -> UIToolbar {
+    func toolbarPicker(mySelect: Selector) -> UIToolbar {
 
         let toolBar = UIToolbar()
 
@@ -19,8 +19,10 @@ extension UIToolbar {
         toolBar.tintColor = UIColor.black
         toolBar.sizeToFit()
 
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: mySelect)
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain,
+                                         target: self, action: mySelect)
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
+                                          target: nil, action: nil)
 
         toolBar.setItems([ spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
