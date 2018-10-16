@@ -18,18 +18,12 @@ public protocol FoodInputViewControllerDelegate: NSObjectProtocol {
 class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFieldDelegate {
   weak var delegate: FoodInputViewControllerDelegate?
 
-  private var activeField: MJTextField?
-  private lazy var scrollView = UIScrollView()
-  private lazy var contentsView = UIView()
-  private lazy var txtFoodName = MJTextField()
-  private lazy var txtRegisterDate = MJTextField()
-  private lazy var txtExpireDate = MJTextField()
-  private lazy var btnRegister = UIButton()
-
-  private let datePicker = UIDatePicker()
   private var selectedDate: Date?
   private var registerDate: Date?
   private var expireDate: Date?
+  private var activeField: MJTextField?
+
+  private let datePicker = UIDatePicker()
 
   private var disposeBag = DisposeBag()
 
@@ -44,7 +38,6 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
         self?.navigationController?.popViewController(animated: true)
       })
       .disposed(by: disposeBag)
-
 
     setTabBackGround()
     drawUI()
@@ -73,37 +66,67 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
     self.view.endEditing(true)
   }
 
+  let scrollView =  UIScrollView()
+  let contentsView = UIView()
+
+  let lblName: UILabel = {
+    let label = UILabel()
+    label.text = "이름"
+    label.font = UIFont.systemFont(ofSize: 17)
+    return label
+  }()
+
+  let lblRegister: UILabel = {
+    let label = UILabel()
+    label.text = "등록일"
+    label.font = UIFont.systemFont(ofSize: 17)
+    return label
+  }()
+
+  let lblExpire: UILabel = {
+    let label = UILabel()
+    label.text = "유통기한"
+    label.font = UIFont.systemFont(ofSize: 17)
+    return label
+  }()
+
+  let txtFoodName = MJTextField()
+  let txtRegisterDate = MJTextField()
+  let txtExpireDate = MJTextField()
+  let btnRegister: UIButton = {
+    let button = UIButton()
+    button.setTitle("등록", for: .normal)
+    button.setTitleColor(.white, for: .normal)
+    button.backgroundColor = .blue
+    return button
+  }()
+
   func drawUI() {
     view.backgroundColor = .white
     activeField = txtExpireDate
+
     view.addSubview(scrollView)
-    scrollView.snp.makeConstraints { maker in
-      maker.edges.equalToSuperview()
-    }
-
     scrollView.addSubview(contentsView)
-    contentsView.snp.makeConstraints { maker in
-      maker.edges.width.equalToSuperview()
-      maker.height.greaterThanOrEqualToSuperview()
-    }
-
     view.addSubview(btnRegister)
-
-    let lblName = UILabel()
-    let lblRegister = UILabel()
-    let lblExpire = UILabel()
     [lblName, txtFoodName, lblRegister, txtRegisterDate, lblExpire, txtExpireDate]
       .forEach {
         contentsView.addSubview($0)
     }
 
-    lblName.text = "이름"
+    scrollView.snp.makeConstraints { maker in
+      maker.edges.equalToSuperview()
+    }
+
+    contentsView.snp.makeConstraints { maker in
+      maker.edges.width.equalToSuperview()
+      maker.height.greaterThanOrEqualToSuperview()
+    }
+
     lblName.snp.makeConstraints { maker in
       maker.top.equalToSuperview().offset(10)
       maker.left.equalToSuperview().offset(16)
       maker.right.equalToSuperview().offset(-16)
     }
-    lblName.font = UIFont.systemFont(ofSize: 17)
 
     txtFoodName.snp.makeConstraints { maker in
       maker.top.equalTo(lblName.snp.bottom).offset(8)
@@ -112,13 +135,11 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
       maker.height.equalTo(48)
     }
 
-    lblRegister.text = "등록일"
     lblRegister.snp.makeConstraints { maker in
       maker.top.equalTo(txtFoodName.snp.bottom).offset(10)
       maker.left.equalToSuperview().offset(16)
       maker.right.equalToSuperview().offset(-16)
     }
-    lblRegister.font = UIFont.systemFont(ofSize: 17)
 
     txtRegisterDate.delegate = self
     txtRegisterDate.snp.makeConstraints { maker in
@@ -128,13 +149,11 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
       maker.height.equalTo(48)
     }
 
-    lblExpire.text = "유통기한"
     lblExpire.snp.makeConstraints { maker in
       maker.top.equalTo(txtRegisterDate.snp.bottom).offset(10)
       maker.left.equalToSuperview().offset(16)
       maker.right.equalToSuperview().offset(-16)
     }
-    lblName.font = UIFont.systemFont(ofSize: 17)
 
     txtExpireDate.delegate = self
     txtExpireDate.snp.makeConstraints { maker in
@@ -144,9 +163,6 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
       maker.height.equalTo(48)
     }
 
-    btnRegister.setTitle("등록", for: .normal)
-    btnRegister.setTitleColor(.white, for: .normal)
-    btnRegister.backgroundColor = .blue
     btnRegister.snp.makeConstraints { maker in
       maker.left.right.bottom.equalToSuperview()
       maker.height.equalTo(48)
