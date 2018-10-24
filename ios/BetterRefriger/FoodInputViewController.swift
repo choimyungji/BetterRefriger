@@ -39,6 +39,25 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
       })
       .disposed(by: disposeBag)
 
+    let foodNameValid = txtFoodName.rx.text.orEmpty
+      .map { $0.count >= 1 }
+      .share(replay: 1) 
+
+    let registerDateValid = txtRegisterDate.rx.text.orEmpty
+      .map { $0.count == 10 }
+      .share(replay: 1)
+
+    let expireDateValid = txtExpireDate.rx.text.orEmpty
+      .map { $0.count == 10 }
+      .share(replay: 1)
+
+    let everythingValid = Observable.combineLatest(foodNameValid, registerDateValid, expireDateValid) { $0 && $1 && $2 }
+      .share(replay: 1)
+
+    everythingValid
+      .bind(to: btnRegister.rx.isEnabled)
+      .disposed(by: disposeBag)
+
     setTabBackGround()
     drawUI()
   }
