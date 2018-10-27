@@ -41,7 +41,7 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
 
     let foodNameValid = txtFoodName.rx.text.orEmpty
       .map { $0.count >= 1 }
-      .share(replay: 1) 
+      .share(replay: 1)
 
     let registerDateValid = txtRegisterDate.rx.text.orEmpty
       .map { $0.count == 10 }

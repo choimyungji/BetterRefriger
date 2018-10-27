@@ -25,7 +25,7 @@ class ViewController: UITableViewController, FoodInputViewControllerDelegate {
                                             target: self, action: #selector(touchPlusButton(_:)))
         self.navigationItem.rightBarButtonItem = anotherButton
 
-        tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -83,16 +83,19 @@ class ViewController: UITableViewController, FoodInputViewControllerDelegate {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let food = foods[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        cell!.textLabel?.text = food.value(forKey: "name") as? String
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        if let registerDate = food.value(forKey: "registerDate") as? Date,
-            let expireDate = food.value(forKey: "expireDate") as? Date {
-        cell?.detailTextLabel?.text = dateFormatter.string(from: registerDate)
-            + " " + dateFormatter.string(from: expireDate)
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? FoodListTableViewCell
+        cell?.name = food.value(forKey: "name") as? String
+//        cell!.textLabel?.text = food.value(forKey: "name") as? String
+        cell?.registerDate = food.value(forKey: "registerDate") as? Date
+        cell?.expireDate = food.value(forKey: "expireDate") as? Date
+//
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        if let registerDate = food.value(forKey: "registerDate") as? Date,
+//            let expireDate = food.value(forKey: "expireDate") as? Date {
+//        cell?.detailTextLabel?.text = dateFormatter.string(from: registerDate)
+//            + " " + dateFormatter.string(from: expireDate)
+//        }
         return cell!
     }
 }
