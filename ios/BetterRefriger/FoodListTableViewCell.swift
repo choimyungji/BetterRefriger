@@ -9,8 +9,8 @@
 import UIKit
 
 class FoodListTableViewCell: UITableViewCell {
-    static let rowHeight = 80.0
-    
+    static let rowHeight: CGFloat = 60.0
+
     var name: String? {
         get {
             return lblFoodName.text
@@ -56,17 +56,22 @@ class FoodListTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        lblFoodName.frame = CGRect(x: 5, y: 5, width: 100, height: 40)
-        lblFoodRegisterDate.frame = CGRect(x: 5, y: 50, width: 100, height: 20)
-        lblFoodExpireDate.frame = CGRect(x: 110, y: 50, width: 100, height: 20)
-
-        addSubview(lblFoodName)
-        addSubview(lblFoodRegisterDate)
-        addSubview(lblFoodExpireDate)
+        drawUI()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func drawUI() {
+        lblFoodName.frame = CGRect(x: 24, y: 5, width: 100, height: 30)
+        lblFoodName.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        //        lblFoodRegisterDate.frame = CGRect(x: 24, y: 50, width: 100, height: 20)
+        lblFoodExpireDate.frame = CGRect(x: 24, y: 34, width: 100, height: 20)
+        lblFoodExpireDate.font = UIFont.systemFont(ofSize: 14)
+
+        addSubview(lblFoodName)
+        addSubview(lblFoodExpireDate)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
