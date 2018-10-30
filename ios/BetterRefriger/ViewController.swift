@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class ViewController: UITableViewController, FoodInputViewControllerDelegate {
     var foods: [NSManagedObject] = []
@@ -20,7 +21,7 @@ class ViewController: UITableViewController, FoodInputViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "냉장고를 부탁해"
+        self.navigationItem.title = "냉장고 매니저"
         let anotherButton = UIBarButtonItem(barButtonSystemItem: .add,
                                             target: self, action: #selector(touchPlusButton(_:)))
         self.navigationItem.rightBarButtonItem = anotherButton
@@ -75,27 +76,47 @@ class ViewController: UITableViewController, FoodInputViewControllerDelegate {
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
+
+        let center = UNUserNotificationCenter.current()
+        let options: UNAuthorizationOptions = [.alert, .sound]
+
+        center.requestAuthorization(options: options) { (granted, error) in
+            if granted {
+                let content = UNMutableNotificationContent()
+                content.categoryIdentifier = "expireNotification"
+                content.body = "\(name)의 유통기한이 다 되어갑니다."
+                let calendar = Calendar.current
+
+                var components = calendar.dateComponents([.hour, .minute, .second], from: expireDate)
+
+                components.hour = 21
+                components.minute = 12
+
+                let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+                let request = UNNotificationRequest(identifier: "expireNotification", content: content, trigger: trigger)
+                let center = UNUserNotificationCenter.current()
+                center.add(request) { (error) in
+                    print(error?.localizedDescription ?? "")
+                }
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return foods.count
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return FoodListTableViewCell.rowHeight
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let food = foods[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? FoodListTableViewCell
         cell?.name = food.value(forKey: "name") as? String
-//        cell!.textLabel?.text = food.value(forKey: "name") as? String
         cell?.registerDate = food.value(forKey: "registerDate") as? Date
         cell?.expireDate = food.value(forKey: "expireDate") as? Date
-//
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
-//        if let registerDate = food.value(forKey: "registerDate") as? Date,
-//            let expireDate = food.value(forKey: "expireDate") as? Date {
-//        cell?.detailTextLabel?.text = dateFormatter.string(from: registerDate)
-//            + " " + dateFormatter.string(from: expireDate)
-//        }
+
         return cell!
     }
 }
