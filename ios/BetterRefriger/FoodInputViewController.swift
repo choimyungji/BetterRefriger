@@ -223,6 +223,7 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
     activeField = textField as? MJTextField
 
     if textField == txtRegisterDate {
+      selectedDate = Date()
       let datePicker = UIDatePicker()
       datePicker.datePickerMode = .date
       datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControl.Event.valueChanged)
@@ -233,6 +234,7 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
     }
 
     if textField == txtExpireDate {
+      selectedDate = Date()
       let datePicker = UIDatePicker()
       datePicker.datePickerMode = .date
       datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControl.Event.valueChanged)
