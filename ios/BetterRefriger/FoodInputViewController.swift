@@ -90,7 +90,7 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
 
   let lblName: UILabel = {
     let label = UILabel()
-    label.text = "이름"
+    label.text = "식품명"
     label.font = UIFont.systemFont(ofSize: 17)
     return label
   }()
