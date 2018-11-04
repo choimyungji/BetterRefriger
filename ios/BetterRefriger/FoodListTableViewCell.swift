@@ -45,7 +45,7 @@ class FoodListTableViewCell: UITableViewCell {
             if let newVal = newVal {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
-                lblFoodExpireDate.text = dateFormatter.string(from: newVal)
+                lblFoodExpireDate.text = dateFormatter.string(from: newVal) + " 까지"
             }
         }
     }
@@ -67,7 +67,7 @@ class FoodListTableViewCell: UITableViewCell {
         lblFoodName.frame = CGRect(x: 24, y: 5, width: 100, height: 30)
         lblFoodName.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         //        lblFoodRegisterDate.frame = CGRect(x: 24, y: 50, width: 100, height: 20)
-        lblFoodExpireDate.frame = CGRect(x: 24, y: 34, width: 100, height: 20)
+        lblFoodExpireDate.frame = CGRect(x: 24, y: 34, width: 180, height: 20)
         lblFoodExpireDate.font = UIFont.systemFont(ofSize: 14)
 
         addSubview(lblFoodName)
