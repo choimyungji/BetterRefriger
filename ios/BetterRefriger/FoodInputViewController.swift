@@ -184,7 +184,12 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
 
     btnRegister.snp.makeConstraints { maker in
       maker.left.right.bottom.equalToSuperview()
-      maker.height.equalTo(48)
+      if #available(iOS 11.0, *) {
+        maker.height.equalTo(48 + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0))
+      }
+      else {
+        maker.height.equalTo(48)
+      }
     }
   }
 
