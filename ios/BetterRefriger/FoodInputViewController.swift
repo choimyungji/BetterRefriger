@@ -186,8 +186,7 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
       maker.left.right.bottom.equalToSuperview()
       if #available(iOS 11.0, *) {
         maker.height.equalTo(48 + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0))
-      }
-      else {
+      } else {
         maker.height.equalTo(48)
       }
     }
