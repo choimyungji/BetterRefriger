@@ -21,7 +21,7 @@ class ViewController: UITableViewController, FoodInputViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "더좋은냉장고"
+        self.navigationItem.title = "더나은냉장고"
         let anotherButton = UIBarButtonItem(barButtonSystemItem: .add,
                                             target: self, action: #selector(touchPlusButton(_:)))
         self.navigationItem.rightBarButtonItem = anotherButton
@@ -31,7 +31,6 @@ class ViewController: UITableViewController, FoodInputViewControllerDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
