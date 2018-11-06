@@ -43,6 +43,15 @@ class ViewController: UITableViewController, FoodInputViewControllerDelegate {
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
+
+        let windowFrame = UIApplication.shared.keyWindow!.frame
+        let button1 = SelectAreaButton(frame: CGRect(x: 18, y: windowFrame.height - 180, width: 54, height: 54))
+        button1.setTitle("냉장", for: .normal)
+        view.addSubview(button1)
+
+        let button2 = SelectAreaButton(frame: CGRect(x: 18, y: windowFrame.height - 250, width: 54, height: 54))
+        button2.setTitle("냉동", for: .normal)
+        view.addSubview(button2)
     }
 
     override func didReceiveMemoryWarning() {
