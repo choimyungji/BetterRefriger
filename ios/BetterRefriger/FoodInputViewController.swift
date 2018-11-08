@@ -22,9 +22,7 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
   private var registerDate: Date?
   private var expireDate: Date?
   private var activeField: MJTextField?
-
   private let datePicker = UIDatePicker()
-
   private var disposeBag = DisposeBag()
 
   override func viewDidLoad() {
@@ -143,42 +141,36 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
 
     lblName.snp.makeConstraints { maker in
       maker.top.equalToSuperview().offset(10)
-      maker.left.equalToSuperview().offset(16)
-      maker.right.equalToSuperview().offset(-16)
+      maker.left.right.equalToSuperview().inset(16)
     }
 
     txtFoodName.snp.makeConstraints { maker in
       maker.top.equalTo(lblName.snp.bottom).offset(8)
-      maker.left.equalToSuperview().offset(16)
-      maker.right.equalToSuperview().offset(-16)
+      maker.left.right.equalToSuperview().inset(16)
       maker.height.equalTo(48)
     }
 
     lblRegister.snp.makeConstraints { maker in
       maker.top.equalTo(txtFoodName.snp.bottom).offset(10)
-      maker.left.equalToSuperview().offset(16)
-      maker.right.equalToSuperview().offset(-16)
+      maker.left.right.equalToSuperview().inset(16)
     }
 
     txtRegisterDate.delegate = self
     txtRegisterDate.snp.makeConstraints { maker in
       maker.top.equalTo(lblRegister.snp.bottom).offset(8)
-      maker.left.equalToSuperview().offset(16)
-      maker.right.equalToSuperview().offset(-16)
+      maker.left.right.equalToSuperview().inset(16)
       maker.height.equalTo(48)
     }
 
     lblExpire.snp.makeConstraints { maker in
       maker.top.equalTo(txtRegisterDate.snp.bottom).offset(10)
-      maker.left.equalToSuperview().offset(16)
-      maker.right.equalToSuperview().offset(-16)
+      maker.left.right.equalToSuperview().inset(16)
     }
 
     txtExpireDate.delegate = self
     txtExpireDate.snp.makeConstraints { maker in
       maker.top.equalTo(lblExpire.snp.bottom).offset(8)
-      maker.left.equalToSuperview().offset(16)
-      maker.right.equalToSuperview().offset(-16)
+      maker.left.right.equalToSuperview().inset(16)
       maker.height.equalTo(48)
     }
 
