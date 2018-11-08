@@ -17,8 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
   var window: UIWindow?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    FirebaseApp.configure()
+    window = UIWindow(frame: UIScreen.main.bounds)
+    window?.makeKeyAndVisible()
+    window?.rootViewController = UINavigationController(rootViewController: ViewController())
 
+    FirebaseApp.configure()
     // For iOS 10 display notification (sent via APNS)
     UNUserNotificationCenter.current().delegate = self
 
