@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class FoodListTableViewCell: UITableViewCell {
   static let rowHeight: CGFloat = 60.0
@@ -50,9 +51,22 @@ class FoodListTableViewCell: UITableViewCell {
     }
   }
 
-  private var lblFoodName = UILabel()
-  private var lblFoodRegisterDate = UILabel()
-  private var lblFoodExpireDate = UILabel()
+  private var lblFoodName: UILabel = {
+    let label = UILabel()
+    label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+    return label
+  }()
+  
+  private var lblFoodRegisterDate: UILabel = {
+    let label = UILabel()
+    return label
+  }()
+
+  private var lblFoodExpireDate: UILabel = {
+    let label = UILabel()
+    label.font = UIFont.systemFont(ofSize: 14)
+    return label
+  }()
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -64,14 +78,20 @@ class FoodListTableViewCell: UITableViewCell {
   }
 
   func drawUI() {
-    lblFoodName.frame = CGRect(x: 24, y: 5, width: 100, height: 30)
-    lblFoodName.font = UIFont.systemFont(ofSize: 17, weight: .bold)
-    //        lblFoodRegisterDate.frame = CGRect(x: 24, y: 50, width: 100, height: 20)
-    lblFoodExpireDate.frame = CGRect(x: 24, y: 34, width: 180, height: 20)
-    lblFoodExpireDate.font = UIFont.systemFont(ofSize: 14)
-
     addSubview(lblFoodName)
     addSubview(lblFoodExpireDate)
+
+    lblFoodName.snp.makeConstraints { maker in
+      maker.top.equalToSuperview().inset(12)
+      maker.left.right.equalToSuperview().inset(24)
+      maker.height.equalTo(21)
+    }
+
+    lblFoodExpireDate.snp.makeConstraints { maker in
+      maker.top.equalTo(lblFoodName.snp.bottom)
+      maker.left.right.equalToSuperview().inset(24)
+      maker.height.equalTo(20)
+    }
   }
 
   override func setSelected(_ selected: Bool, animated: Bool) {
