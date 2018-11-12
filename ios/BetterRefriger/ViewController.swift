@@ -8,10 +8,14 @@
 
 import UIKit
 import CoreData
+import RxSwift
 import UserNotifications
 
 class ViewController: UITableViewController, FoodInputViewControllerDelegate {
   var foods: [NSManagedObject] = []
+
+  private var state = "refriger"
+  private var disposeBag = DisposeBag()
 
   func inputFoodCompleted(_ foodName: String, registerDate: Date, expireDate: Date) {
     save(name: foodName, registerDate: registerDate, expireDate: expireDate )
@@ -45,13 +49,23 @@ class ViewController: UITableViewController, FoodInputViewControllerDelegate {
     }
 
     let windowFrame = UIApplication.shared.keyWindow!.frame
-    let button1 = SelectAreaButton(frame: CGRect(x: 18, y: windowFrame.height - 180, width: 54, height: 54))
-    button1.setTitle("냉장", for: .normal)
-    view.addSubview(button1)
+    let refrigerButton = SelectAreaButton(frame: CGRect(x: 18, y: windowFrame.height - 180, width: 54, height: 54))
+    refrigerButton.setTitle("냉장", for: .normal)
+    refrigerButton.rx.tap
+      .subscribe(onNext: {[weak self] _ in
+        self?.state = "refriger"
+      })
+      .disposed(by: disposeBag)
+    view.addSubview(refrigerButton)
 
-    let button2 = SelectAreaButton(frame: CGRect(x: 18, y: windowFrame.height - 250, width: 54, height: 54))
-    button2.setTitle("냉동", for: .normal)
-    view.addSubview(button2)
+    let freezeButton = SelectAreaButton(frame: CGRect(x: 18, y: windowFrame.height - 250, width: 54, height: 54))
+    freezeButton.setTitle("냉동", for: .normal)
+    freezeButton.rx.tap
+      .subscribe(onNext: {[weak self] _ in
+        self?.state = "freeze"
+      })
+      .disposed(by: disposeBag)
+    view.addSubview(freezeButton)
   }
 
   override func didReceiveMemoryWarning() {
