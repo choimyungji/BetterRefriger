@@ -37,7 +37,7 @@
 		FA319BB11E506DD500402ECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA319BB41E506DD500402ECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA319BB61E506DD500402ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA574553218C9CB200B4775E /* 더좋은냉장고.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "더좋은냉장고.entitlements"; sourceTree = "<group>"; };
+		FA574553218C9CB200B4775E /* 더나은냉장고.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "더나은냉장고.entitlements"; sourceTree = "<group>"; };
 		FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SelectAreaButton.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FAA3EC451F754A81007F743E /* FoodInputViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodInputViewController.swift; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		FADE5B6E21381D090023BFF7 /* MJTextField.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MJTextField.swift; sourceTree = "<group>"; tabWidth = 2; };
@@ -95,7 +95,7 @@
 		FA319BA61E506DD500402ECA /* BetterRefriger */ = {
 			isa = PBXGroup;
 			children = (
-				FA574553218C9CB200B4775E /* 더좋은냉장고.entitlements */,
+				FA574553218C9CB200B4775E /* 더나은냉장고.entitlements */,
 				FA319BA71E506DD500402ECA /* AppDelegate.swift */,
 				FA319BA91E506DD500402ECA /* ViewController.swift */,
 				FAA3EC451F754A81007F743E /* FoodInputViewController.swift */,
@@ -402,7 +402,7 @@
 			baseConfigurationReference = B75DF2EB9ACD5B0FF7A4B3C9 /* Pods-BetterRefriger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "BetterRefriger/더좋은냉장고.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "BetterRefriger/더나은냉장고.entitlements";
 				DEVELOPMENT_TEAM = JVM82SQA75;
 				INFOPLIST_FILE = BetterRefriger/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -418,7 +418,7 @@
 			baseConfigurationReference = 9824B7B4658D5C874FE81DCD /* Pods-BetterRefriger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "BetterRefriger/더좋은냉장고.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "BetterRefriger/더나은냉장고.entitlements";
 				DEVELOPMENT_TEAM = JVM82SQA75;
 				INFOPLIST_FILE = BetterRefriger/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
