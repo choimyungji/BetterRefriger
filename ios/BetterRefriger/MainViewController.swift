@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  BetterRefriger
 //
 //  Created by Myungji on 2017. 2. 12..
@@ -11,7 +11,7 @@ import CoreData
 import RxSwift
 import UserNotifications
 
-class ViewController: UITableViewController, FoodInputViewControllerDelegate {
+class MainViewController: UITableViewController, FoodInputViewControllerDelegate {
   var foods: [NSManagedObject] = []
 
   private var state = "refriger"
