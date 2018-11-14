@@ -16,8 +16,8 @@ class FoodListTableViewCell: UITableViewCell {
     get {
       return lblFoodName.text
     }
-    set(newVal) {
-      lblFoodName.text = newVal
+    set {
+      lblFoodName.text = newValue
     }
   }
 
@@ -26,12 +26,12 @@ class FoodListTableViewCell: UITableViewCell {
     get {
       return _registerDate
     }
-    set(newVal) {
-      _registerDate = newVal
-      if let newVal = newVal {
+    set {
+      _registerDate = newValue
+      if let newValue = newValue {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        lblFoodRegisterDate.text = dateFormatter.string(from: newVal)
+        lblFoodRegisterDate.text = dateFormatter.string(from: newValue)
       }
     }
   }
@@ -51,12 +51,22 @@ class FoodListTableViewCell: UITableViewCell {
     }
   }
 
+  private var _seq: Int?
+  var seq: Int? {
+    get {
+      return _seq
+    }
+    set {
+      _seq = newValue
+    }
+  }
+
   private var lblFoodName: UILabel = {
     let label = UILabel()
     label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
     return label
   }()
-  
+
   private var lblFoodRegisterDate: UILabel = {
     let label = UILabel()
     return label

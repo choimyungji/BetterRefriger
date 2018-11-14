@@ -5,8 +5,9 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="refrigerType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="registerDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="seq" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Food" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="Food" positionX="-54" positionY="-9" width="128" height="120"/>
     </elements>
 </model>

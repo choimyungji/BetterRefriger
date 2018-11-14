@@ -98,11 +98,16 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
       return
     }
+//let last = foods
+    let lastSeq = foods.reduce(0) { (aaa:Int, bbb:NSManagedObject) -> Int in
+      return [aaa, bbb.value(forKey: "seq") as? Int ?? 0].max()!
+    }
 
     let managedContext = appDelegate.persistentContainer.viewContext
     let entity = NSEntityDescription.entity(forEntityName: "Food", in: managedContext)!
     let food = NSManagedObject(entity: entity, insertInto: managedContext)
 
+    food.setValue(lastSeq+1, forKey: "seq")
     food.setValue(name, forKey: "name")
     food.setValue(registerDate, forKey: "registerDate")
     food.setValue(expireDate, forKey: "expireDate")
@@ -152,10 +157,47 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let food = foods[indexPath.row]
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as? FoodListTableViewCell
+    cell?.seq = food.value(forKey: "seq") as? Int
     cell?.name = food.value(forKey: "name") as? String
     cell?.registerDate = food.value(forKey: "registerDate") as? Date
     cell?.expireDate = food.value(forKey: "expireDate") as? Date
 
     return cell!
+  }
+
+  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    let delete = UITableViewRowAction(style: .destructive, title: "삭제") { (_, indexPath) in
+
+      if let dataAppDelegatde = UIApplication.shared.delegate as? AppDelegate {
+        let mngdCntxt = dataAppDelegatde.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
+
+        let predicate = NSPredicate(format: "seq = %i", self.foods[indexPath.row].value(forKey: "seq") as? Int ?? 0)
+        print(self.foods[indexPath.row].value(forKey: "seq") as? Int ?? 0)
+
+        fetchRequest.predicate = predicate
+        do {
+          let result = try mngdCntxt.fetch(fetchRequest)
+
+          print(result.count)
+
+          if result.count > 0 {
+            for object in result {
+              print(object)
+              mngdCntxt.delete(object as? NSManagedObject ?? NSManagedObject(context: mngdCntxt))
+            }
+            try mngdCntxt.save()
+          }
+        } catch let error as NSError {
+          print("Could not save. \(error), \(error.userInfo)")
+        }
+      }
+
+      self.foods.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .fade)
+      print(self.foods)
+    }
+
+    return [delete]
   }
 }
