@@ -11,10 +11,14 @@ import CoreData
 import RxSwift
 import UserNotifications
 
-class MainViewController: UITableViewController, FoodInputViewControllerDelegate {
+class MainViewController: UIViewController, FoodInputViewControllerDelegate {
+
   var foods: [NSManagedObject] = []
 
+  private let cellId = "FoodListTableViewCell"
+  private var tableView = UITableView()
   private var state = "refriger"
+
   private var disposeBag = DisposeBag()
 
   func inputFoodCompleted(_ foodName: String, registerDate: Date, expireDate: Date) {
@@ -25,12 +29,17 @@ class MainViewController: UITableViewController, FoodInputViewControllerDelegate
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: cellId)
+    setNavBar()
+  }
+
+  func setNavBar() {
     self.navigationItem.title = "더나은냉장고"
     let anotherButton = UIBarButtonItem(barButtonSystemItem: .add,
                                         target: self, action: #selector(touchPlusButton(_:)))
     self.navigationItem.rightBarButtonItem = anotherButton
-
-    tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: "Cell")
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -48,8 +57,14 @@ class MainViewController: UITableViewController, FoodInputViewControllerDelegate
       print("Could not fetch. \(error), \(error.userInfo)")
     }
 
+    view.addSubview(tableView)
+
+    tableView.snp.makeConstraints {
+      $0.edges.equalToSuperview()
+    }
+
     let windowFrame = UIApplication.shared.keyWindow!.frame
-    let refrigerButton = SelectAreaButton(frame: CGRect(x: 18, y: windowFrame.height - 180, width: 54, height: 54))
+    let refrigerButton = SelectAreaButton(frame: CGRect(x: 18, y: windowFrame.height - 130, width: 54, height: 54))
     refrigerButton.setTitle("냉장", for: .normal)
     refrigerButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
@@ -58,7 +73,7 @@ class MainViewController: UITableViewController, FoodInputViewControllerDelegate
       .disposed(by: disposeBag)
     view.addSubview(refrigerButton)
 
-    let freezeButton = SelectAreaButton(frame: CGRect(x: 18, y: windowFrame.height - 250, width: 54, height: 54))
+    let freezeButton = SelectAreaButton(frame: CGRect(x: 18, y: windowFrame.height - 200, width: 54, height: 54))
     freezeButton.setTitle("냉동", for: .normal)
     freezeButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
@@ -123,18 +138,20 @@ class MainViewController: UITableViewController, FoodInputViewControllerDelegate
       }
     }
   }
+}
 
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return foods.count
   }
 
-  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return FoodListTableViewCell.rowHeight
   }
 
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let food = foods[indexPath.row]
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? FoodListTableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as? FoodListTableViewCell
     cell?.name = food.value(forKey: "name") as? String
     cell?.registerDate = food.value(forKey: "registerDate") as? Date
     cell?.expireDate = food.value(forKey: "expireDate") as? Date
