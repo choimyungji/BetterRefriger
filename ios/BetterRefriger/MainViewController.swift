@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import RxSwift
 import UserNotifications
+import SnapKit
 
 class MainViewController: UIViewController, FoodInputViewControllerDelegate {
 
@@ -25,6 +26,18 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
     save(name: foodName, registerDate: registerDate, expireDate: expireDate )
     tableView.reloadData()
   }
+
+  var refrigerButton: SelectAreaButton = {
+    let button = SelectAreaButton()
+    button.setTitle("냉장", for: .normal)
+    return button
+  }()
+
+  var freezeButton: SelectAreaButton = {
+    let button = SelectAreaButton()
+    button.setTitle("냉동", for: .normal)
+    return button
+  }()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -57,30 +70,41 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
       print("Could not fetch. \(error), \(error.userInfo)")
     }
 
-    view.addSubview(tableView)
-
-    tableView.snp.makeConstraints {
-      $0.edges.equalToSuperview()
-    }
-
-    let windowFrame = UIApplication.shared.keyWindow!.frame
-    let refrigerButton = SelectAreaButton(frame: CGRect(x: 18, y: windowFrame.height - 130, width: 54, height: 54))
-    refrigerButton.setTitle("냉장", for: .normal)
     refrigerButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
         self?.state = "refriger"
       })
       .disposed(by: disposeBag)
-    view.addSubview(refrigerButton)
 
-    let freezeButton = SelectAreaButton(frame: CGRect(x: 18, y: windowFrame.height - 200, width: 54, height: 54))
-    freezeButton.setTitle("냉동", for: .normal)
     freezeButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
         self?.state = "freeze"
       })
       .disposed(by: disposeBag)
+
+    setupViews()
+  }
+
+  func setupViews() {
+    view.addSubview(tableView)
     view.addSubview(freezeButton)
+    view.addSubview(refrigerButton)
+
+    tableView.snp.makeConstraints {
+      $0.edges.equalToSuperview()
+    }
+
+    refrigerButton.snp.makeConstraints {
+      $0.left.equalToSuperview().inset(18)
+      $0.bottom.equalToSuperview().inset(64)
+      $0.width.height.equalTo(54)
+    }
+
+    freezeButton.snp.makeConstraints {
+      $0.left.equalToSuperview().inset(18)
+      $0.bottom.equalTo(refrigerButton.snp.top).offset(-8)
+      $0.width.height.equalTo(54)
+    }
   }
 
   override func didReceiveMemoryWarning() {
@@ -98,7 +122,7 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
       return
     }
-//let last = foods
+
     let lastSeq = foods.reduce(0) { (aaa:Int, bbb:NSManagedObject) -> Int in
       return [aaa, bbb.value(forKey: "seq") as? Int ?? 0].max()!
     }

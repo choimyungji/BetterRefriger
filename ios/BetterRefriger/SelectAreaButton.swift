@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class SelectAreaButton: UIButton {
 
@@ -21,10 +22,17 @@ class SelectAreaButton: UIButton {
   }
 
   func drawUI() {
+    snp.makeConstraints {
+      $0.width.height.equalTo(54)
+    }
     backgroundColor = UIColor.colorFromRGB(0xCCCCCC)
+    setTitleColor(UIColor.black, for: .normal)
+  }
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+
     layer.masksToBounds = true
     layer.cornerRadius = frame.width/2
-
-    setTitleColor(UIColor.black, for: .normal)
   }
 }
