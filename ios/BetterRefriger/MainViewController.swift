@@ -22,8 +22,8 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
 
   private var disposeBag = DisposeBag()
 
-  func inputFoodCompleted(_ foodName: String, registerDate: Date, expireDate: Date) {
-    save(name: foodName, registerDate: registerDate, expireDate: expireDate )
+  func inputFoodCompleted(_ refrigerType: Int, foodName: String, registerDate: Date, expireDate: Date) {
+    save(refrigerType: refrigerType, name: foodName, registerDate: registerDate, expireDate: expireDate )
     tableView.reloadData()
   }
 
@@ -73,12 +73,14 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
     refrigerButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
         self?.state = "refriger"
+        self?.tableView.reloadData()
       })
       .disposed(by: disposeBag)
 
     freezeButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
-        self?.state = "freeze"
+        self?.state = "freezer"
+        self?.tableView.reloadData()
       })
       .disposed(by: disposeBag)
 
@@ -118,7 +120,7 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
     self.navigationController?.pushViewController(foodInputVC, animated: true)
   }
 
-  func save(name: String, registerDate: Date, expireDate: Date) {
+  func save(refrigerType: Int, name: String, registerDate: Date, expireDate: Date) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
       return
     }
@@ -131,6 +133,7 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
     let entity = NSEntityDescription.entity(forEntityName: "Food", in: managedContext)!
     let food = NSManagedObject(entity: entity, insertInto: managedContext)
 
+    food.setValue(refrigerType == 0 ? "refriger" : "freezer", forKey: "refrigerType")
     food.setValue(lastSeq+1, forKey: "seq")
     food.setValue(name, forKey: "name")
     food.setValue(registerDate, forKey: "registerDate")
@@ -171,7 +174,9 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return foods.count
+    return foods.filter({ food -> Bool in
+      food.value(forKey: "refrigerType") as? String == state
+    }).count
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -179,7 +184,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let food = foods[indexPath.row]
+    let food = foods.filter({ food -> Bool in
+      food.value(forKey: "refrigerType") as? String == state
+    })[indexPath.row]
+
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as? FoodListTableViewCell
     cell?.seq = food.value(forKey: "seq") as? Int
     cell?.name = food.value(forKey: "name") as? String

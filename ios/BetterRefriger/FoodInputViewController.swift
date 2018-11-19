@@ -12,7 +12,7 @@ import RxSwift
 import SnapKit
 
 public protocol FoodInputViewControllerDelegate: NSObjectProtocol {
-  func inputFoodCompleted(_ foodName: String, registerDate: Date, expireDate: Date)
+  func inputFoodCompleted(_ refrigerType: Int, foodName: String, registerDate: Date, expireDate: Date)
 }
 
 class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFieldDelegate {
@@ -30,9 +30,10 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
 
     btnRegister.rx.tap
       .subscribe(onNext: { [weak self] _ in
-        self?.delegate?.inputFoodCompleted(self!.txtFoodName.text!,
-                                     registerDate: self!.registerDate!,
-                                     expireDate: self!.expireDate!)
+        self?.delegate?.inputFoodCompleted(self!.segRefrigerType.selectedSegmentIndex,
+                                           foodName: self!.txtFoodName.text!,
+                                           registerDate: self!.registerDate!,
+                                           expireDate: self!.expireDate!)
         self?.navigationController?.popViewController(animated: true)
       })
       .disposed(by: disposeBag)
@@ -85,6 +86,11 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
 
   let scrollView =  UIScrollView()
   let contentsView = UIView()
+  let segRefrigerType: UISegmentedControl = {
+    let segmentedControl = UISegmentedControl(items: ["냉장고", "냉동실"])
+    segmentedControl.selectedSegmentIndex = 0
+    return segmentedControl
+  }()
 
   let lblName: UILabel = {
     let label = UILabel()
@@ -125,7 +131,7 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
     view.addSubview(scrollView)
     scrollView.addSubview(contentsView)
     view.addSubview(btnRegister)
-    [lblName, txtFoodName, lblRegister, txtRegisterDate, lblExpire, txtExpireDate]
+    [segRefrigerType, lblName, txtFoodName, lblRegister, txtRegisterDate, lblExpire, txtExpireDate]
       .forEach {
         contentsView.addSubview($0)
     }
@@ -139,8 +145,14 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
       maker.height.greaterThanOrEqualToSuperview()
     }
 
+    segRefrigerType.snp.makeConstraints {
+      $0.top.equalToSuperview().offset(16)
+      $0.left.right.equalToSuperview().inset(16)
+      $0.height.equalTo(40)
+    }
+
     lblName.snp.makeConstraints { maker in
-      maker.top.equalToSuperview().offset(10)
+      maker.top.equalTo(segRefrigerType.snp.bottom).offset(16)
       maker.left.right.equalToSuperview().inset(16)
     }
 
