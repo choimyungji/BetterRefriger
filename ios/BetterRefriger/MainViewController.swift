@@ -123,8 +123,8 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
       return
     }
 
-    let lastSeq = foods.reduce(0) { (aaa:Int, bbb:NSManagedObject) -> Int in
-      return [aaa, bbb.value(forKey: "seq") as? Int ?? 0].max()!
+    let lastSeq = foods.reduce(0) { (startValue: Int, food: NSManagedObject) -> Int in
+      return [startValue, food.value(forKey: "seq") as? Int ?? 0].max()!
     }
 
     let managedContext = appDelegate.persistentContainer.viewContext
