@@ -95,23 +95,31 @@
 		FA319BA61E506DD500402ECA /* BetterRefriger */ = {
 			isa = PBXGroup;
 			children = (
-				FA574553218C9CB200B4775E /* BetterRefriger.entitlements */,
-				FA319BA71E506DD500402ECA /* AppDelegate.swift */,
+				FA86D21521A2ED400092E915 /* App */,
 				FA319BA91E506DD500402ECA /* MainViewController.swift */,
 				FAA3EC451F754A81007F743E /* FoodInputViewController.swift */,
 				FA319BB11E506DD500402ECA /* Assets.xcassets */,
 				FA319BB31E506DD500402ECA /* LaunchScreen.storyboard */,
-				FA319BB61E506DD500402ECA /* Info.plist */,
 				FA319BAE1E506DD500402ECA /* BetterRefriger.xcdatamodeld */,
 				FADE5B6E21381D090023BFF7 /* MJTextField.swift */,
 				FADE5BAB213A4E8A0023BFF7 /* UIColor+MJColor.swift */,
 				FA26C34E214FEA400081A506 /* UIToolbar+PickerOKButton.swift */,
 				FA20D65C2153DC7600E6C093 /* String+substring.swift */,
 				FA20D65E2155342700E6C093 /* FoodListTableViewCell.swift */,
-				FAFFAA1B2180A0440016E400 /* GoogleService-Info.plist */,
 				FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */,
 			);
 			path = BetterRefriger;
+			sourceTree = "<group>";
+		};
+		FA86D21521A2ED400092E915 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FA574553218C9CB200B4775E /* BetterRefriger.entitlements */,
+				FA319BA71E506DD500402ECA /* AppDelegate.swift */,
+				FA319BB61E506DD500402ECA /* Info.plist */,
+				FAFFAA1B2180A0440016E400 /* GoogleService-Info.plist */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,9 +410,9 @@
 			baseConfigurationReference = B75DF2EB9ACD5B0FF7A4B3C9 /* Pods-BetterRefriger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = BetterRefriger/BetterRefriger.entitlements;
+				CODE_SIGN_ENTITLEMENTS = BetterRefriger/App/BetterRefriger.entitlements;
 				DEVELOPMENT_TEAM = JVM82SQA75;
-				INFOPLIST_FILE = BetterRefriger/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BetterRefriger/App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.maengji.BetterRefriger;
 				PRODUCT_NAME = "더나은냉장고";
@@ -418,9 +426,9 @@
 			baseConfigurationReference = 9824B7B4658D5C874FE81DCD /* Pods-BetterRefriger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = BetterRefriger/BetterRefriger.entitlements;
+				CODE_SIGN_ENTITLEMENTS = BetterRefriger/App/BetterRefriger.entitlements;
 				DEVELOPMENT_TEAM = JVM82SQA75;
-				INFOPLIST_FILE = BetterRefriger/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BetterRefriger/App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.maengji.BetterRefriger;
 				PRODUCT_NAME = "더나은냉장고";
