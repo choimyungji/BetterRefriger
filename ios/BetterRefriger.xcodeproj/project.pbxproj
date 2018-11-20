@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8FF717C021A38EFF009428D4 /* FoodTMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF717BF21A38EFF009428D4 /* FoodTMP.swift */; };
 		D5448BB9DFC1F54BFEF4DB70 /* Pods_BetterRefriger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55503C3B39F686E7611DFB40 /* Pods_BetterRefriger.framework */; };
 		FA20D65D2153DC7600E6C093 /* String+substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20D65C2153DC7600E6C093 /* String+substring.swift */; };
 		FA20D65F2155342700E6C093 /* FoodListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20D65E2155342700E6C093 /* FoodListTableViewCell.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		55503C3B39F686E7611DFB40 /* Pods_BetterRefriger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BetterRefriger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FF717BF21A38EFF009428D4 /* FoodTMP.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodTMP.swift; sourceTree = "<group>"; tabWidth = 2; };
 		9824B7B4658D5C874FE81DCD /* Pods-BetterRefriger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefriger.release.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger.release.xcconfig"; sourceTree = "<group>"; };
 		B75DF2EB9ACD5B0FF7A4B3C9 /* Pods-BetterRefriger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefriger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger.debug.xcconfig"; sourceTree = "<group>"; };
 		FA20D65C2153DC7600E6C093 /* String+substring.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "String+substring.swift"; sourceTree = "<group>"; tabWidth = 2; };
@@ -65,6 +67,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8FF717BE21A38ED7009428D4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8FF717BF21A38EFF009428D4 /* FoodTMP.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		97EFD72D3AC6C43380822605 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +105,7 @@
 		FA319BA61E506DD500402ECA /* BetterRefriger */ = {
 			isa = PBXGroup;
 			children = (
+				8FF717BE21A38ED7009428D4 /* Models */,
 				FA86D21521A2ED400092E915 /* App */,
 				FA319BA91E506DD500402ECA /* MainViewController.swift */,
 				FAA3EC451F754A81007F743E /* FoodInputViewController.swift */,
@@ -269,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FF717C021A38EFF009428D4 /* FoodTMP.swift in Sources */,
 				FA86D1FF2191AC780092E915 /* SelectAreaButton.swift in Sources */,
 				FA319BB01E506DD500402ECA /* BetterRefriger.xcdatamodeld in Sources */,
 				FA319BAA1E506DD500402ECA /* MainViewController.swift in Sources */,

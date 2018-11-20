@@ -14,11 +14,11 @@ import SnapKit
 
 class MainViewController: UIViewController, FoodInputViewControllerDelegate {
 
-  var foods: [NSManagedObject] = []
+  var foodss = FoodModel()
 
   private let cellId = "FoodListTableViewCell"
   private var tableView = UITableView()
-  private var state = "refriger"
+  private var state = 0
 
   private var disposeBag = DisposeBag()
 
@@ -57,29 +57,17 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-      return
-    }
-
-    let managedContext = appDelegate.persistentContainer.viewContext
-    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Food")
-
-    do {
-      foods = try managedContext.fetch(fetchRequest)
-    } catch let error as NSError {
-      print("Could not fetch. \(error), \(error.userInfo)")
-    }
 
     refrigerButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
-        self?.state = "refriger"
+        self?.state = 0
         self?.tableView.reloadData()
       })
       .disposed(by: disposeBag)
 
     freezeButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
-        self?.state = "freezer"
+        self?.state = 1
         self?.tableView.reloadData()
       })
       .disposed(by: disposeBag)
@@ -121,30 +109,7 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
   }
 
   func save(refrigerType: Int, name: String, registerDate: Date, expireDate: Date) {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-      return
-    }
-
-    let lastSeq = foods.reduce(0) { (startValue: Int, food: NSManagedObject) -> Int in
-      return [startValue, food.value(forKey: "seq") as? Int ?? 0].max()!
-    }
-
-    let managedContext = appDelegate.persistentContainer.viewContext
-    let entity = NSEntityDescription.entity(forEntityName: "Food", in: managedContext)!
-    let food = NSManagedObject(entity: entity, insertInto: managedContext)
-
-    food.setValue(refrigerType == 0 ? "refriger" : "freezer", forKey: "refrigerType")
-    food.setValue(lastSeq+1, forKey: "seq")
-    food.setValue(name, forKey: "name")
-    food.setValue(registerDate, forKey: "registerDate")
-    food.setValue(expireDate, forKey: "expireDate")
-
-    do {
-      try managedContext.save()
-      foods.append(food)
-    } catch let error as NSError {
-      print("Could not save. \(error), \(error.userInfo)")
-    }
+    foodss.save(refrigerType: refrigerType, name: name, registerDate: registerDate, expireDate: expireDate)
 
     let center = UNUserNotificationCenter.current()
     let options: UNAuthorizationOptions = [.alert, .sound]
@@ -174,9 +139,7 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return foods.filter({ food -> Bool in
-      food.value(forKey: "refrigerType") as? String == state
-    }).count
+    return foodss.data(refrigerType: state).count
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -184,9 +147,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let food = foods.filter({ food -> Bool in
-      food.value(forKey: "refrigerType") as? String == state
-    })[indexPath.row]
+    let food = foodss.data(refrigerType: state)[indexPath.row]
 
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as? FoodListTableViewCell
     cell?.seq = food.value(forKey: "seq") as? Int
@@ -199,37 +160,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let delete = UITableViewRowAction(style: .destructive, title: "삭제") { (_, indexPath) in
-
-      if let dataAppDelegatde = UIApplication.shared.delegate as? AppDelegate {
-        let mngdCntxt = dataAppDelegatde.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
-
-        let predicate = NSPredicate(format: "seq = %i", self.foods[indexPath.row].value(forKey: "seq") as? Int ?? 0)
-        print(self.foods[indexPath.row].value(forKey: "seq") as? Int ?? 0)
-
-        fetchRequest.predicate = predicate
-        do {
-          let result = try mngdCntxt.fetch(fetchRequest)
-
-          print(result.count)
-
-          if result.count > 0 {
-            for object in result {
-              print(object)
-              mngdCntxt.delete(object as? NSManagedObject ?? NSManagedObject(context: mngdCntxt))
-            }
-            try mngdCntxt.save()
-          }
-        } catch let error as NSError {
-          print("Could not save. \(error), \(error.userInfo)")
-        }
-      }
-
-      self.foods.remove(at: indexPath.row)
+      self.foodss.remove(indexAt: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .fade)
-      print(self.foods)
     }
 
     return [delete]
   }
 }
+
