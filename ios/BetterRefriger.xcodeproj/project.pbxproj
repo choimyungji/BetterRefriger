@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8FF717C021A38EFF009428D4 /* FoodTMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF717BF21A38EFF009428D4 /* FoodTMP.swift */; };
+		8FF717C021A38EFF009428D4 /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF717BF21A38EFF009428D4 /* FoodModel.swift */; };
 		D5448BB9DFC1F54BFEF4DB70 /* Pods_BetterRefriger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55503C3B39F686E7611DFB40 /* Pods_BetterRefriger.framework */; };
 		FA20D65D2153DC7600E6C093 /* String+substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20D65C2153DC7600E6C093 /* String+substring.swift */; };
 		FA20D65F2155342700E6C093 /* FoodListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20D65E2155342700E6C093 /* FoodListTableViewCell.swift */; };
@@ -17,6 +17,7 @@
 		FA319BB01E506DD500402ECA /* BetterRefriger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA319BAE1E506DD500402ECA /* BetterRefriger.xcdatamodeld */; };
 		FA319BB21E506DD500402ECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA319BB11E506DD500402ECA /* Assets.xcassets */; };
 		FA319BB51E506DD500402ECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA319BB31E506DD500402ECA /* LaunchScreen.storyboard */; };
+		FA6C976D21A43DDF0007CC1D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6C976C21A43DDF0007CC1D /* CoreDataStack.swift */; };
 		FA86D1FF2191AC780092E915 /* SelectAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */; };
 		FAA3EC461F754A81007F743E /* FoodInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3EC451F754A81007F743E /* FoodInputViewController.swift */; };
 		FADE5B6F21381D090023BFF7 /* MJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE5B6E21381D090023BFF7 /* MJTextField.swift */; };
@@ -26,7 +27,7 @@
 
 /* Begin PBXFileReference section */
 		55503C3B39F686E7611DFB40 /* Pods_BetterRefriger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BetterRefriger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8FF717BF21A38EFF009428D4 /* FoodTMP.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodTMP.swift; sourceTree = "<group>"; tabWidth = 2; };
+		8FF717BF21A38EFF009428D4 /* FoodModel.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		9824B7B4658D5C874FE81DCD /* Pods-BetterRefriger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefriger.release.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger.release.xcconfig"; sourceTree = "<group>"; };
 		B75DF2EB9ACD5B0FF7A4B3C9 /* Pods-BetterRefriger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefriger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger.debug.xcconfig"; sourceTree = "<group>"; };
 		FA20D65C2153DC7600E6C093 /* String+substring.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "String+substring.swift"; sourceTree = "<group>"; tabWidth = 2; };
@@ -40,6 +41,7 @@
 		FA319BB41E506DD500402ECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA319BB61E506DD500402ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA574553218C9CB200B4775E /* BetterRefriger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BetterRefriger.entitlements; sourceTree = "<group>"; };
+		FA6C976C21A43DDF0007CC1D /* CoreDataStack.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SelectAreaButton.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FAA3EC451F754A81007F743E /* FoodInputViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodInputViewController.swift; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		FADE5B6E21381D090023BFF7 /* MJTextField.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MJTextField.swift; sourceTree = "<group>"; tabWidth = 2; };
@@ -70,7 +72,8 @@
 		8FF717BE21A38ED7009428D4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8FF717BF21A38EFF009428D4 /* FoodTMP.swift */,
+				8FF717BF21A38EFF009428D4 /* FoodModel.swift */,
+				FA6C976C21A43DDF0007CC1D /* CoreDataStack.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -280,9 +283,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FF717C021A38EFF009428D4 /* FoodTMP.swift in Sources */,
+				8FF717C021A38EFF009428D4 /* FoodModel.swift in Sources */,
 				FA86D1FF2191AC780092E915 /* SelectAreaButton.swift in Sources */,
 				FA319BB01E506DD500402ECA /* BetterRefriger.xcdatamodeld in Sources */,
+				FA6C976D21A43DDF0007CC1D /* CoreDataStack.swift in Sources */,
 				FA319BAA1E506DD500402ECA /* MainViewController.swift in Sources */,
 				FADE5BAC213A4E8A0023BFF7 /* UIColor+MJColor.swift in Sources */,
 				FA319BA81E506DD500402ECA /* AppDelegate.swift in Sources */,

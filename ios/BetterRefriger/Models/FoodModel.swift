@@ -12,12 +12,18 @@ import CoreData
 class FoodModel: NSObject {
   private var foods: [NSManagedObject] = []
 
-  override init() {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-      return
-    }
+  var managedContext: NSManagedObjectContext
+  let persistentContainer: NSPersistentContainer
 
-    let managedContext = appDelegate.persistentContainer.viewContext
+  override init() {
+    persistentContainer = NSPersistentContainer(name: "BetterRefriger")
+    persistentContainer.loadPersistentStores { (_, error) in
+      guard error == nil else {
+        fatalError(error!.localizedDescription)
+      }
+    }
+    managedContext = persistentContainer.viewContext
+
     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Food")
 
     do {
@@ -28,15 +34,11 @@ class FoodModel: NSObject {
   }
 
   func save(refrigerType: Int, name: String, registerDate: Date, expireDate: Date) {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-      return
-    }
 
     let lastSeq = foods.reduce(0) { (startValue: Int, food: NSManagedObject) -> Int in
       return [startValue, food.value(forKey: "seq") as? Int ?? 0].max()!
     }
 
-    let managedContext = appDelegate.persistentContainer.viewContext
     let entity = NSEntityDescription.entity(forEntityName: "Food", in: managedContext)!
     let food = NSManagedObject(entity: entity, insertInto: managedContext)
 
@@ -63,33 +65,26 @@ class FoodModel: NSObject {
   }
 
   func remove(indexAt seq: Int) {
-    if let dataAppDelegatde = UIApplication.shared.delegate as? AppDelegate {
-      let mngdCntxt = dataAppDelegatde.persistentContainer.viewContext
-      let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
 
-      let predicate = NSPredicate(format: "seq = %i", self.foods[seq].value(forKey: "seq") as? Int ?? 0)
-      print(self.foods[seq].value(forKey: "seq") as? Int ?? 0)
+    let predicate = NSPredicate(format: "seq = %i", self.foods[seq].value(forKey: "seq") as? Int ?? 0)
+    print(self.foods[seq].value(forKey: "seq") as? Int ?? 0)
 
-      fetchRequest.predicate = predicate
-      do {
-        let result = try mngdCntxt.fetch(fetchRequest)
+    fetchRequest.predicate = predicate
+    do {
+      let result = try managedContext.fetch(fetchRequest)
 
-        print(result.count)
+      print(result.count)
 
-        if result.count > 0 {
-          for object in result {
-            print(object)
-            mngdCntxt.delete(object as? NSManagedObject ?? NSManagedObject(context: mngdCntxt))
-          }
-          try mngdCntxt.save()
+      if result.count > 0 {
+        for object in result {
+          print(object)
+          managedContext.delete(object as? NSManagedObject ?? NSManagedObject(context: managedContext))
         }
-      } catch let error as NSError {
-        print("Could not save. \(error), \(error.userInfo)")
+        try managedContext.save()
       }
+    } catch let error as NSError {
+      print("Could not save. \(error), \(error.userInfo)")
     }
   }
-
-
 }
-
-
