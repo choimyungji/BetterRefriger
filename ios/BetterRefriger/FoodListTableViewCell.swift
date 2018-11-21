@@ -41,12 +41,12 @@ class FoodListTableViewCell: UITableViewCell {
     get {
       return _expireDate
     }
-    set(newVal) {
-      _expireDate = newVal
-      if let newVal = newVal {
+    set {
+      _expireDate = newValue
+      if let newValue = newValue {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        lblFoodExpireDate.text = dateFormatter.string(from: newVal) + " 까지"
+        lblFoodExpireDate.text = dateFormatter.string(from: newValue) + " 까지"
       }
     }
   }
