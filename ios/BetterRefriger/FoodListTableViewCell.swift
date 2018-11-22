@@ -78,6 +78,8 @@ class FoodListTableViewCell: UITableViewCell {
     return label
   }()
 
+  private var lblNearExpire = NearExpireLabel()
+
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     drawUI()
@@ -90,6 +92,7 @@ class FoodListTableViewCell: UITableViewCell {
   func drawUI() {
     addSubview(lblFoodName)
     addSubview(lblFoodExpireDate)
+    addSubview(lblNearExpire)
 
     lblFoodName.snp.makeConstraints { maker in
       maker.top.equalToSuperview().inset(12)
@@ -99,8 +102,14 @@ class FoodListTableViewCell: UITableViewCell {
 
     lblFoodExpireDate.snp.makeConstraints { maker in
       maker.top.equalTo(lblFoodName.snp.bottom)
-      maker.left.right.equalToSuperview().inset(24)
+      maker.left.equalToSuperview().inset(24)
       maker.height.equalTo(20)
+    }
+
+    lblNearExpire.snp.makeConstraints {
+      $0.top.equalTo(lblFoodExpireDate)
+      $0.left.equalTo(lblFoodExpireDate.snp.right).offset(10)
+      $0.height.equalTo(lblFoodExpireDate)
     }
   }
 
@@ -108,5 +117,34 @@ class FoodListTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
 
     // Configure the view for the selected state
+  }
+}
+
+class NearExpireLabel: UILabel {
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    drawUI()
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  func drawUI() {
+    backgroundColor = UIColor.BRColorOnError
+    textColor = UIColor.white
+    font = UIFont.systemFont(ofSize: 12)
+
+    layer.masksToBounds = true
+    layer.cornerRadius = 2
+    text = "마감임박"
+
+    sizeToFit()
+  }
+
+  override func drawText(in rect: CGRect) {
+    let insets = UIEdgeInsets.init(top: 0, left: 3, bottom: 0, right: 3)
+    super.drawText(in: rect.inset(by: insets))
   }
 }

@@ -17,4 +17,8 @@ extension UIColor {
       alpha: CGFloat(1.0)
     )
   }
+
+  static var BRColorOnError: UIColor {
+    return UIColor.colorFromRGB(0xd0021b)
+  }
 }

@@ -91,6 +91,13 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		8FF717C521A626D8009428D4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		97EFD72D3AC6C43380822605 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +128,7 @@
 		FA319BA61E506DD500402ECA /* BetterRefriger */ = {
 			isa = PBXGroup;
 			children = (
+				8FF717C521A626D8009428D4 /* View */,
 				8FF717BE21A38ED7009428D4 /* Models */,
 				FA86D21521A2ED400092E915 /* App */,
 				8FF717C221A4E03F009428D4 /* Utility */,
