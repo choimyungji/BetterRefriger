@@ -12,7 +12,59 @@ import RxSwift
 import UserNotifications
 import SnapKit
 
-class MainViewController: UIViewController, FoodInputViewControllerDelegate {
+class MainViewController: UIViewController, FoodInputViewControllerDelegate, ViewType {
+
+  func setupUI() {
+    self.navigationItem.title = "더나은냉장고"
+    let anotherButton = UIBarButtonItem(barButtonSystemItem: .add,
+                                        target: self, action: #selector(touchPlusButton(_:)))
+    self.navigationItem.rightBarButtonItem = anotherButton
+
+    view.addSubview(tableView)
+    view.addSubview(freezeButton)
+    view.addSubview(refrigerButton)
+
+    tableView.snp.makeConstraints {
+      $0.edges.equalToSuperview()
+    }
+
+    refrigerButton.snp.makeConstraints {
+      $0.left.equalToSuperview().inset(18)
+      $0.bottom.equalToSuperview().inset(64)
+      $0.width.height.equalTo(54)
+    }
+
+    freezeButton.snp.makeConstraints {
+      $0.left.equalToSuperview().inset(18)
+      $0.bottom.equalTo(refrigerButton.snp.top).offset(-8)
+      $0.width.height.equalTo(54)
+    }
+  }
+
+  func setupEventBinding() {
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: cellId)
+    setNavBar()
+
+    refrigerButton.rx.tap
+      .subscribe(onNext: {[weak self] _ in
+        self?.state = 0
+        self?.tableView.reloadData()
+      })
+      .disposed(by: disposeBag)
+
+    freezeButton.rx.tap
+      .subscribe(onNext: {[weak self] _ in
+        self?.state = 1
+        self?.tableView.reloadData()
+      })
+      .disposed(by: disposeBag)
+  }
+
+  func setupUIBinding() {
+
+  }
 
   var foodss = FoodModel()
 
@@ -20,7 +72,8 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
   private var tableView = UITableView()
   private var state = 0
 
-  private var disposeBag = DisposeBag()
+  var viewModel: MainViewModel!
+  var disposeBag: DisposeBag!
 
   func inputFoodCompleted(_ refrigerType: Int, foodName: String, registerDate: Date, expireDate: Date) {
     save(refrigerType: refrigerType, name: foodName, registerDate: registerDate, expireDate: expireDate )
@@ -42,59 +95,21 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    tableView.delegate = self
-    tableView.dataSource = self
-    tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: cellId)
-    setNavBar()
   }
 
   func setNavBar() {
-    self.navigationItem.title = "더나은냉장고"
-    let anotherButton = UIBarButtonItem(barButtonSystemItem: .add,
-                                        target: self, action: #selector(touchPlusButton(_:)))
-    self.navigationItem.rightBarButtonItem = anotherButton
+
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
-    refrigerButton.rx.tap
-      .subscribe(onNext: {[weak self] _ in
-        self?.state = 0
-        self?.tableView.reloadData()
-      })
-      .disposed(by: disposeBag)
-
-    freezeButton.rx.tap
-      .subscribe(onNext: {[weak self] _ in
-        self?.state = 1
-        self?.tableView.reloadData()
-      })
-      .disposed(by: disposeBag)
 
     setupViews()
   }
 
   func setupViews() {
-    view.addSubview(tableView)
-    view.addSubview(freezeButton)
-    view.addSubview(refrigerButton)
 
-    tableView.snp.makeConstraints {
-      $0.edges.equalToSuperview()
-    }
-
-    refrigerButton.snp.makeConstraints {
-      $0.left.equalToSuperview().inset(18)
-      $0.bottom.equalToSuperview().inset(64)
-      $0.width.height.equalTo(54)
-    }
-
-    freezeButton.snp.makeConstraints {
-      $0.left.equalToSuperview().inset(18)
-      $0.bottom.equalTo(refrigerButton.snp.top).offset(-8)
-      $0.width.height.equalTo(54)
-    }
   }
 
   override func didReceiveMemoryWarning() {
