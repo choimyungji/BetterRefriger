@@ -45,7 +45,10 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate, Vie
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: cellId)
-    setNavBar()
+
+//    navigationItem.rightBarButtonItem?.rx.tap
+//      .bind(to: viewModel.didTapRightBarButton)
+//      .disposed(by: disposeBag)
 
     refrigerButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
@@ -91,31 +94,6 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate, Vie
     button.setTitle("냉동", for: .normal)
     return button
   }()
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-  }
-
-  func setNavBar() {
-
-  }
-
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-
-
-    setupViews()
-  }
-
-  func setupViews() {
-
-  }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
 
   @objc func touchPlusButton(_ sender: AnyObject) {
     let foodInputVC = FoodInputViewController()
@@ -182,4 +160,3 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     return [delete]
   }
 }
-
