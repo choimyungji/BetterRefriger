@@ -6,10 +6,15 @@
 //  Copyright © 2018 maengji.com. All rights reserved.
 //
 
-import Foundation
+import RxSwift
+import RxCocoa
 
 protocol MainViewModelType: ViewModelType {
+//  var didTapRightBarButton: PublishSubject<Void> { get }
+//  var editSetting: Driver<FoodInputViewModelType> { get }
 }
 
 struct MainViewModel: MainViewModelType {
+//  let didTapRightBarButton = PublishSubject<Void>()
+//  let editSetting: Driver<FoodInputViewModelType>
 }
