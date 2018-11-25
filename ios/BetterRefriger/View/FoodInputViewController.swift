@@ -22,7 +22,12 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
   private var registerDate: Date?
   private var expireDate: Date?
   private var activeField: MJTextField?
-  private let datePicker = UIDatePicker()
+  private let datePicker: UIDatePicker = {
+    let picker = UIDatePicker()
+    picker.locale = Locale(identifier: "ko")
+    picker.datePickerMode = .date
+    return picker
+  }()
   private var disposeBag = DisposeBag()
 
   override func viewDidLoad() {
@@ -232,10 +237,7 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
 
     if textField == txtRegisterDate {
       selectedDate = Date()
-      let datePicker = UIDatePicker()
-      datePicker.datePickerMode = .date
       datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControl.Event.valueChanged)
-
       txtRegisterDate.inputView = datePicker
       let toolBar = UIToolbar().toolbarPicker(mySelect: #selector(dismissPicker))
       textField.inputAccessoryView = toolBar
@@ -243,10 +245,7 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
 
     if textField == txtExpireDate {
       selectedDate = Date()
-      let datePicker = UIDatePicker()
-      datePicker.datePickerMode = .date
       datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControl.Event.valueChanged)
-
       txtExpireDate.inputView = datePicker
       let toolBar = UIToolbar().toolbarPicker(mySelect: #selector(dismissPicker))
       textField.inputAccessoryView = toolBar
