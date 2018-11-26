@@ -15,6 +15,8 @@
 		FA24006321A6D51700AF8203 /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24006221A6D51700AF8203 /* ViewType.swift */; };
 		FA24006821A6D72F00AF8203 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24006721A6D72E00AF8203 /* ViewModelType.swift */; };
 		FA24006A21A6D7AD00AF8203 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24006921A6D7AD00AF8203 /* MainViewModel.swift */; };
+		FA24006C21A9845500AF8203 /* FoodInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24006B21A9845500AF8203 /* FoodInputViewModel.swift */; };
+		FA24006F21AAE73300AF8203 /* FoodInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24006E21AAE73300AF8203 /* FoodInputModel.swift */; };
 		FA26C34F214FEA400081A506 /* UIToolbar+PickerOKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA26C34E214FEA400081A506 /* UIToolbar+PickerOKButton.swift */; };
 		FA319BA81E506DD500402ECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA319BA71E506DD500402ECA /* AppDelegate.swift */; };
 		FA319BAA1E506DD500402ECA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA319BA91E506DD500402ECA /* MainViewController.swift */; };
@@ -40,6 +42,8 @@
 		FA24006221A6D51700AF8203 /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
 		FA24006721A6D72E00AF8203 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		FA24006921A6D7AD00AF8203 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		FA24006B21A9845500AF8203 /* FoodInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInputViewModel.swift; sourceTree = "<group>"; };
+		FA24006E21AAE73300AF8203 /* FoodInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInputModel.swift; sourceTree = "<group>"; };
 		FA26C34E214FEA400081A506 /* UIToolbar+PickerOKButton.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "UIToolbar+PickerOKButton.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		FA319BA41E506DD500402ECA /* 더나은냉장고.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "더나은냉장고.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA319BA71E506DD500402ECA /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 2; };
@@ -156,6 +160,8 @@
 				FA20D65E2155342700E6C093 /* FoodListTableViewCell.swift */,
 				FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */,
 				FA24006921A6D7AD00AF8203 /* MainViewModel.swift */,
+				FA24006B21A9845500AF8203 /* FoodInputViewModel.swift */,
+				FA24006E21AAE73300AF8203 /* FoodInputModel.swift */,
 			);
 			path = BetterRefriger;
 			sourceTree = "<group>";
@@ -328,11 +334,13 @@
 				FADE5BAC213A4E8A0023BFF7 /* UIColor+MJColor.swift in Sources */,
 				FA24006821A6D72F00AF8203 /* ViewModelType.swift in Sources */,
 				FA319BA81E506DD500402ECA /* AppDelegate.swift in Sources */,
+				FA24006F21AAE73300AF8203 /* FoodInputModel.swift in Sources */,
 				FA20D65D2153DC7600E6C093 /* String+substring.swift in Sources */,
 				FA26C34F214FEA400081A506 /* UIToolbar+PickerOKButton.swift in Sources */,
 				FA20D65F2155342700E6C093 /* FoodListTableViewCell.swift in Sources */,
 				FAA3EC461F754A81007F743E /* FoodInputViewController.swift in Sources */,
 				FADE5B6F21381D090023BFF7 /* MJTextField.swift in Sources */,
+				FA24006C21A9845500AF8203 /* FoodInputViewModel.swift in Sources */,
 				FA24006A21A6D7AD00AF8203 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
