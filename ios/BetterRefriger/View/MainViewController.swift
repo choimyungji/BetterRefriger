@@ -14,11 +14,11 @@ import SnapKit
 
 class MainViewController: UIViewController, FoodInputViewControllerDelegate, ViewType {
 
+  var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+
   func setupUI() {
     self.navigationItem.title = "더나은냉장고"
-    let anotherButton = UIBarButtonItem(barButtonSystemItem: .add,
-                                        target: self, action: #selector(touchPlusButton(_:)))
-    self.navigationItem.rightBarButtonItem = anotherButton
+    self.navigationItem.rightBarButtonItem = addButton
 
     view.addSubview(tableView)
     view.addSubview(freezeButton)
@@ -41,14 +41,27 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate, Vie
     }
   }
 
+  func selectedColor() -> Observable<FoodInputModel> {
+    let foodInputVC = FoodInputViewController()
+    navigationController?.pushViewController(foodInputVC, animated: true)
+    return foodInputVC.inputFood
+  }
+
   func setupEventBinding() {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: cellId)
 
-//    navigationItem.rightBarButtonItem?.rx.tap
-//      .bind(to: viewModel.didTapRightBarButton)
-//      .disposed(by: disposeBag)
+    addButton.rx.tap
+      .flatMap(selectedColor)
+      .observeOn(MainScheduler.instance)
+      .subscribe(onNext: { [weak self] (food) in
+        self?.save(refrigerType: food.refrigerType.rawValue,
+                   name: food.foodName,
+                   registerDate: food.registerDate,
+                   expireDate: food.expireDate)
+      })
+      .disposed(by: disposeBag)
 
     refrigerButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
@@ -95,15 +108,15 @@ class MainViewController: UIViewController, FoodInputViewControllerDelegate, Vie
     return button
   }()
 
-  @objc func touchPlusButton(_ sender: AnyObject) {
-    let foodInputVC = FoodInputViewController()
-    foodInputVC.delegate = self
-    self.navigationController?.pushViewController(foodInputVC, animated: true)
-  }
+//  @objc func touchPlusButton(_ sender: AnyObject) {
+////    let foodInputVC = FoodInputViewController()
+////    foodInputVC.delegate = self
+////    self.navigationController?.pushViewController(foodInputVC, animated: true)
+//  }
 
   func save(refrigerType: Int, name: String, registerDate: Date, expireDate: Date) {
     foodss.save(refrigerType: refrigerType, name: name, registerDate: registerDate, expireDate: expireDate)
-
+    tableView.reloadData()
     let center = UNUserNotificationCenter.current()
     let options: UNAuthorizationOptions = [.alert, .sound]
 

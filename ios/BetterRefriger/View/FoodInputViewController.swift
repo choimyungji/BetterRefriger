@@ -18,6 +18,11 @@ public protocol FoodInputViewControllerDelegate: NSObjectProtocol {
 class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFieldDelegate {
   weak var delegate: FoodInputViewControllerDelegate?
 
+  private let foodInputSubject = PublishSubject<FoodInputModel>()
+  var inputFood: Observable<FoodInputModel> {
+    return foodInputSubject.asObservable()
+  }
+
   private var selectedDate: Date?
   private var registerDate: Date?
   private var expireDate: Date?
@@ -35,10 +40,13 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
 
     btnRegister.rx.tap
       .subscribe(onNext: { [weak self] _ in
-        self?.delegate?.inputFoodCompleted(self!.segRefrigerType.selectedSegmentIndex,
-                                           foodName: self!.txtFoodName.text!,
-                                           registerDate: self!.registerDate!,
-                                           expireDate: self!.expireDate!)
+        let food = FoodInputModel()
+        food.refrigerType = self?.segRefrigerType.selectedSegmentIndex == 0 ? .refriger : .freezer
+        food.foodName = self!.txtFoodName.text!
+        food.registerDate = self!.registerDate!
+        food.expireDate = self!.expireDate!
+
+        self?.complete(food: food)
         self?.navigationController?.popViewController(animated: true)
       })
       .disposed(by: disposeBag)
@@ -273,5 +281,10 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
     }
 
     view.endEditing(true)
+  }
+
+  func complete(food: FoodInputModel) {
+    self.foodInputSubject.onNext(food)
+    self.foodInputSubject.onCompleted()
   }
 }
