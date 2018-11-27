@@ -47,6 +47,19 @@ class FoodListTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         lblFoodExpireDate.text = dateFormatter.string(from: newValue) + " 까지"
+
+        let calendar = Calendar.current
+        let date1 = calendar.startOfDay(for: Date())
+        let date2 = calendar.startOfDay(for: expireDate!)
+        let components = calendar.dateComponents([.day], from: date1, to: date2)
+
+        guard let day = components.day else {
+          return
+        }
+
+        if day > 7 {
+          lblNearExpire.isHidden = true
+        }
       }
     }
   }
@@ -90,6 +103,7 @@ class FoodListTableViewCell: UITableViewCell {
   }
 
   func drawUI() {
+
     addSubview(lblFoodName)
     addSubview(lblFoodExpireDate)
     addSubview(lblNearExpire)
@@ -120,7 +134,12 @@ class FoodListTableViewCell: UITableViewCell {
   }
 }
 
-class NearExpireLabel: UILabel {
+@IBDesignable class NearExpireLabel: UILabel {
+
+  @IBInspectable var topInset: CGFloat = 0.0
+  @IBInspectable var bottomInset: CGFloat = 0.0
+  @IBInspectable var leftInset: CGFloat = 3.0
+  @IBInspectable var rightInset: CGFloat = 3.0
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -144,7 +163,16 @@ class NearExpireLabel: UILabel {
   }
 
   override func drawText(in rect: CGRect) {
-    let insets = UIEdgeInsets.init(top: 0, left: 3, bottom: 0, right: 3)
+    let insets = UIEdgeInsets.init(top: topInset,
+                                   left: rightInset,
+                                   bottom: bottomInset,
+                                   right: rightInset)
     super.drawText(in: rect.inset(by: insets))
+  }
+
+  override var intrinsicContentSize: CGSize {
+    let size = super.intrinsicContentSize
+    return CGSize(width: size.width + leftInset + rightInset,
+                  height: size.height + topInset + bottomInset)
   }
 }
