@@ -70,6 +70,11 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
       .bind(to: btnRegister.rx.isEnabled)
       .disposed(by: disposeBag)
 
+    view.backgroundColor = .white
+    activeField = txtExpireDate
+    txtRegisterDate.delegate = self
+    txtExpireDate.delegate = self
+
     setTabBackGround()
     drawUI()
   }
@@ -138,9 +143,6 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
   }()
 
   func drawUI() {
-    view.backgroundColor = .white
-    activeField = txtExpireDate
-
     view.addSubview(scrollView)
     scrollView.addSubview(contentsView)
     view.addSubview(btnRegister)
@@ -172,7 +174,6 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
     txtFoodName.snp.makeConstraints { maker in
       maker.top.equalTo(lblName.snp.bottom).offset(8)
       maker.left.right.equalToSuperview().inset(16)
-      maker.height.equalTo(48)
     }
 
     lblRegister.snp.makeConstraints { maker in
@@ -180,11 +181,9 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
       maker.left.right.equalToSuperview().inset(16)
     }
 
-    txtRegisterDate.delegate = self
     txtRegisterDate.snp.makeConstraints { maker in
       maker.top.equalTo(lblRegister.snp.bottom).offset(8)
       maker.left.right.equalToSuperview().inset(16)
-      maker.height.equalTo(48)
     }
 
     lblExpire.snp.makeConstraints { maker in
@@ -192,11 +191,9 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
       maker.left.right.equalToSuperview().inset(16)
     }
 
-    txtExpireDate.delegate = self
     txtExpireDate.snp.makeConstraints { maker in
       maker.top.equalTo(lblExpire.snp.bottom).offset(8)
       maker.left.right.equalToSuperview().inset(16)
-      maker.height.equalTo(48)
     }
 
     btnRegister.snp.makeConstraints { maker in
@@ -211,7 +208,8 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
 
   @objc func keyboardWillShow(_ notification: Notification) {
     let userInfo: NSDictionary = (notification as NSNotification).userInfo! as NSDictionary
-    let keyboardSize = (userInfo.object(forKey: UIResponder.keyboardFrameBeginUserInfoKey)! as AnyObject).cgRectValue.size
+    let keyboard = userInfo.object(forKey: UIResponder.keyboardFrameBeginUserInfoKey)! as AnyObject
+    let keyboardSize = keyboard.cgRectValue.size
     let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
 
     scrollView.contentInset = contentInsets

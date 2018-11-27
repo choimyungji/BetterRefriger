@@ -17,5 +17,9 @@ class MJTextField: UITextField {
 
     self.leftView = UIView.init(frame: CGRect(x: 0, y: 0, width: 10, height: 16))
     self.leftViewMode = .always
+
+    snp.makeConstraints {
+      $0.height.equalTo(48)
+    }
   }
 }

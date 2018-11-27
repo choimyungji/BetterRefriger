@@ -30,5 +30,3 @@ extension ViewType where Self: UIViewController {
     return self
   }
 }
-
-

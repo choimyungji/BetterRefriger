@@ -12,10 +12,8 @@ protocol FoodInputViewModelType: ViewModelType {
 }
 
 struct FoodInputViewModel: FoodInputViewModelType {
-  init(initialData: FoodInputModel = FoodInputModel(), completion:
-    ((FoodInputModel) -> ())? = nil) {
+  init(initialData: FoodInputModel = FoodInputModel(),
+       completion: ((FoodInputModel) -> Void)? = nil) {
     var currentFood = initialData
-
-
   }
 }
