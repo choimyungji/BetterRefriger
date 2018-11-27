@@ -12,7 +12,7 @@ import RxSwift
 import UserNotifications
 import SnapKit
 
-class MainViewController: UIViewController, FoodInputViewControllerDelegate, ViewType {
+class MainViewController: UIViewController, ViewType {
 
   var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 

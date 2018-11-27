@@ -11,12 +11,7 @@ import RxCocoa
 import RxSwift
 import SnapKit
 
-public protocol FoodInputViewControllerDelegate: NSObjectProtocol {
-  func inputFoodCompleted(_ refrigerType: Int, foodName: String, registerDate: Date, expireDate: Date)
-}
-
 class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFieldDelegate {
-  weak var delegate: FoodInputViewControllerDelegate?
 
   private let foodInputSubject = PublishSubject<FoodInputModel>()
   var inputFood: Observable<FoodInputModel> {
