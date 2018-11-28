@@ -12,3 +12,7 @@ ios/Pods
 ios/BetterRefriger.xcodeproj/xcuserdata
 ios/Podfile.lock
 ios/BetterRefriger/App/GoogleService-Info.plist
+ios/.idea
+ios/BetterRefriger.xcworkspace
+ios/.DS_Store
+ios/BetterRefriger/.DS_Store
