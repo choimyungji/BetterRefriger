@@ -8,3 +8,7 @@
 *.xcscheme
 
 ios/BetterRefriger.xcodeproj/xcuserdata/maeng.xcuserdatad/xcschemes/xcschememanagement.plist
+ios/Pods
+ios/BetterRefriger.xcodeproj/xcuserdata
+ios/Podfile.lock
+ios/BetterRefriger/App/GoogleService-Info.plist
