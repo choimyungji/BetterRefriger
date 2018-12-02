@@ -11,7 +11,10 @@ import RxCocoa
 import RxSwift
 import SnapKit
 
-class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFieldDelegate {
+class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate, UITextFieldDelegate {
+
+  var viewModel: MainViewModel!
+  var disposeBag: DisposeBag!
 
   private let foodInputSubject = PublishSubject<FoodInputModel>()
   var inputFood: Observable<FoodInputModel> {
@@ -28,11 +31,74 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
     picker.datePickerMode = .date
     return picker
   }()
-  private var disposeBag = DisposeBag()
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
+  func setupUI() {
+    view.backgroundColor = .white
+    view.addSubview(scrollView)
+    scrollView.addSubview(contentsView)
+    view.addSubview(btnRegister)
+    [segRefrigerType, lblName, txtFoodName, lblRegister, txtRegisterDate, lblExpire, txtExpireDate]
+      .forEach {
+        contentsView.addSubview($0)
+    }
 
+    scrollView.snp.makeConstraints { maker in
+      maker.edges.equalToSuperview()
+    }
+
+    contentsView.snp.makeConstraints { maker in
+      maker.edges.width.equalToSuperview()
+      maker.height.greaterThanOrEqualToSuperview()
+    }
+
+    segRefrigerType.snp.makeConstraints {
+      $0.top.equalToSuperview().offset(16)
+      $0.left.right.equalToSuperview().inset(16)
+      $0.height.equalTo(40)
+    }
+
+    lblName.snp.makeConstraints { maker in
+      maker.top.equalTo(segRefrigerType.snp.bottom).offset(16)
+      maker.left.right.equalToSuperview().inset(16)
+    }
+
+    txtFoodName.snp.makeConstraints { maker in
+      maker.top.equalTo(lblName.snp.bottom).offset(8)
+      maker.left.right.equalToSuperview().inset(16)
+    }
+
+    lblRegister.snp.makeConstraints { maker in
+      maker.top.equalTo(txtFoodName.snp.bottom).offset(10)
+      maker.left.right.equalToSuperview().inset(16)
+    }
+
+    txtRegisterDate.snp.makeConstraints { maker in
+      maker.top.equalTo(lblRegister.snp.bottom).offset(8)
+      maker.left.right.equalToSuperview().inset(16)
+    }
+
+    lblExpire.snp.makeConstraints { maker in
+      maker.top.equalTo(txtRegisterDate.snp.bottom).offset(10)
+      maker.left.right.equalToSuperview().inset(16)
+    }
+
+    txtExpireDate.snp.makeConstraints { maker in
+      maker.top.equalTo(lblExpire.snp.bottom).offset(8)
+      maker.left.right.equalToSuperview().inset(16)
+    }
+
+    btnRegister.snp.makeConstraints { maker in
+      maker.left.right.bottom.equalToSuperview()
+      if #available(iOS 11.0, *) {
+        maker.height.equalTo(48 + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0))
+      } else {
+        maker.height.equalTo(48)
+      }
+    }
+  }
+
+  func setupEventBinding() {
+    disposeBag = DisposeBag()
     btnRegister.rx.tap
       .subscribe(onNext: { [weak self] _ in
         let food = FoodInputModel()
@@ -64,14 +130,23 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
     everythingValid
       .bind(to: btnRegister.rx.isEnabled)
       .disposed(by: disposeBag)
+  }
 
-    view.backgroundColor = .white
+  func setupUIBinding() {
+
+  }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
     activeField = txtExpireDate
     txtRegisterDate.delegate = self
     txtExpireDate.delegate = self
 
     setTabBackGround()
-    drawUI()
+    setupUI()
+    setupUIBinding()
+    setupEventBinding()
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -138,67 +213,7 @@ class FoodInputViewController: UIViewController, UIPickerViewDelegate, UITextFie
   }()
 
   func drawUI() {
-    view.addSubview(scrollView)
-    scrollView.addSubview(contentsView)
-    view.addSubview(btnRegister)
-    [segRefrigerType, lblName, txtFoodName, lblRegister, txtRegisterDate, lblExpire, txtExpireDate]
-      .forEach {
-        contentsView.addSubview($0)
-    }
 
-    scrollView.snp.makeConstraints { maker in
-      maker.edges.equalToSuperview()
-    }
-
-    contentsView.snp.makeConstraints { maker in
-      maker.edges.width.equalToSuperview()
-      maker.height.greaterThanOrEqualToSuperview()
-    }
-
-    segRefrigerType.snp.makeConstraints {
-      $0.top.equalToSuperview().offset(16)
-      $0.left.right.equalToSuperview().inset(16)
-      $0.height.equalTo(40)
-    }
-
-    lblName.snp.makeConstraints { maker in
-      maker.top.equalTo(segRefrigerType.snp.bottom).offset(16)
-      maker.left.right.equalToSuperview().inset(16)
-    }
-
-    txtFoodName.snp.makeConstraints { maker in
-      maker.top.equalTo(lblName.snp.bottom).offset(8)
-      maker.left.right.equalToSuperview().inset(16)
-    }
-
-    lblRegister.snp.makeConstraints { maker in
-      maker.top.equalTo(txtFoodName.snp.bottom).offset(10)
-      maker.left.right.equalToSuperview().inset(16)
-    }
-
-    txtRegisterDate.snp.makeConstraints { maker in
-      maker.top.equalTo(lblRegister.snp.bottom).offset(8)
-      maker.left.right.equalToSuperview().inset(16)
-    }
-
-    lblExpire.snp.makeConstraints { maker in
-      maker.top.equalTo(txtRegisterDate.snp.bottom).offset(10)
-      maker.left.right.equalToSuperview().inset(16)
-    }
-
-    txtExpireDate.snp.makeConstraints { maker in
-      maker.top.equalTo(lblExpire.snp.bottom).offset(8)
-      maker.left.right.equalToSuperview().inset(16)
-    }
-
-    btnRegister.snp.makeConstraints { maker in
-      maker.left.right.bottom.equalToSuperview()
-      if #available(iOS 11.0, *) {
-        maker.height.equalTo(48 + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0))
-      } else {
-        maker.height.equalTo(48)
-      }
-    }
   }
 
   @objc func keyboardWillShow(_ notification: Notification) {
