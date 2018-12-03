@@ -37,10 +37,8 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     view.addSubview(scrollView)
     scrollView.addSubview(contentsView)
     view.addSubview(btnRegister)
-    [segRefrigerType, lblName, txtFoodName, lblRegister, txtRegisterDate, lblExpire, txtExpireDate]
-      .forEach {
-        contentsView.addSubview($0)
-    }
+    contentsView.addSubviews([segRefrigerType, lblName, txtFoodName, lblRegister,
+                              btnRegisterToday, txtRegisterDate, lblExpire, txtExpireDate])
 
     scrollView.snp.makeConstraints { maker in
       maker.edges.equalToSuperview()
@@ -69,11 +67,17 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
 
     lblRegister.snp.makeConstraints { maker in
       maker.top.equalTo(txtFoodName.snp.bottom).offset(10)
-      maker.left.right.equalToSuperview().inset(16)
+      maker.left.equalToSuperview().inset(16)
+    }
+
+    btnRegisterToday.snp.makeConstraints {
+      $0.top.equalTo(lblRegister)
+      $0.left.equalTo(lblRegister.snp.right).offset(10)
+      $0.right.equalToSuperview().inset(16)
     }
 
     txtRegisterDate.snp.makeConstraints { maker in
-      maker.top.equalTo(lblRegister.snp.bottom).offset(8)
+      maker.top.equalTo(btnRegisterToday.snp.bottom).offset(8)
       maker.left.right.equalToSuperview().inset(16)
     }
 
@@ -130,6 +134,10 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     everythingValid
       .bind(to: btnRegister.rx.isEnabled)
       .disposed(by: disposeBag)
+  }
+
+  func txtfieldTouchUpinside() {
+
   }
 
   func setupUIBinding() {
@@ -203,6 +211,14 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
 
   let txtFoodName = MJTextField()
   let txtRegisterDate = MJTextField()
+  let btnRegisterToday: UIButton = {
+    let button = UIButton()
+    button.setTitle("오늘", for: .normal)
+    button.setTitleColor(UIColor.blue, for: .normal)
+    button.addTarget(self, action: #selector(touchedRegisterTodayButton(_:)), for: .touchUpInside)
+    return button
+  }()
+
   let txtExpireDate = MJTextField()
   let btnRegister: UIButton = {
     let button = UIButton()
@@ -213,6 +229,14 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
   }()
 
   func drawUI() {
+
+  }
+
+  @objc func touchedRegisterTodayButton(_ sender: UIButton) {
+    registerDate = Date()
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    txtRegisterDate.text = dateFormatter.string(from: registerDate!)
 
   }
 
