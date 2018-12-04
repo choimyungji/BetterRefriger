@@ -211,10 +211,8 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
 
   let txtFoodName = MJTextField()
   let txtRegisterDate = MJTextField()
-  let btnRegisterToday: UIButton = {
-    let button = UIButton()
-    button.setTitle("오늘", for: .normal)
-    button.setTitleColor(UIColor.blue, for: .normal)
+  let btnRegisterToday: TodayButton = {
+    let button = TodayButton()
     button.addTarget(self, action: #selector(touchedRegisterTodayButton(_:)), for: .touchUpInside)
     return button
   }()
@@ -224,7 +222,7 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     let button = UIButton()
     button.setTitle("등록", for: .normal)
     button.setTitleColor(.white, for: .normal)
-    button.backgroundColor = .blue
+    button.backgroundColor = UIColor.BRColorOnActive
     return button
   }()
 

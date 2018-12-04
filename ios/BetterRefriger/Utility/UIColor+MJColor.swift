@@ -18,7 +18,6 @@ extension UIColor {
     )
   }
 
-  static var BRColorOnError: UIColor {
-    return UIColor.colorFromRGB(0xd0021b)
-  }
+  static var BRColorOnError = UIColor.colorFromRGB(0xd0021b)
+  static var BRColorOnActive = UIColor.colorFromRGB(0x3333ff)
 }
