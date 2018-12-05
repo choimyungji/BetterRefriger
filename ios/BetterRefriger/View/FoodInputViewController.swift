@@ -38,7 +38,8 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     scrollView.addSubview(contentsView)
     view.addSubview(btnRegister)
     contentsView.addSubviews([segRefrigerType, lblName, txtFoodName, lblRegister,
-                              btnRegisterToday, txtRegisterDate, lblExpire, txtExpireDate])
+                              btnRegisterToday, txtRegisterDate, lblExpire, btnOneWeek,
+                              btnOneMonth, txtExpireDate])
 
     scrollView.snp.makeConstraints { maker in
       maker.edges.equalToSuperview()
@@ -84,6 +85,16 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     lblExpire.snp.makeConstraints { maker in
       maker.top.equalTo(txtRegisterDate.snp.bottom).offset(10)
       maker.left.right.equalToSuperview().inset(16)
+    }
+
+    btnOneWeek.snp.makeConstraints {
+      $0.top.equalTo(lblExpire)
+      $0.right.equalTo(btnOneMonth.snp.left).offset(-4)
+    }
+
+    btnOneMonth.snp.makeConstraints {
+      $0.top.equalTo(btnOneWeek)
+      $0.right.equalToSuperview().inset(16)
     }
 
     txtExpireDate.snp.makeConstraints { maker in
@@ -194,6 +205,7 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     label.font = UIFont.systemFont(ofSize: 17)
     return label
   }()
+  let txtFoodName = MJTextField()
 
   let lblRegister: UILabel = {
     let label = UILabel()
@@ -202,6 +214,14 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     return label
   }()
 
+  let btnRegisterToday: LabelButton = {
+    let button = LabelButton(labelText: "오늘")
+    button.addTarget(self, action: #selector(touchedRegisterTodayButton(_:)), for: .touchUpInside)
+    return button
+  }()
+
+  let txtRegisterDate = MJTextField()
+
   let lblExpire: UILabel = {
     let label = UILabel()
     label.text = "유통기한"
@@ -209,11 +229,15 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     return label
   }()
 
-  let txtFoodName = MJTextField()
-  let txtRegisterDate = MJTextField()
-  let btnRegisterToday: TodayButton = {
-    let button = TodayButton()
-    button.addTarget(self, action: #selector(touchedRegisterTodayButton(_:)), for: .touchUpInside)
+  let btnOneWeek: LabelButton = {
+    let button = LabelButton(labelText: "1주일")
+    button.addTarget(self, action: #selector(touchedOneWeekButton(_:)), for: .touchUpInside)
+    return button
+  }()
+
+  let btnOneMonth: LabelButton = {
+    let button = LabelButton(labelText: "1달")
+    button.addTarget(self, action: #selector(touchedOneMonthButton(_:)), for: .touchUpInside)
     return button
   }()
 
@@ -226,16 +250,25 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     return button
   }()
 
-  func drawUI() {
-
-  }
-
   @objc func touchedRegisterTodayButton(_ sender: UIButton) {
     registerDate = Date()
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
     txtRegisterDate.text = dateFormatter.string(from: registerDate!)
+  }
 
+  @objc func touchedOneWeekButton(_ sender: UIButton) {
+    expireDate = Calendar.current.date(byAdding: .day, value: 7, to: Date())
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    txtExpireDate.text = dateFormatter.string(from: expireDate!)
+  }
+
+  @objc func touchedOneMonthButton(_ sender: UIButton) {
+    expireDate = Calendar.current.date(byAdding: .month, value: 1, to: Date())
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    txtExpireDate.text = dateFormatter.string(from: expireDate!)
   }
 
   @objc func keyboardWillShow(_ notification: Notification) {

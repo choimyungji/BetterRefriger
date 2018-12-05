@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
       options: authOptions,
       completionHandler: {_, _ in })
 
+    window?.tintColor = UIColor.BRColorOnActive
     application.registerForRemoteNotifications()
 
     Messaging.messaging().delegate = self
