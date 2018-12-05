@@ -72,6 +72,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     return handled
   }
 
+  open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    return application(app, open: url,
+                       sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                       annotation: "")
+  }
+
+  func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+    if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+      // Handle the deep link. For example, show the deep-linked content or
+      // apply a promotional offer to the user's account.
+      // ...
+      return true
+    }
+    return false
+  }
+
   // MARK: - Core Data stack
   lazy var persistentContainer: NSPersistentContainer = {
     let container = NSPersistentContainer(name: "BetterRefriger")
