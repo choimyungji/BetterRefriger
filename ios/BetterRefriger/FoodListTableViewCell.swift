@@ -53,12 +53,14 @@ class FoodListTableViewCell: UITableViewCell {
         let date2 = calendar.startOfDay(for: expireDate!)
         let components = calendar.dateComponents([.day], from: date1, to: date2)
 
-        guard let day = components.day else {
-          return
-        }
+        guard let day = components.day else { return }
 
         if day > 7 {
-          lblNearExpire.isHidden = true
+          lblNearExpire.type = .normal
+        } else if day > 0 {
+          lblNearExpire.type = .nearExpire
+        } else {
+          lblNearExpire.type = .expired
         }
       }
     }
@@ -91,7 +93,7 @@ class FoodListTableViewCell: UITableViewCell {
     return label
   }()
 
-  private var lblNearExpire = NearExpireLabel()
+  private var lblNearExpire = FoodStatusLabel()
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -134,8 +136,28 @@ class FoodListTableViewCell: UITableViewCell {
   }
 }
 
-@IBDesignable class NearExpireLabel: UILabel {
+enum FoodStatus {
+  case normal, nearExpire, expired
+}
 
+@IBDesignable class FoodStatusLabel: UILabel {
+
+  var type: FoodStatus = .normal {
+    didSet {
+      switch type {
+      case .normal:
+        isHidden = true
+      case .nearExpire:
+        isHidden = false
+        backgroundColor = UIColor.BRColorOnWarning
+        text = "마감임박"
+      case .expired:
+        isHidden = false
+        backgroundColor = UIColor.BRColorOnError
+        text = "유통기한지남"
+      }
+    }
+  }
   @IBInspectable var topInset: CGFloat = 0.0
   @IBInspectable var bottomInset: CGFloat = 0.0
   @IBInspectable var leftInset: CGFloat = 3.0
@@ -151,13 +173,11 @@ class FoodListTableViewCell: UITableViewCell {
   }
 
   func drawUI() {
-    backgroundColor = UIColor.BRColorOnError
     textColor = UIColor.white
     font = UIFont.systemFont(ofSize: 12)
 
     layer.masksToBounds = true
     layer.cornerRadius = 2
-    text = "마감임박"
 
     sizeToFit()
   }
