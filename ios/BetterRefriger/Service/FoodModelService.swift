@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FoodModel: NSObject {
+class FoodModelService: NSObject {
   private var foods: [NSManagedObject] = []
 
   var managedContext: NSManagedObjectContext

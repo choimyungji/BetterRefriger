@@ -82,7 +82,7 @@ class MainViewController: UIViewController, ViewType {
 
   }
 
-  var foodss = FoodModel()
+  var foodss = FoodModelService()
 
   private let cellId = "FoodListTableViewCell"
   private var tableView = UITableView()
