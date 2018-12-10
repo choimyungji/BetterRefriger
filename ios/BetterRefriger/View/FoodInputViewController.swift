@@ -41,13 +41,13 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
                               btnRegisterToday, txtRegisterDate, lblExpire, btnOneWeek,
                               btnOneMonth, txtExpireDate])
 
-    scrollView.snp.makeConstraints { maker in
-      maker.edges.equalToSuperview()
+    scrollView.snp.makeConstraints {
+      $0.edges.equalToSuperview()
     }
 
-    contentsView.snp.makeConstraints { maker in
-      maker.edges.width.equalToSuperview()
-      maker.height.greaterThanOrEqualToSuperview()
+    contentsView.snp.makeConstraints {
+      $0.edges.width.equalToSuperview()
+      $0.height.greaterThanOrEqualToSuperview()
     }
 
     segRefrigerType.snp.makeConstraints {
@@ -56,19 +56,19 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
       $0.height.equalTo(40)
     }
 
-    lblName.snp.makeConstraints { maker in
-      maker.top.equalTo(segRefrigerType.snp.bottom).offset(16)
-      maker.left.right.equalToSuperview().inset(16)
+    lblName.snp.makeConstraints {
+      $0.top.equalTo(segRefrigerType.snp.bottom).offset(16)
+      $0.left.right.equalToSuperview().inset(16)
     }
 
-    txtFoodName.snp.makeConstraints { maker in
-      maker.top.equalTo(lblName.snp.bottom).offset(8)
-      maker.left.right.equalToSuperview().inset(16)
+    txtFoodName.snp.makeConstraints {
+      $0.top.equalTo(lblName.snp.bottom).offset(8)
+      $0.left.right.equalToSuperview().inset(16)
     }
 
-    lblRegister.snp.makeConstraints { maker in
-      maker.top.equalTo(txtFoodName.snp.bottom).offset(10)
-      maker.left.equalToSuperview().inset(16)
+    lblRegister.snp.makeConstraints {
+      $0.top.equalTo(txtFoodName.snp.bottom).offset(10)
+      $0.left.equalToSuperview().inset(16)
     }
 
     btnRegisterToday.snp.makeConstraints {
@@ -77,14 +77,14 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
       $0.right.equalToSuperview().inset(16)
     }
 
-    txtRegisterDate.snp.makeConstraints { maker in
-      maker.top.equalTo(btnRegisterToday.snp.bottom).offset(8)
-      maker.left.right.equalToSuperview().inset(16)
+    txtRegisterDate.snp.makeConstraints {
+      $0.top.equalTo(btnRegisterToday.snp.bottom).offset(8)
+      $0.left.right.equalToSuperview().inset(16)
     }
 
-    lblExpire.snp.makeConstraints { maker in
-      maker.top.equalTo(txtRegisterDate.snp.bottom).offset(10)
-      maker.left.right.equalToSuperview().inset(16)
+    lblExpire.snp.makeConstraints {
+      $0.top.equalTo(txtRegisterDate.snp.bottom).offset(10)
+      $0.left.right.equalToSuperview().inset(16)
     }
 
     btnOneWeek.snp.makeConstraints {
@@ -97,17 +97,17 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
       $0.right.equalToSuperview().inset(16)
     }
 
-    txtExpireDate.snp.makeConstraints { maker in
-      maker.top.equalTo(lblExpire.snp.bottom).offset(8)
-      maker.left.right.equalToSuperview().inset(16)
+    txtExpireDate.snp.makeConstraints {
+      $0.top.equalTo(lblExpire.snp.bottom).offset(8)
+      $0.left.right.equalToSuperview().inset(16)
     }
 
-    btnRegister.snp.makeConstraints { maker in
-      maker.left.right.bottom.equalToSuperview()
+    btnRegister.snp.makeConstraints {
+      $0.left.right.bottom.equalToSuperview()
       if #available(iOS 11.0, *) {
-        maker.height.equalTo(48 + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0))
+        $0.height.equalTo(48 + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0))
       } else {
-        maker.height.equalTo(48)
+        $0.height.equalTo(48)
       }
     }
   }
