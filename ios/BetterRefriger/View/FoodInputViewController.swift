@@ -127,6 +127,15 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
       })
       .disposed(by: disposeBag)
 
+    btnRegisterToday.rx.tap
+      .subscribe(onNext: { [weak self] in
+        self?.registerDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        self?.txtRegisterDate.text = dateFormatter.string(from: self!.registerDate!)
+      })
+      .disposed(by: disposeBag)
+
     let foodNameValid = txtFoodName.rx.text.orEmpty
       .map { $0.count >= 1 }
       .share(replay: 1)
@@ -216,7 +225,6 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
 
   let btnRegisterToday: LabelButton = {
     let button = LabelButton(labelText: "오늘")
-    button.addTarget(self, action: #selector(touchedRegisterTodayButton(_:)), for: .touchUpInside)
     return button
   }()
 
@@ -249,13 +257,6 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     button.backgroundColor = UIColor.BRColorOnActive
     return button
   }()
-
-  @objc func touchedRegisterTodayButton(_ sender: UIButton) {
-    registerDate = Date()
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    txtRegisterDate.text = dateFormatter.string(from: registerDate!)
-  }
 
   @objc func touchedOneWeekButton(_ sender: UIButton) {
     expireDate = Calendar.current.date(byAdding: .day, value: 7, to: Date())
