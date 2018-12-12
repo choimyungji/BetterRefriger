@@ -136,6 +136,24 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
       })
       .disposed(by: disposeBag)
 
+    btnOneWeek.rx.tap
+      .subscribe(onNext: { [weak self] in
+        self?.expireDate = Calendar.current.date(byAdding: .day, value: 7, to: Date())
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        self?.txtExpireDate.text = dateFormatter.string(from: self!.expireDate!)
+      })
+      .disposed(by: disposeBag)
+
+    btnOneMonth.rx.tap
+      .subscribe(onNext: { [weak self] in
+        self?.expireDate = Calendar.current.date(byAdding: .month, value: 1, to: Date())
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        self?.txtExpireDate.text = dateFormatter.string(from: self!.expireDate!)
+      })
+      .disposed(by: disposeBag)
+
     let foodNameValid = txtFoodName.rx.text.orEmpty
       .map { $0.count >= 1 }
       .share(replay: 1)
@@ -237,17 +255,8 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     return label
   }()
 
-  let btnOneWeek: LabelButton = {
-    let button = LabelButton(labelText: "1주일")
-    button.addTarget(self, action: #selector(touchedOneWeekButton(_:)), for: .touchUpInside)
-    return button
-  }()
-
-  let btnOneMonth: LabelButton = {
-    let button = LabelButton(labelText: "1달")
-    button.addTarget(self, action: #selector(touchedOneMonthButton(_:)), for: .touchUpInside)
-    return button
-  }()
+  let btnOneWeek = LabelButton(labelText: "1주일")
+  let btnOneMonth = LabelButton(labelText: "1달")
 
   let txtExpireDate = MJTextField()
   let btnRegister: UIButton = {
@@ -257,20 +266,6 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     button.backgroundColor = UIColor.BRColorOnActive
     return button
   }()
-
-  @objc func touchedOneWeekButton(_ sender: UIButton) {
-    expireDate = Calendar.current.date(byAdding: .day, value: 7, to: Date())
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    txtExpireDate.text = dateFormatter.string(from: expireDate!)
-  }
-
-  @objc func touchedOneMonthButton(_ sender: UIButton) {
-    expireDate = Calendar.current.date(byAdding: .month, value: 1, to: Date())
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    txtExpireDate.text = dateFormatter.string(from: expireDate!)
-  }
 
   @objc func keyboardWillShow(_ notification: Notification) {
     let userInfo: NSDictionary = (notification as NSNotification).userInfo! as NSDictionary
