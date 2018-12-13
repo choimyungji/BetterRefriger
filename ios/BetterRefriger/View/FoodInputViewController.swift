@@ -13,7 +13,7 @@ import SnapKit
 
 class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate, UITextFieldDelegate {
 
-  var viewModel: MainViewModel!
+  var viewModel: FoodInputViewModel!
   var disposeBag: DisposeBag!
 
   private let foodInputSubject = PublishSubject<FoodInputModel>()
@@ -113,7 +113,6 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
   }
 
   func setupEventBinding() {
-    disposeBag = DisposeBag()
     btnRegister.rx.tap
       .subscribe(onNext: { [weak self] _ in
         let food = FoodInputModel()
@@ -174,10 +173,6 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
       .disposed(by: disposeBag)
   }
 
-  func txtfieldTouchUpinside() {
-
-  }
-
   func setupUIBinding() {
 
   }
@@ -190,9 +185,6 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     txtExpireDate.delegate = self
 
     setTabBackGround()
-    setupUI()
-    setupUIBinding()
-    setupEventBinding()
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -324,9 +316,7 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
   }
 
   @objc func dismissPicker() {
-    guard let selectedDate = selectedDate else {
-      return
-    }
+    guard let selectedDate = selectedDate else { return }
 
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
