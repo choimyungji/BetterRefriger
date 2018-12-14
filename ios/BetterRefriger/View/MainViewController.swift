@@ -83,7 +83,7 @@ class MainViewController: UIViewController, ViewType {
 
   }
 
-  var foodss = FoodModelService()
+  var footService = FoodModelService()
 
   private let cellId = "FoodListTableViewCell"
   private var tableView = UITableView()
@@ -109,14 +109,8 @@ class MainViewController: UIViewController, ViewType {
     return button
   }()
 
-//  @objc func touchPlusButton(_ sender: AnyObject) {
-////    let foodInputVC = FoodInputViewController()
-////    foodInputVC.delegate = self
-////    self.navigationController?.pushViewController(foodInputVC, animated: true)
-//  }
-
   func save(refrigerType: Int, name: String, registerDate: Date, expireDate: Date) {
-    foodss.save(refrigerType: refrigerType, name: name, registerDate: registerDate, expireDate: expireDate)
+    footService.save(refrigerType: refrigerType, name: name, registerDate: registerDate, expireDate: expireDate)
     tableView.reloadData()
     let center = UNUserNotificationCenter.current()
     let options: UNAuthorizationOptions = [.alert, .sound]
@@ -146,7 +140,7 @@ class MainViewController: UIViewController, ViewType {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return foodss.data(refrigerType: state).count
+    return footService.data(refrigerType: state).count
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -154,7 +148,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let food = foodss.data(refrigerType: state)[indexPath.row]
+    let food = footService.data(refrigerType: state)[indexPath.row]
 
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as? FoodListTableViewCell
     cell?.seq = food.value(forKey: "seq") as? Int
@@ -167,7 +161,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let delete = UITableViewRowAction(style: .destructive, title: "삭제") { (_, indexPath) in
-      self.foodss.remove(indexAt: indexPath.row)
+      self.footService.remove(indexAt: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .fade)
     }
 
