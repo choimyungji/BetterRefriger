@@ -24,6 +24,7 @@
 		FA319BB21E506DD500402ECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA319BB11E506DD500402ECA /* Assets.xcassets */; };
 		FA319BB51E506DD500402ECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA319BB31E506DD500402ECA /* LaunchScreen.storyboard */; };
 		FA466D7A21B6B032000F1B17 /* LabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA466D7921B6B032000F1B17 /* LabelButton.swift */; };
+		FA66D56A21C494DB00944066 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66D56921C494DB00944066 /* NotificationManager.swift */; };
 		FA6C976D21A43DDF0007CC1D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6C976C21A43DDF0007CC1D /* CoreDataStack.swift */; };
 		FA86D1FF2191AC780092E915 /* SelectAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */; };
 		FAA3EC461F754A81007F743E /* FoodInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3EC451F754A81007F743E /* FoodInputViewController.swift */; };
@@ -57,6 +58,7 @@
 		FA319BB61E506DD500402ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA466D7921B6B032000F1B17 /* LabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelButton.swift; sourceTree = "<group>"; };
 		FA574553218C9CB200B4775E /* BetterRefriger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BetterRefriger.entitlements; sourceTree = "<group>"; };
+		FA66D56921C494DB00944066 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		FA6C976C21A43DDF0007CC1D /* CoreDataStack.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SelectAreaButton.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FAA3EC451F754A81007F743E /* FoodInputViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodInputViewController.swift; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				8FF717BF21A38EFF009428D4 /* FoodModelService.swift */,
+				FA66D56921C494DB00944066 /* NotificationManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 			files = (
 				8FF717C021A38EFF009428D4 /* FoodModelService.swift in Sources */,
 				FA86D1FF2191AC780092E915 /* SelectAreaButton.swift in Sources */,
+				FA66D56A21C494DB00944066 /* NotificationManager.swift in Sources */,
 				FA319BB01E506DD500402ECA /* BetterRefriger.xcdatamodeld in Sources */,
 				FA6C976D21A43DDF0007CC1D /* CoreDataStack.swift in Sources */,
 				8FF717C421A4E087009428D4 /* UIView+Subviews.swift in Sources */,

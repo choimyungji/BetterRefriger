@@ -14,6 +14,15 @@ import SnapKit
 
 class MainViewController: UIViewController, ViewType {
 
+  private let cellId = "FoodListTableViewCell"
+  private var tableView = UITableView()
+  private var state = 0
+
+  var viewModel: MainViewModel!
+  var disposeBag: DisposeBag!
+
+  var footService = FoodModelService()
+
   var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 
   func setupUI() {
@@ -83,14 +92,7 @@ class MainViewController: UIViewController, ViewType {
 
   }
 
-  var footService = FoodModelService()
 
-  private let cellId = "FoodListTableViewCell"
-  private var tableView = UITableView()
-  private var state = 0
-
-  var viewModel: MainViewModel!
-  var disposeBag: DisposeBag!
 
   func inputFoodCompleted(_ refrigerType: Int, foodName: String, registerDate: Date, expireDate: Date) {
     save(refrigerType: refrigerType, name: foodName, registerDate: registerDate, expireDate: expireDate )
@@ -112,29 +114,7 @@ class MainViewController: UIViewController, ViewType {
   func save(refrigerType: Int, name: String, registerDate: Date, expireDate: Date) {
     footService.save(refrigerType: refrigerType, name: name, registerDate: registerDate, expireDate: expireDate)
     tableView.reloadData()
-    let center = UNUserNotificationCenter.current()
-    let options: UNAuthorizationOptions = [.alert, .sound]
-
-    center.requestAuthorization(options: options) { (granted, error) in
-      if granted {
-        let content = UNMutableNotificationContent()
-        content.categoryIdentifier = "expireNotification"
-        content.body = "\(name)의 유통기한이 다 되어갑니다."
-        let calendar = Calendar.current
-
-        var components = calendar.dateComponents([.hour, .minute, .second], from: expireDate)
-
-        components.hour = 21
-        components.minute = 12
-
-        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-        let request = UNNotificationRequest(identifier: "expireNotification", content: content, trigger: trigger)
-        let center = UNUserNotificationCenter.current()
-        center.add(request) { (error) in
-          print(error?.localizedDescription ?? "")
-        }
-      }
-    }
+    
   }
 }
 
