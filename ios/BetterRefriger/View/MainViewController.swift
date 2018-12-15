@@ -92,8 +92,6 @@ class MainViewController: UIViewController, ViewType {
 
   }
 
-
-
   func inputFoodCompleted(_ refrigerType: Int, foodName: String, registerDate: Date, expireDate: Date) {
     save(refrigerType: refrigerType, name: foodName, registerDate: registerDate, expireDate: expireDate )
     tableView.reloadData()
@@ -114,7 +112,11 @@ class MainViewController: UIViewController, ViewType {
   func save(refrigerType: Int, name: String, registerDate: Date, expireDate: Date) {
     footService.save(refrigerType: refrigerType, name: name, registerDate: registerDate, expireDate: expireDate)
     tableView.reloadData()
-    
+
+    let noti = NotificationManager()
+    noti.name = name
+    noti.expireDate = expireDate
+    noti.requestNotification()
   }
 }
 
