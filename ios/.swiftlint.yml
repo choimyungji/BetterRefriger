@@ -1,4 +1,11 @@
 disabled_rules:
   - notification_center_detachment
+
 excluded:
   - Pods 
+
+identifier_name:
+  min_length: 
+    error: 3 
+  excluded: 
+    - to
