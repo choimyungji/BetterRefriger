@@ -47,33 +47,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     Messaging.messaging().apnsToken = deviceToken
   }
 
-  func applicationWillResignActive(_ application: UIApplication) {
-
-  }
-
-  func applicationDidEnterBackground(_ application: UIApplication) {
-
-  }
-
-  func applicationWillEnterForeground(_ application: UIApplication) {
-
-  }
-
-  func applicationDidBecomeActive(_ application: UIApplication) {
-  }
-
   func applicationWillTerminate(_ application: UIApplication) {
     self.saveContext()
   }
 
-  func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+  func application(_ application: UIApplication,
+                   continue userActivity: NSUserActivity,
+                   restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
     let handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { dynamiclink, error in
-      print(dynamiclink)
+      guard error != nil else { return }
+      print(dynamiclink?.description ?? "")
     }
+
     return handled
   }
 
-  open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+  open func application(_ app: UIApplication, open url: URL,
+                        options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
     return application(app, open: url,
                        sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
                        annotation: "")
@@ -81,9 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
   func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
     if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
-      // Handle the deep link. For example, show the deep-linked content or
-      // apply a promotional offer to the user's account.
-      // ...
+      print(dynamicLink.description)
       return true
     }
     return false
