@@ -11,8 +11,12 @@ import CoreData
 import RxSwift
 import UserNotifications
 import SnapKit
+import XLPagerTabStrip
 
-class MainViewController: UIViewController, ViewType {
+class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
+  func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+    return "view"
+  }
 
   private let cellId = "FoodListTableViewCell"
   private var tableView = UITableView()
@@ -28,7 +32,15 @@ class MainViewController: UIViewController, ViewType {
   func setupUI() {
     self.navigationItem.title = "더나은냉장고"
     self.navigationItem.rightBarButtonItem = addButton
+    let view = self.view!
 
+    if #available(iOS 11.0, *) {
+
+      let guide = view.safeAreaLayoutGuide
+      view.topAnchor.constraint(equalTo: guide.topAnchor).isActive = false
+      view.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = false
+    }
+    
     view.addSubview(tableView)
     view.addSubview(freezeButton)
     view.addSubview(refrigerButton)
@@ -62,16 +74,16 @@ class MainViewController: UIViewController, ViewType {
     tableView.dataSource = self
     tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: cellId)
 
-    addButton.rx.tap
-      .flatMap(selectedColor)
-      .observeOn(MainScheduler.instance)
-      .subscribe(onNext: { [weak self] (food) in
-        self?.save(refrigerType: food.refrigerType.rawValue,
-                   name: food.foodName,
-                   registerDate: food.registerDate,
-                   expireDate: food.expireDate)
-      })
-      .disposed(by: disposeBag)
+//    addButton.rx.tap
+//      .flatMap(selectedColor)
+//      .observeOn(MainScheduler.instance)
+//      .subscribe(onNext: { [weak self] (food) in
+//        self?.save(refrigerType: food.refrigerType.rawValue,
+//                   name: food.foodName,
+//                   registerDate: food.registerDate,
+//                   expireDate: food.expireDate)
+//      })
+//      .disposed(by: disposeBag)
 
     refrigerButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
