@@ -110,16 +110,16 @@ class FoodListTableViewCell: UITableViewCell {
     addSubview(lblFoodExpireDate)
     addSubview(lblNearExpire)
 
-    lblFoodName.snp.makeConstraints { maker in
-      maker.top.equalToSuperview().inset(12)
-      maker.left.right.equalToSuperview().inset(24)
-      maker.height.equalTo(21)
+    lblFoodName.snp.makeConstraints {
+      $0.top.equalToSuperview().inset(12)
+      $0.left.right.equalToSuperview().inset(24)
+      $0.height.equalTo(21)
     }
 
-    lblFoodExpireDate.snp.makeConstraints { maker in
-      maker.top.equalTo(lblFoodName.snp.bottom)
-      maker.left.equalToSuperview().inset(24)
-      maker.height.equalTo(20)
+    lblFoodExpireDate.snp.makeConstraints {
+      $0.top.equalTo(lblFoodName.snp.bottom)
+      $0.left.equalToSuperview().inset(24)
+      $0.height.equalTo(20)
     }
 
     lblNearExpire.snp.makeConstraints {
