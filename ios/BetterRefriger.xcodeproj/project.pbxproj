@@ -99,6 +99,7 @@
 		8FF717BE21A38ED7009428D4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FA24006E21AAE73300AF8203 /* FoodInputModel.swift */,
 				FA6C976C21A43DDF0007CC1D /* CoreDataStack.swift */,
 			);
 			path = Models;
@@ -122,6 +123,15 @@
 				9824B7B4658D5C874FE81DCD /* Pods-BetterRefriger.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		FA07BD2921CD30F80000DEB6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FA24006921A6D7AD00AF8203 /* MainViewModel.swift */,
+				FA24006B21A9845500AF8203 /* FoodInputViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		FA24006621A6D6B400AF8203 /* View */ = {
@@ -158,6 +168,7 @@
 			children = (
 				8F1AF4F421ACBB8A0034267E /* Base */,
 				8FF717BE21A38ED7009428D4 /* Models */,
+				FA07BD2921CD30F80000DEB6 /* ViewModels */,
 				FAD8BCF821BD142B00CFFE6C /* Service */,
 				FA86D21521A2ED400092E915 /* App */,
 				8FF717C221A4E03F009428D4 /* Utility */,
@@ -168,9 +179,6 @@
 				FADE5B6E21381D090023BFF7 /* MJTextField.swift */,
 				FA20D65E2155342700E6C093 /* FoodListTableViewCell.swift */,
 				FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */,
-				FA24006921A6D7AD00AF8203 /* MainViewModel.swift */,
-				FA24006B21A9845500AF8203 /* FoodInputViewModel.swift */,
-				FA24006E21AAE73300AF8203 /* FoodInputModel.swift */,
 			);
 			path = BetterRefriger;
 			sourceTree = "<group>";
