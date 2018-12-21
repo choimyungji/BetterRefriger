@@ -15,11 +15,6 @@ import UIKit
   @IBInspectable var leftInset: CGFloat = 6.0
   @IBInspectable var rightInset: CGFloat = 6.0
 
-//  override init(frame: CGRect) {
-//    super.init(frame: frame)
-//    drawUI()
-//  }
-
   init(labelText: String) {
     super.init(frame: CGRect.zero)
     drawUI(labelText)
