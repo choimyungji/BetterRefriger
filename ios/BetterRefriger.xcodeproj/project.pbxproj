@@ -29,6 +29,7 @@
 		FA6C976D21A43DDF0007CC1D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6C976C21A43DDF0007CC1D /* CoreDataStack.swift */; };
 		FA86D1FF2191AC780092E915 /* SelectAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */; };
 		FAA3EC461F754A81007F743E /* FoodInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3EC451F754A81007F743E /* FoodInputViewController.swift */; };
+		FAAAC65F21CDFF12008CC382 /* FoodStatusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAAC65E21CDFF12008CC382 /* FoodStatusLabel.swift */; };
 		FADE5B6F21381D090023BFF7 /* MJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE5B6E21381D090023BFF7 /* MJTextField.swift */; };
 		FADE5BAC213A4E8A0023BFF7 /* UIColor+MJColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE5BAB213A4E8A0023BFF7 /* UIColor+MJColor.swift */; };
 		FAFFAA1C2180A0440016E400 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAFFAA1B2180A0440016E400 /* GoogleService-Info.plist */; };
@@ -62,6 +63,7 @@
 		FA6C976C21A43DDF0007CC1D /* CoreDataStack.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SelectAreaButton.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FAA3EC451F754A81007F743E /* FoodInputViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodInputViewController.swift; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
+		FAAAC65E21CDFF12008CC382 /* FoodStatusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodStatusLabel.swift; sourceTree = "<group>"; };
 		FADE5B6E21381D090023BFF7 /* MJTextField.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MJTextField.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FADE5BAB213A4E8A0023BFF7 /* UIColor+MJColor.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "UIColor+MJColor.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		FAFFAA1B2180A0440016E400 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				FADE5B6E21381D090023BFF7 /* MJTextField.swift */,
 				FA20D65E2155342700E6C093 /* FoodListTableViewCell.swift */,
 				FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */,
+				FAAAC65E21CDFF12008CC382 /* FoodStatusLabel.swift */,
 			);
 			path = BetterRefriger;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				8F1AF4F721ACBB8A0034267E /* ViewType.swift in Sources */,
 				FA20D65D2153DC7600E6C093 /* String+substring.swift in Sources */,
 				FA26C34F214FEA400081A506 /* UIToolbar+PickerOKButton.swift in Sources */,
+				FAAAC65F21CDFF12008CC382 /* FoodStatusLabel.swift in Sources */,
 				FA20D65F2155342700E6C093 /* FoodListTableViewCell.swift in Sources */,
 				FAA3EC461F754A81007F743E /* FoodInputViewController.swift in Sources */,
 				FADE5B6F21381D090023BFF7 /* MJTextField.swift in Sources */,
