@@ -21,7 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     window = UIWindow(frame: UIScreen.main.bounds)
 
     let mainView = MainPagerViewController()
-    window?.rootViewController = mainView
+    let navigation = UINavigationController(rootViewController: mainView)
+    navigation.navigationBar.isTranslucent = false
+    window?.rootViewController = navigation
     window?.makeKeyAndVisible()
 
     FirebaseApp.configure()

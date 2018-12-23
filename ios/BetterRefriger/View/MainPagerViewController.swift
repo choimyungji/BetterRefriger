@@ -20,13 +20,6 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
 
     let view = self.view!
     view.backgroundColor = .white
-    if #available(iOS 11.0, *) {
-
-      let guide = view.safeAreaLayoutGuide
-      view.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
-      view.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
-
-    }
   }
 
   // MARK: - PagerTabStripDataSource
