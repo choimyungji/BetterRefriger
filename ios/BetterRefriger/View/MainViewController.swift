@@ -40,7 +40,7 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
       view.topAnchor.constraint(equalTo: guide.topAnchor).isActive = false
       view.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = false
     }
-    
+
     view.addSubview(tableView)
     view.addSubview(freezeButton)
     view.addSubview(refrigerButton)
@@ -70,6 +70,7 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
   }
 
   func setupEventBinding() {
+    tableView.allowsSelection = false
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: cellId)
