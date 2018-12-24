@@ -16,10 +16,16 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
 
     buttonBarView.selectedBar.backgroundColor = .orange
     buttonBarView.backgroundColor = UIColor(red: 7/255, green: 185/255, blue: 155/255, alpha: 1)
-    self.navigationController?.navigationBar.isTranslucent = true
 
     let view = self.view!
     view.backgroundColor = .white
+//    if #available(iOS 11.0, *) {
+//
+//      let guide = view.safeAreaLayoutGuide
+//      view.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
+//      view.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
+//
+//    }
   }
 
   // MARK: - PagerTabStripDataSource
