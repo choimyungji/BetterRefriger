@@ -13,25 +13,24 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.navigationItem.title = "더나은냉장고"
 
+    self.navigationController?.navigationBar.tintColor = .blue
+
+    settings.style.buttonBarItemBackgroundColor = .white
+    settings.style.buttonBarItemTitleColor = UIColor.darkText
     buttonBarView.selectedBar.backgroundColor = .orange
-    buttonBarView.backgroundColor = UIColor(red: 7/255, green: 185/255, blue: 155/255, alpha: 1)
+    buttonBarView.backgroundColor = .white
 
     let view = self.view!
     view.backgroundColor = .white
-//    if #available(iOS 11.0, *) {
-//
-//      let guide = view.safeAreaLayoutGuide
-//      view.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
-//      view.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
-//
-//    }
   }
 
   // MARK: - PagerTabStripDataSource
 
   override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
     let mainViewModel = MainViewModel()
+
     let child1 = MainViewController.create(with: mainViewModel)
     let child2 = MainViewController.create(with: mainViewModel)
 
