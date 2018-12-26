@@ -30,10 +30,21 @@
 		FA86D1FF2191AC780092E915 /* SelectAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */; };
 		FAA3EC461F754A81007F743E /* FoodInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3EC451F754A81007F743E /* FoodInputViewController.swift */; };
 		FAAAC65F21CDFF12008CC382 /* FoodStatusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAAC65E21CDFF12008CC382 /* FoodStatusLabel.swift */; };
+		FAAAC66B21D3C245008CC382 /* BetterRefrigerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAAC66A21D3C245008CC382 /* BetterRefrigerTests.swift */; };
 		FADE5B6F21381D090023BFF7 /* MJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE5B6E21381D090023BFF7 /* MJTextField.swift */; };
 		FADE5BAC213A4E8A0023BFF7 /* UIColor+MJColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE5BAB213A4E8A0023BFF7 /* UIColor+MJColor.swift */; };
 		FAFFAA1C2180A0440016E400 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAFFAA1B2180A0440016E400 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FAAAC66D21D3C245008CC382 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA319B9C1E506DD500402ECA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA319BA31E506DD500402ECA;
+			remoteInfo = BetterRefriger;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		55503C3B39F686E7611DFB40 /* Pods_BetterRefriger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BetterRefriger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +75,9 @@
 		FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SelectAreaButton.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FAA3EC451F754A81007F743E /* FoodInputViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodInputViewController.swift; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		FAAAC65E21CDFF12008CC382 /* FoodStatusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodStatusLabel.swift; sourceTree = "<group>"; };
+		FAAAC66821D3C245008CC382 /* BetterRefrigerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetterRefrigerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAAAC66A21D3C245008CC382 /* BetterRefrigerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterRefrigerTests.swift; sourceTree = "<group>"; };
+		FAAAC66C21D3C245008CC382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FADE5B6E21381D090023BFF7 /* MJTextField.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MJTextField.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FADE5BAB213A4E8A0023BFF7 /* UIColor+MJColor.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "UIColor+MJColor.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		FAFFAA1B2180A0440016E400 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -75,6 +89,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5448BB9DFC1F54BFEF4DB70 /* Pods_BetterRefriger.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAAAC66521D3C245008CC382 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				FA319BA61E506DD500402ECA /* BetterRefriger */,
+				FAAAC66921D3C245008CC382 /* BetterRefrigerTests */,
 				FA319BA51E506DD500402ECA /* Products */,
 				97EFD72D3AC6C43380822605 /* Pods */,
 				800500C82E6464A70D214F96 /* Frameworks */,
@@ -161,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				FA319BA41E506DD500402ECA /* 더나은냉장고.app */,
+				FAAAC66821D3C245008CC382 /* BetterRefrigerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,6 +220,15 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		FAAAC66921D3C245008CC382 /* BetterRefrigerTests */ = {
+			isa = PBXGroup;
+			children = (
+				FAAAC66A21D3C245008CC382 /* BetterRefrigerTests.swift */,
+				FAAAC66C21D3C245008CC382 /* Info.plist */,
+			);
+			path = BetterRefrigerTests;
+			sourceTree = "<group>";
+		};
 		FAD8BCF821BD142B00CFFE6C /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,13 +261,31 @@
 			productReference = FA319BA41E506DD500402ECA /* 더나은냉장고.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FAAAC66721D3C245008CC382 /* BetterRefrigerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAAAC66F21D3C245008CC382 /* Build configuration list for PBXNativeTarget "BetterRefrigerTests" */;
+			buildPhases = (
+				FAAAC66421D3C245008CC382 /* Sources */,
+				FAAAC66521D3C245008CC382 /* Frameworks */,
+				FAAAC66621D3C245008CC382 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAAAC66E21D3C245008CC382 /* PBXTargetDependency */,
+			);
+			name = BetterRefrigerTests;
+			productName = BetterRefrigerTests;
+			productReference = FAAAC66821D3C245008CC382 /* BetterRefrigerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		FA319B9C1E506DD500402ECA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = maengji.com;
 				TargetAttributes = {
@@ -253,6 +303,11 @@
 							};
 						};
 					};
+					FAAAC66721D3C245008CC382 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FA319BA31E506DD500402ECA;
+					};
 				};
 			};
 			buildConfigurationList = FA319B9F1E506DD500402ECA /* Build configuration list for PBXProject "BetterRefriger" */;
@@ -269,6 +324,7 @@
 			projectRoot = "";
 			targets = (
 				FA319BA31E506DD500402ECA /* BetterRefriger */,
+				FAAAC66721D3C245008CC382 /* BetterRefrigerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -281,6 +337,13 @@
 				FA319BB51E506DD500402ECA /* LaunchScreen.storyboard in Resources */,
 				FAFFAA1C2180A0440016E400 /* GoogleService-Info.plist in Resources */,
 				FA319BB21E506DD500402ECA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAAAC66621D3C245008CC382 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,7 +446,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FAAAC66421D3C245008CC382 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAAAC66B21D3C245008CC382 /* BetterRefrigerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FAAAC66E21D3C245008CC382 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA319BA31E506DD500402ECA /* BetterRefriger */;
+			targetProxy = FAAAC66D21D3C245008CC382 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FA319BB31E506DD500402ECA /* LaunchScreen.storyboard */ = {
@@ -538,6 +617,53 @@
 			};
 			name = Release;
 		};
+		FAAAC67021D3C245008CC382 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = BetterRefrigerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BetterRefrigerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/더나은냉장고.app/더나은냉장고";
+			};
+			name = Debug;
+		};
+		FAAAC67121D3C245008CC382 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = BetterRefrigerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BetterRefrigerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/더나은냉장고.app/더나은냉장고";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -555,6 +681,15 @@
 			buildConfigurations = (
 				FA319BBA1E506DD500402ECA /* Debug */,
 				FA319BBB1E506DD500402ECA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAAAC66F21D3C245008CC382 /* Build configuration list for PBXNativeTarget "BetterRefrigerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAAAC67021D3C245008CC382 /* Debug */,
+				FAAAC67121D3C245008CC382 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
