@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     let mainView = MainPagerViewController()
     let navigation = UINavigationController(rootViewController: mainView)
     navigation.navigationBar.isTranslucent = false
+    navigation.navigationBar.barTintColor = UIColor.BRColorOnActive
     window?.rootViewController = navigation
     window?.makeKeyAndVisible()
 

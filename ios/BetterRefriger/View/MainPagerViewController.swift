@@ -19,7 +19,7 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
 
     settings.style.buttonBarItemBackgroundColor = .white
     settings.style.buttonBarItemTitleColor = UIColor.darkText
-    buttonBarView.selectedBar.backgroundColor = .orange
+    buttonBarView.selectedBar.backgroundColor = UIColor.BRColorOnActive
     buttonBarView.backgroundColor = .white
 
     let view = self.view!
