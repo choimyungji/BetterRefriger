@@ -32,34 +32,18 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
   }
 
   func setupUI() {
-
     let view = self.view!
 
     if #available(iOS 11.0, *) {
-
       let guide = view.safeAreaLayoutGuide
       view.topAnchor.constraint(equalTo: guide.topAnchor).isActive = false
       view.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = false
     }
 
     view.addSubview(tableView)
-    view.addSubview(freezeButton)
-    view.addSubview(refrigerButton)
 
     tableView.snp.makeConstraints {
       $0.edges.equalToSuperview()
-    }
-
-    refrigerButton.snp.makeConstraints {
-      $0.left.equalToSuperview().inset(18)
-      $0.bottom.equalToSuperview().inset(64)
-      $0.width.height.equalTo(54)
-    }
-
-    freezeButton.snp.makeConstraints {
-      $0.left.equalToSuperview().inset(18)
-      $0.bottom.equalTo(refrigerButton.snp.top).offset(-8)
-      $0.width.height.equalTo(54)
     }
   }
 
@@ -75,20 +59,6 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: cellId)
-
-    refrigerButton.rx.tap
-      .subscribe(onNext: {[weak self] _ in
-        self?.state = 0
-        self?.tableView.reloadData()
-      })
-      .disposed(by: disposeBag)
-
-    freezeButton.rx.tap
-      .subscribe(onNext: {[weak self] _ in
-        self?.state = 1
-        self?.tableView.reloadData()
-      })
-      .disposed(by: disposeBag)
   }
 
   func setupUIBinding() {
@@ -98,18 +68,6 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
     save(refrigerType: refrigerType, name: foodName, registerDate: registerDate, expireDate: expireDate )
     tableView.reloadData()
   }
-
-  var refrigerButton: SelectAreaButton = {
-    let button = SelectAreaButton()
-    button.setTitle("냉장", for: .normal)
-    return button
-  }()
-
-  var freezeButton: SelectAreaButton = {
-    let button = SelectAreaButton()
-    button.setTitle("냉동", for: .normal)
-    return button
-  }()
 
   func save(refrigerType: Int, name: String, registerDate: Date, expireDate: Date) {
     footService.save(refrigerType: refrigerType, name: name, registerDate: registerDate, expireDate: expireDate)
