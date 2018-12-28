@@ -6,6 +6,7 @@
 //  Copyright © 2018 maengji.com. All rights reserved.
 //
 
+import CoreData
 import RxSwift
 import RxCocoa
 
@@ -17,4 +18,23 @@ protocol MainViewModelType: ViewModelType {
 struct MainViewModel: MainViewModelType {
 //  let didTapRightBarButton = PublishSubject<Void>()
 //  let editSetting: Driver<FoodInputViewModelType>
+
+  var tabName: String {
+    get {
+      switch refrigerType {
+      case .freezer:
+        return "냉동실"
+      case .refriger:
+        return "냉장실"
+      }
+    }
+  }
+  var foods: [NSManagedObject] = []
+  var refrigerType: RefrigerType
+
+  init(refrigerType: RefrigerType,
+       service: FoodModelService = FoodModelService()) {
+    self.refrigerType = refrigerType
+    foods = service.data(refrigerType: refrigerType.rawValue)
+  }
 }

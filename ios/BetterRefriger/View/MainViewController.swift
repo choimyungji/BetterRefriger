@@ -15,7 +15,7 @@ import XLPagerTabStrip
 
 class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
   func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-    return "view"
+    return IndicatorInfo(title: viewModel.tabName)
   }
 
   private let cellId = "FoodListTableViewCell"
@@ -102,7 +102,6 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
   }
 
   func setupUIBinding() {
-
   }
 
   func inputFoodCompleted(_ refrigerType: Int, foodName: String, registerDate: Date, expireDate: Date) {

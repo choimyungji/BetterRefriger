@@ -29,10 +29,11 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
   // MARK: - PagerTabStripDataSource
 
   override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-    let mainViewModel = MainViewModel()
+    let refrigerMainViewModel = MainViewModel(refrigerType: .refriger)
+    let freezerMainViewModel = MainViewModel(refrigerType: .freezer)
 
-    let child1 = MainViewController.create(with: mainViewModel)
-    let child2 = MainViewController.create(with: mainViewModel)
+    let child1 = MainViewController.create(with: refrigerMainViewModel)
+    let child2 = MainViewController.create(with: freezerMainViewModel)
 
     guard isReload else {
       return [child1, child2]
