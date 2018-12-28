@@ -7,15 +7,21 @@
 //
 
 import XLPagerTabStrip
+import RxCocoa
+import RxSwift
 
 class MainPagerViewController: ButtonBarPagerTabStripViewController {
+
+  let disposeBag = DisposeBag()
   var isReload = false
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationItem.title = "더나은냉장고"
 
-    self.navigationController?.navigationBar.tintColor = .blue
+    let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addFood(_:)))
+    addButton.tintColor = .white
+    self.navigationItem.rightBarButtonItem = addButton
 
     settings.style.buttonBarItemBackgroundColor = .white
     settings.style.buttonBarItemTitleColor = UIColor.darkText
@@ -26,6 +32,27 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
     view.backgroundColor = .white
   }
 
+  @objc func addFood(_ sender: AnyObject) {
+    guard let mainVC = self.viewControllers[currentIndex] as? MainViewController else {
+      return
+    }
+
+    mainVC.addFood()
+  }
+
+//  func setupBinding() {
+//        addButton.rx.tap
+//          .flatMap(selectedColor)
+//          .observeOn(MainScheduler.instance)
+//          .subscribe(onNext: { [weak self] (food) in
+//            self?.save(refrigerType: food.refrigerType.rawValue,
+//                       name: food.foodName,
+//                       registerDate: food.registerDate,
+//                       expireDate: food.expireDate)
+//          })
+//          .disposed(by: disposeBag)
+//
+//  }
   // MARK: - PagerTabStripDataSource
 
   override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {

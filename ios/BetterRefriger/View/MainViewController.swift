@@ -27,11 +27,12 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
 
   var footService = FoodModelService()
 
-  var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+  func addFood() {
+    print("222")
+  }
 
   func setupUI() {
-    self.navigationItem.title = "더나은냉장고"
-    self.navigationItem.rightBarButtonItem = addButton
+
     let view = self.view!
 
     if #available(iOS 11.0, *) {
@@ -74,17 +75,6 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: cellId)
-
-//    addButton.rx.tap
-//      .flatMap(selectedColor)
-//      .observeOn(MainScheduler.instance)
-//      .subscribe(onNext: { [weak self] (food) in
-//        self?.save(refrigerType: food.refrigerType.rawValue,
-//                   name: food.foodName,
-//                   registerDate: food.registerDate,
-//                   expireDate: food.expireDate)
-//      })
-//      .disposed(by: disposeBag)
 
     refrigerButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
