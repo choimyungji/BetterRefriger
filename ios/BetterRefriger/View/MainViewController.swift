@@ -82,7 +82,7 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return footService.data(refrigerType: state).count
+    return viewModel.foods.count
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -90,7 +90,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let food = footService.data(refrigerType: state)[indexPath.row]
+
+    let food = viewModel.foods[indexPath.row]
 
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as? FoodListTableViewCell
     cell?.seq = food.value(forKey: "seq") as? Int
