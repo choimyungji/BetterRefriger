@@ -20,13 +20,11 @@ struct MainViewModel: MainViewModelType {
 //  let editSetting: Driver<FoodInputViewModelType>
 
   var tabName: String {
-    get {
-      switch refrigerType {
-      case .freezer:
-        return "냉동실"
-      case .refriger:
-        return "냉장실"
-      }
+    switch refrigerType {
+    case .freezer:
+      return "냉동실"
+    case .refriger:
+      return "냉장실"
     }
   }
   var foods: [NSManagedObject] = []
