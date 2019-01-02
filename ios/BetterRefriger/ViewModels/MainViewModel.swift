@@ -29,10 +29,23 @@ struct MainViewModel: MainViewModelType {
   }
   var foods: [NSManagedObject] = []
   var refrigerType: RefrigerType
+  var foodService: FoodModelService
 
   init(refrigerType: RefrigerType,
        service: FoodModelService = FoodModelService()) {
     self.refrigerType = refrigerType
+    self.foodService = service
     foods = service.data(refrigerType: refrigerType.rawValue)
+  }
+
+  func save(refrigerType: Int, name: String, registerDate: Date, expireDate: Date) {
+    foodService.save(refrigerType: refrigerType,
+                     name: name,
+                     registerDate: registerDate,
+                     expireDate: expireDate)
+  }
+
+  func remove(indexAt seq: Int) {
+    foodService.remove(indexAt: seq)
   }
 }

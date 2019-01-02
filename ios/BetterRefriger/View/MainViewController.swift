@@ -25,8 +25,6 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
   var viewModel: MainViewModel!
   var disposeBag: DisposeBag!
 
-  var footService = FoodModelService()
-
   func addFood() {
     print("222")
   }
@@ -70,7 +68,8 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
   }
 
   func save(refrigerType: Int, name: String, registerDate: Date, expireDate: Date) {
-    footService.save(refrigerType: refrigerType, name: name, registerDate: registerDate, expireDate: expireDate)
+
+    viewModel.save(refrigerType: refrigerType, name: name, registerDate: registerDate, expireDate: expireDate)
     tableView.reloadData()
 
     let noti = NotificationManager()
@@ -104,7 +103,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let delete = UITableViewRowAction(style: .destructive, title: "삭제") { (_, indexPath) in
-      self.footService.remove(indexAt: indexPath.row)
+      self.viewModel.remove(indexAt: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .fade)
     }
 
