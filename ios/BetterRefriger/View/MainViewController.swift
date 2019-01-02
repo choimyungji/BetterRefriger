@@ -109,4 +109,17 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
     return [delete]
   }
+
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    let footerView = UIView()
+    let view = UIView()
+    footerView.addSubview(view)
+
+    view.backgroundColor = .lightGray
+    view.snp.makeConstraints { make in
+      make.top.left.right.equalToSuperview()
+      make.height.equalTo(1)
+    }
+    return footerView
+  }
 }
