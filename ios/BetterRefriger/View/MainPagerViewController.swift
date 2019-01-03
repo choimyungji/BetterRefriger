@@ -14,13 +14,14 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
 
   let disposeBag = DisposeBag()
   var isReload = false
+  var addButton: UIBarButtonItem?
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationItem.title = "더나은냉장고"
 
-    let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addFood(_:)))
-    addButton.tintColor = .white
+    addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addFood(_:)))
+    addButton?.tintColor = .white
     self.navigationItem.rightBarButtonItem = addButton
 
     settings.style.buttonBarItemBackgroundColor = .white
@@ -40,10 +41,22 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
     mainVC.addFood()
   }
 
-//  func setupBinding() {
-//        addButton.rx.tap
-//          .flatMap(selectedColor)
-//          .observeOn(MainScheduler.instance)
+  func setupBinding() {
+        addButton?.rx.tap
+          .flatMap(selectedColor)
+          .observeOn(MainScheduler.instance)
+          .subscribe(onNext: { [weak self] food in
+            print(food)
+//                        self?.save(refrigerType: food.refrigerType.rawValue,
+//                                   name: food.foodName,
+//                                   registerDate: food.registerDate,
+//                                   expireDate: food.expireDate)
+            }, onError: { error in
+              print(error)
+          }, onCompleted: {
+            print("completed")
+          }).disposed(by: disposeBag)
+//    , onDisposed: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
 //          .subscribe(onNext: { [weak self] (food) in
 //            self?.save(refrigerType: food.refrigerType.rawValue,
 //                       name: food.foodName,
@@ -51,8 +64,17 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
 //                       expireDate: food.expireDate)
 //          })
 //          .disposed(by: disposeBag)
-//
-//  }
+  }
+
+
+
+  func selectedColor() -> Observable<FoodInputModel> {
+    let foodInputViewModel = FoodInputViewModel()
+    let foodInputVC = FoodInputViewController.create(with: foodInputViewModel)
+    navigationController?.pushViewController(foodInputVC, animated: true)
+    return foodInputVC.inputFood
+  }
+
   // MARK: - PagerTabStripDataSource
 
   override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {

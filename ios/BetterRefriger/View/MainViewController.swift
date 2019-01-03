@@ -45,12 +45,6 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
     }
   }
 
-  func selectedColor() -> Observable<FoodInputModel> {
-    let foodInputViewModel = FoodInputViewModel()
-    let foodInputVC = FoodInputViewController.create(with: foodInputViewModel)
-    navigationController?.pushViewController(foodInputVC, animated: true)
-    return foodInputVC.inputFood
-  }
 
   func setupEventBinding() {
     tableView.allowsSelection = false
