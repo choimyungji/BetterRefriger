@@ -8,6 +8,7 @@ target 'BetterRefriger' do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'Firebase/DynamicLinks'
+  pod 'Then'
   pod 'SwiftLint'
 
 post_install do |installer|
