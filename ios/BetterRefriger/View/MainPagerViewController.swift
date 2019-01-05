@@ -15,12 +15,13 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
   let disposeBag = DisposeBag()
   var isReload = false
   var addButton: UIBarButtonItem?
+  var foodService = FoodModelService()
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationItem.title = "더나은냉장고"
 
-    addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addFood(_:)))
+    addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
     addButton?.tintColor = .white
     self.navigationItem.rightBarButtonItem = addButton
 
@@ -31,6 +32,7 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
 
     let view = self.view!
     view.backgroundColor = .white
+    setupBinding()
   }
 
   @objc func addFood(_ sender: AnyObject) {
@@ -42,31 +44,21 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
   }
 
   func setupBinding() {
-        addButton?.rx.tap
-          .flatMap(selectedColor)
-          .observeOn(MainScheduler.instance)
-          .subscribe(onNext: { [weak self] food in
-            print(food)
-//                        self?.save(refrigerType: food.refrigerType.rawValue,
-//                                   name: food.foodName,
-//                                   registerDate: food.registerDate,
-//                                   expireDate: food.expireDate)
-            }, onError: { error in
-              print(error)
-          }, onCompleted: {
-            print("completed")
-          }).disposed(by: disposeBag)
-//    , onDisposed: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
-//          .subscribe(onNext: { [weak self] (food) in
-//            self?.save(refrigerType: food.refrigerType.rawValue,
-//                       name: food.foodName,
-//                       registerDate: food.registerDate,
-//                       expireDate: food.expireDate)
-//          })
-//          .disposed(by: disposeBag)
+    addButton?.rx.tap
+      .flatMap(selectedColor)
+      .observeOn(MainScheduler.instance)
+      .subscribe(onNext: { [weak self] food in
+        print(food)
+        self?.foodService.save(refrigerType: food.refrigerType.rawValue,
+                               name: food.foodName,
+                               registerDate: food.registerDate,
+                               expireDate: food.expireDate)
+        }, onError: { error in
+          print(error)
+      }, onCompleted: {
+        print("completed")
+      }).disposed(by: disposeBag)
   }
-
-
 
   func selectedColor() -> Observable<FoodInputModel> {
     let foodInputViewModel = FoodInputViewModel()
