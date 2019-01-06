@@ -20,10 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     window = UIWindow(frame: UIScreen.main.bounds)
 
+    let navBarAppearance = UINavigationBar.appearance()
+    navBarAppearance.barTintColor = .BRColorOnActive
+    navBarAppearance.tintColor = .white
+    navBarAppearance.titleTextAttributes = [
+      NSAttributedString.Key.foregroundColor: UIColor.white,
+      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]
+    navBarAppearance.isTranslucent = false
+
     let mainView = MainPagerViewController()
     let navigation = UINavigationController(rootViewController: mainView)
-    navigation.navigationBar.isTranslucent = false
-    navigation.navigationBar.barTintColor = UIColor.BRColorOnActive
+
     window?.rootViewController = navigation
     window?.makeKeyAndVisible()
 
