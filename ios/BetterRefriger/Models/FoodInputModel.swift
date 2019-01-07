@@ -13,6 +13,7 @@ enum RefrigerType: Int {
 }
 class FoodInputModel: NSObject {
   var refrigerType = RefrigerType.refriger
+  var seq = Int()
   var foodName = String()
   var registerDate = Date()
   var expireDate = Date()
