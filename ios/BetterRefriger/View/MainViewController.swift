@@ -25,10 +25,6 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
   var viewModel: MainViewModel!
   var disposeBag: DisposeBag!
 
-  func addFood() {
-    print("222")
-  }
-
   func setupUI() {
     let view = self.view!
 
@@ -45,9 +41,8 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
     }
   }
 
-
   func setupEventBinding() {
-    tableView.allowsSelection = false
+//    tableView.allowsSelection = false
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: cellId)
@@ -83,7 +78,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
     let food = viewModel.foods[indexPath.row]
 
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as? FoodListTableViewCell
@@ -115,5 +109,19 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
       make.height.equalTo(1)
     }
     return footerView
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let food = viewModel.foods[indexPath.row]
+    let foodInputModel = FoodInputModel()
+    foodInputModel.seq = food.value(forKey: "seq") as! Int
+    foodInputModel.foodName = food.value(forKey: "name") as! String
+    foodInputModel.registerDate = food.value(forKey: "registerDate") as! Date
+    foodInputModel.expireDate = food.value(forKey: "expireDate") as! Date
+
+//    cell?.seq = food.value(forKey: "seq") as? Int
+
+    let foodInputController = FoodInputViewController.create(with: FoodInputViewModel())
+    navigationController?.pushViewController(foodInputController, animated: true)
   }
 }
