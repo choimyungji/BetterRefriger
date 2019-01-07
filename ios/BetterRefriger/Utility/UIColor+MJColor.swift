@@ -9,6 +9,8 @@
 import UIKit
 
 extension UIColor {
+
+  @available(*, deprecated, message: "Use UIColor.init(_ rgbValue: UInt)")
   class func colorFromRGB(_ rgbValue: UInt) -> UIColor {
     return UIColor(
       red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
@@ -16,6 +18,13 @@ extension UIColor {
       blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
       alpha: CGFloat(1.0)
     )
+  }
+
+  convenience init(rgbHex: UInt) {
+    self.init(red: CGFloat((rgbHex & 0xFF0000) >> 16) / 255.0,
+              green: CGFloat((rgbHex & 0x00FF00) >> 8) / 255.0,
+              blue: CGFloat(rgbHex & 0x0000FF) / 255.0,
+              alpha: 1.0)
   }
 
   static var BRColorOnWarning = UIColor.orange
