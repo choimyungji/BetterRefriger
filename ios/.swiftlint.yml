@@ -1,5 +1,6 @@
 disabled_rules:
   - notification_center_detachment
+  - force_cast
 
 excluded:
   - Pods 
