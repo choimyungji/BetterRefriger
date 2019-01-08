@@ -13,10 +13,10 @@ import UserNotifications
 import SnapKit
 import XLPagerTabStrip
 
-class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
-  func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-    return IndicatorInfo(title: viewModel.tabName)
-  }
+class MainViewController: UIViewController, ViewType { // , IndicatorInfoProvider
+//  func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+//    return IndicatorInfo(title: viewModel.tabName)
+//  }
 
   private let cellId = "FoodListTableViewCell"
   private var tableView = UITableView()
@@ -26,6 +26,12 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
   var disposeBag: DisposeBag!
 
   func setupUI() {
+    self.navigationItem.title = "더나은냉장고"
+
+    let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+    addButton.tintColor = .white
+    self.navigationItem.rightBarButtonItem = addButton
+
     let view = self.view!
 
     if #available(iOS 11.0, *) {
@@ -35,9 +41,23 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
     }
 
     view.addSubview(tableView)
+    view.addSubview(freezeButton)
+    view.addSubview(refrigerButton)
 
     tableView.snp.makeConstraints {
       $0.edges.equalToSuperview()
+    }
+
+    refrigerButton.snp.makeConstraints {
+      $0.left.equalToSuperview().inset(18)
+      $0.bottom.equalToSuperview().inset(64)
+      $0.width.height.equalTo(54)
+    }
+
+    freezeButton.snp.makeConstraints {
+      $0.left.equalToSuperview().inset(18)
+      $0.bottom.equalTo(refrigerButton.snp.top).offset(-8)
+      $0.width.height.equalTo(54)
     }
   }
 
@@ -46,6 +66,20 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: cellId)
+
+    refrigerButton.rx.tap
+      .subscribe(onNext: {[weak self] _ in
+        self?.state = 0
+        self?.tableView.reloadData()
+      })
+      .disposed(by: disposeBag)
+
+    freezeButton.rx.tap
+      .subscribe(onNext: {[weak self] _ in
+        self?.state = 1
+        self?.tableView.reloadData()
+      })
+      .disposed(by: disposeBag)
   }
 
   func setupUIBinding() {
@@ -55,6 +89,18 @@ class MainViewController: UIViewController, ViewType, IndicatorInfoProvider {
     save(refrigerType: refrigerType, name: foodName, registerDate: registerDate, expireDate: expireDate )
     tableView.reloadData()
   }
+
+  var refrigerButton: SelectAreaButton = {
+    let button = SelectAreaButton()
+    button.setTitle("냉장", for: .normal)
+    return button
+  }()
+
+  var freezeButton: SelectAreaButton = {
+    let button = SelectAreaButton()
+    button.setTitle("냉동", for: .normal)
+    return button
+  }()
 
   func save(refrigerType: Int, name: String, registerDate: Date, expireDate: Date) {
 
@@ -98,18 +144,18 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     return [delete]
   }
 
-  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    let footerView = UIView()
-    let view = UIView()
-    footerView.addSubview(view)
-
-    view.backgroundColor = .lightGray
-    view.snp.makeConstraints { make in
-      make.top.left.right.equalToSuperview()
-      make.height.equalTo(1)
-    }
-    return footerView
-  }
+//  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//    let footerView = UIView()
+//    let view = UIView()
+//    footerView.addSubview(view)
+//
+//    view.backgroundColor = .lightGray
+//    view.snp.makeConstraints { make in
+//      make.top.left.right.equalToSuperview()
+//      make.height.equalTo(1)
+//    }
+//    return footerView
+//  }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let food = viewModel.foods[indexPath.row]

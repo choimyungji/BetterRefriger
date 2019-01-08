@@ -35,13 +35,13 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
     setupBinding()
   }
 
-  @objc func addFood(_ sender: AnyObject) {
-    guard let mainVC = self.viewControllers[currentIndex] as? MainViewController else {
-      return
-    }
-
-    mainVC.addFood()
-  }
+//  @objc func addFood(_ sender: AnyObject) {
+//    guard let mainVC = self.viewControllers[currentIndex] as? MainViewController else {
+//      return
+//    }
+//
+//    mainVC.addFood()
+//  }
 
   func setupBinding() {
     addButton?.rx.tap
