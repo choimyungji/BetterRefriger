@@ -85,7 +85,7 @@ class MainViewController: UIViewController, ViewType { // , IndicatorInfoProvide
   func setupUIBinding() {
   }
 
-  func inputFoodCompleted(_ refrigerType: Int, foodName: String, registerDate: Date, expireDate: Date) {
+  func inputFoodCompleted(_ refrigerType: RefrigerType, foodName: String, registerDate: Date, expireDate: Date) {
     save(refrigerType: refrigerType, name: foodName, registerDate: registerDate, expireDate: expireDate )
     tableView.reloadData()
   }
@@ -102,7 +102,7 @@ class MainViewController: UIViewController, ViewType { // , IndicatorInfoProvide
     return button
   }()
 
-  func save(refrigerType: Int, name: String, registerDate: Date, expireDate: Date) {
+  func save(refrigerType: RefrigerType, name: String, registerDate: Date, expireDate: Date) {
 
     viewModel.save(refrigerType: refrigerType, name: name, registerDate: registerDate, expireDate: expireDate)
     tableView.reloadData()

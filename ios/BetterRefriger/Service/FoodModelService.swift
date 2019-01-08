@@ -33,7 +33,7 @@ class FoodModelService: NSObject {
     }
   }
 
-  func save(refrigerType: Int, name: String, registerDate: Date, expireDate: Date) {
+  func save(refrigerType: RefrigerType, name: String, registerDate: Date, expireDate: Date) {
 
     let lastSeq = foods.reduce(0) { (startValue: Int, food: NSManagedObject) -> Int in
       return [startValue, food.value(forKey: "seq") as? Int ?? 0].max()!
@@ -42,7 +42,7 @@ class FoodModelService: NSObject {
     let entity = NSEntityDescription.entity(forEntityName: "Food", in: managedContext)!
     let food = NSManagedObject(entity: entity, insertInto: managedContext)
 
-    food.setValue(refrigerType == 0 ? "refriger" : "freezer", forKey: "refrigerType")
+    food.setValue(refrigerType.keyString, forKey: "refrigerType")
     food.setValue(lastSeq+1, forKey: "seq")
     food.setValue(name, forKey: "name")
     food.setValue(registerDate, forKey: "registerDate")
@@ -56,10 +56,10 @@ class FoodModelService: NSObject {
     }
   }
 
-  func data(refrigerType: Int) -> [NSManagedObject] {
-    let state = refrigerType == 0 ? "refriger" : "freezer"
+  func data(refrigerType: RefrigerType) -> [NSManagedObject] {
+//    let state = refrigerType == 0 ? "refriger" : "freezer"
     let food = foods.filter({ food -> Bool in
-      food.value(forKey: "refrigerType") as? String == state
+      food.value(forKey: "refrigerType") as? String == refrigerType.keyString
     })
     return food
   }

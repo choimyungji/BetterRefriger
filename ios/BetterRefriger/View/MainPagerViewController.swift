@@ -49,7 +49,7 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { [weak self] food in
         print(food)
-        self?.foodService.save(refrigerType: food.refrigerType.rawValue,
+        self?.foodService.save(refrigerType: food.refrigerType,
                                name: food.foodName,
                                registerDate: food.registerDate,
                                expireDate: food.expireDate)
@@ -70,8 +70,8 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
   // MARK: - PagerTabStripDataSource
 
   override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-    let refrigerMainViewModel = MainViewModel(refrigerType: .refriger)
-    let freezerMainViewModel = MainViewModel(refrigerType: .freezer)
+    let refrigerMainViewModel = MainViewModel(refrigerType: RefrigerType())
+    let freezerMainViewModel = MainViewModel(refrigerType: RefrigerType())
 
     let child1 = MainViewController.create(with: refrigerMainViewModel)
     let child2 = MainViewController.create(with: freezerMainViewModel)

@@ -116,7 +116,7 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     btnRegister.rx.tap
       .subscribe(onNext: { [weak self] _ in
         let food = FoodInputModel()
-        food.refrigerType = self?.segRefrigerType.selectedSegmentIndex == 0 ? .refriger : .freezer
+        food.refrigerType = RefrigerType()
         food.foodName = self!.txtFoodName.text!
         food.registerDate = self!.registerDate!
         food.expireDate = self!.expireDate!

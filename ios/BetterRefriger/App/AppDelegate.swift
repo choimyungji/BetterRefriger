@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
       NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]
     navBarAppearance.isTranslucent = false
 
-    let mainView = MainViewController.create(with: MainViewModel(refrigerType: .refriger))
+    let mainView = MainViewController.create(with: MainViewModel(refrigerType: RefrigerType()))
     let navigation = UINavigationController(rootViewController: mainView)
 
     window?.rootViewController = navigation
