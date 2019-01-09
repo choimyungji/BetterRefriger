@@ -10,6 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import SnapKit
+import Then
 
 class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate, UITextFieldDelegate {
 
@@ -37,9 +38,9 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     view.addSubview(scrollView)
     scrollView.addSubview(contentsView)
     view.addSubview(btnRegister)
-    contentsView.addSubviews([segRefrigerType, lblName, txtFoodName, lblRegister,
-                              btnRegisterToday, txtRegisterDate, lblExpire, btnOneWeek,
-                              btnOneMonth, txtExpireDate])
+    contentsView.addSubviews(segRefrigerType, lblName, txtFoodName, lblRegister,
+                             btnRegisterToday, txtRegisterDate, lblExpire, btnOneWeek,
+                             btnOneMonth, txtExpireDate)
 
     scrollView.snp.makeConstraints {
       $0.edges.equalToSuperview()
@@ -210,54 +211,40 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     self.view.endEditing(true)
   }
 
-  let scrollView =  UIScrollView()
-  let contentsView = UIView()
-  let segRefrigerType: UISegmentedControl = {
-    let segmentedControl = UISegmentedControl(items: ["냉장고", "냉동실"])
-    segmentedControl.selectedSegmentIndex = 0
-    return segmentedControl
-  }()
+  private lazy var scrollView =  UIScrollView()
+  private lazy var contentsView = UIView()
+  private lazy var segRefrigerType = UISegmentedControl(items: ["냉장고", "냉동실"]).then {
+    $0.selectedSegmentIndex = 0
+  }
 
-  let lblName: UILabel = {
-    let label = UILabel()
-    label.text = "식품명"
-    label.font = UIFont.systemFont(ofSize: 17)
-    return label
-  }()
-  let txtFoodName = MJTextField()
+  private lazy var lblName = UILabel().then {
+    $0.text = "식품명"
+    $0.font = UIFont.systemFont(ofSize: 17)
+  }
+  private lazy var txtFoodName = MJTextField()
 
-  let lblRegister: UILabel = {
-    let label = UILabel()
-    label.text = "등록일"
-    label.font = UIFont.systemFont(ofSize: 17)
-    return label
-  }()
+  private lazy var lblRegister = UILabel().then {
+    $0.text = "등록일"
+    $0.font = UIFont.systemFont(ofSize: 17)
+  }
 
-  let btnRegisterToday: LabelButton = {
-    let button = LabelButton(labelText: "오늘")
-    return button
-  }()
+  private lazy var btnRegisterToday = LabelButton(labelText: "오늘")
+  private lazy var txtRegisterDate = MJTextField()
 
-  let txtRegisterDate = MJTextField()
+  private lazy var lblExpire = UILabel().then {
+    $0.text = "유통기한"
+    $0.font = UIFont.systemFont(ofSize: 17)
+  }
 
-  let lblExpire: UILabel = {
-    let label = UILabel()
-    label.text = "유통기한"
-    label.font = UIFont.systemFont(ofSize: 17)
-    return label
-  }()
+  private lazy var btnOneWeek = LabelButton(labelText: "1주일")
+  private lazy var btnOneMonth = LabelButton(labelText: "1달")
 
-  let btnOneWeek = LabelButton(labelText: "1주일")
-  let btnOneMonth = LabelButton(labelText: "1달")
-
-  let txtExpireDate = MJTextField()
-  let btnRegister: UIButton = {
-    let button = UIButton()
-    button.setTitle("등록", for: .normal)
-    button.setTitleColor(.white, for: .normal)
-    button.backgroundColor = UIColor.BRColorOnActive
-    return button
-  }()
+  private lazy var txtExpireDate = MJTextField()
+  private lazy var btnRegister = UIButton().then {
+    $0.setTitle("등록", for: .normal)
+    $0.setTitleColor(.white, for: .normal)
+    $0.backgroundColor = UIColor.BRColorOnActive
+  }
 
   @objc func keyboardWillShow(_ notification: Notification) {
     let userInfo: NSDictionary = (notification as NSNotification).userInfo! as NSDictionary

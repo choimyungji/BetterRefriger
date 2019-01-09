@@ -13,10 +13,7 @@ import UserNotifications
 import SnapKit
 import XLPagerTabStrip
 
-class MainViewController: UIViewController, ViewType { // , IndicatorInfoProvider
-//  func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-//    return IndicatorInfo(title: viewModel.tabName)
-//  }
+class MainViewController: UIViewController, ViewType {
 
   private let cellId = "FoodListTableViewCell"
   private var tableView = UITableView()
@@ -40,9 +37,7 @@ class MainViewController: UIViewController, ViewType { // , IndicatorInfoProvide
       view.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = false
     }
 
-    view.addSubview(tableView)
-    view.addSubview(freezeButton)
-    view.addSubview(refrigerButton)
+    view.addSubviews(tableView, freezeButton, refrigerButton)
 
     tableView.snp.makeConstraints {
       $0.edges.equalToSuperview()
@@ -62,7 +57,6 @@ class MainViewController: UIViewController, ViewType { // , IndicatorInfoProvide
   }
 
   func setupEventBinding() {
-//    tableView.allowsSelection = false
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: cellId)
@@ -90,20 +84,15 @@ class MainViewController: UIViewController, ViewType { // , IndicatorInfoProvide
     tableView.reloadData()
   }
 
-  var refrigerButton: SelectAreaButton = {
-    let button = SelectAreaButton()
-    button.setTitle("냉장", for: .normal)
-    return button
-  }()
+  private lazy var refrigerButton = SelectAreaButton().then {
+    $0.setTitle("냉장", for: .normal)
+  }
 
-  var freezeButton: SelectAreaButton = {
-    let button = SelectAreaButton()
-    button.setTitle("냉동", for: .normal)
-    return button
-  }()
+  private lazy var freezeButton = SelectAreaButton().then {
+    $0.setTitle("냉동", for: .normal)
+  }
 
   func save(refrigerType: RefrigerType, name: String, registerDate: Date, expireDate: Date) {
-
     viewModel.save(refrigerType: refrigerType, name: name, registerDate: registerDate, expireDate: expireDate)
     tableView.reloadData()
 
@@ -144,19 +133,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     return [delete]
   }
 
-//  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//    let footerView = UIView()
-//    let view = UIView()
-//    footerView.addSubview(view)
-//
-//    view.backgroundColor = .lightGray
-//    view.snp.makeConstraints { make in
-//      make.top.left.right.equalToSuperview()
-//      make.height.equalTo(1)
-//    }
-//    return footerView
-//  }
-
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let food = viewModel.foods[indexPath.row]
     let foodInputModel = FoodInputModel()
@@ -164,8 +140,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     foodInputModel.foodName = food.value(forKey: "name") as! String
     foodInputModel.registerDate = food.value(forKey: "registerDate") as! Date
     foodInputModel.expireDate = food.value(forKey: "expireDate") as! Date
-
-//    cell?.seq = food.value(forKey: "seq") as? Int
 
     let foodInputController = FoodInputViewController.create(with: FoodInputViewModel())
     navigationController?.pushViewController(foodInputController, animated: true)
