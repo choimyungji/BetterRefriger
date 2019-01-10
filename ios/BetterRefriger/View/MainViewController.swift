@@ -17,16 +17,17 @@ class MainViewController: UIViewController, ViewType {
 
   private let cellId = "FoodListTableViewCell"
   private var tableView = UITableView()
-  private var state = 0
+  private var refrigerString = "refriger"
 
   var viewModel: MainViewModel!
   var disposeBag: DisposeBag!
 
+  private lazy var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil).then {
+    $0.tintColor = .white
+  }
+
   func setupUI() {
     self.navigationItem.title = "더나은냉장고"
-
-    let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
-    addButton.tintColor = .white
     self.navigationItem.rightBarButtonItem = addButton
 
     let view = self.view!
@@ -61,22 +62,44 @@ class MainViewController: UIViewController, ViewType {
     tableView.dataSource = self
     tableView.register(FoodListTableViewCell.self, forCellReuseIdentifier: cellId)
 
+    addButton.rx.tap
+      .flatMap(selectedColor)
+      .observeOn(MainScheduler.instance)
+      .subscribe(onNext: { [weak self] food in
+        print(food)
+        self?.save(refrigerType: food.refrigerType,
+                               name: food.foodName,
+                               registerDate: food.registerDate,
+                               expireDate: food.expireDate)
+        }, onError: { error in
+          print(error)
+      }, onCompleted: {
+        print("completed")
+      }).disposed(by: disposeBag)
+
     refrigerButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
-        self?.state = 0
+        self?.refrigerString = "refriger"
         self?.tableView.reloadData()
       })
       .disposed(by: disposeBag)
 
     freezeButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
-        self?.state = 1
+        self?.refrigerString = "freezer"
         self?.tableView.reloadData()
       })
       .disposed(by: disposeBag)
   }
 
   func setupUIBinding() {
+  }
+
+  func selectedColor() -> Observable<FoodInputModel> {
+    let foodInputViewModel = FoodInputViewModel()
+    let foodInputVC = FoodInputViewController.create(with: foodInputViewModel)
+    navigationController?.pushViewController(foodInputVC, animated: true)
+    return foodInputVC.inputFood
   }
 
   func inputFoodCompleted(_ refrigerType: RefrigerType, foodName: String, registerDate: Date, expireDate: Date) {
@@ -105,7 +128,7 @@ class MainViewController: UIViewController, ViewType {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewModel.foods.count
+    return viewModel.foods(refrigerType: RefrigerType(keyString: self.refrigerString)).count
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -113,7 +136,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let food = viewModel.foods[indexPath.row]
+    let food = viewModel.foods(refrigerType: RefrigerType(keyString: self.refrigerString))[indexPath.row]
 
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as? FoodListTableViewCell
     cell?.seq = food.value(forKey: "seq") as? Int
@@ -134,7 +157,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let food = viewModel.foods[indexPath.row]
+    let food = viewModel.foods(refrigerType: RefrigerType(keyString: self.refrigerString))[indexPath.row]
     let foodInputModel = FoodInputModel()
     foodInputModel.seq = food.value(forKey: "seq") as! Int
     foodInputModel.foodName = food.value(forKey: "name") as! String

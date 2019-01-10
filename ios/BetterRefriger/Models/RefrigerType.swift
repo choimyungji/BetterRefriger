@@ -9,8 +9,14 @@
 import UIKit
 
 class RefrigerType: NSObject {
+    var keyString: String
 
-    var keyString: String {
-        return "refriger"
+    init(keyString: String = "") {
+//        self.init()
+        self.keyString = keyString
     }
+//
+//    var keyString: String {
+//        return keyString
+//    }
 }

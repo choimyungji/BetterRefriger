@@ -27,7 +27,7 @@ struct MainViewModel: MainViewModelType {
 //      return "냉장실"
 //    }
 //  }
-  var foods: [NSManagedObject] = []
+
   var refrigerType: RefrigerType
   var foodService: FoodModelService
 
@@ -35,7 +35,10 @@ struct MainViewModel: MainViewModelType {
        service: FoodModelService = FoodModelService()) {
     self.refrigerType = refrigerType
     self.foodService = service
-    foods = service.data(refrigerType: refrigerType)
+  }
+
+  func foods(refrigerType: RefrigerType) -> [NSManagedObject] {
+    return foodService.data(refrigerType: refrigerType)
   }
 
   func save(refrigerType: RefrigerType, name: String, registerDate: Date, expireDate: Date) {
