@@ -35,14 +35,6 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
     setupBinding()
   }
 
-//  @objc func addFood(_ sender: AnyObject) {
-//    guard let mainVC = self.viewControllers[currentIndex] as? MainViewController else {
-//      return
-//    }
-//
-//    mainVC.addFood()
-//  }
-
   func setupBinding() {
     addButton?.rx.tap
       .flatMap(selectedColor)
@@ -96,7 +88,8 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
   override func reloadPagerTabStripView() {
     isReload = true
     if arc4random() % 2 == 0 {
-      pagerBehaviour = .progressive(skipIntermediateViewControllers: arc4random() % 2 == 0, elasticIndicatorLimit: arc4random() % 2 == 0 )
+      pagerBehaviour = .progressive(skipIntermediateViewControllers: arc4random() % 2 == 0,
+                                    elasticIndicatorLimit: arc4random() % 2 == 0 )
     } else {
       pagerBehaviour = .common(skipIntermediateViewControllers: arc4random() % 2 == 0)
     }

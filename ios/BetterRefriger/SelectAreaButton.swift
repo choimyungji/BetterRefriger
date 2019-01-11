@@ -25,7 +25,7 @@ class SelectAreaButton: UIButton {
     snp.makeConstraints {
       $0.width.height.equalTo(54)
     }
-    backgroundColor = UIColor.colorFromRGB(0xCCCCCC)
+    backgroundColor = UIColor(rgbHex: 0xCCCCCC)
     setTitleColor(UIColor.black, for: .normal)
   }
 

@@ -13,7 +13,6 @@ import SnapKit
 import Then
 
 class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate, UITextFieldDelegate {
-
   var viewModel: FoodInputViewModel!
   var disposeBag: DisposeBag!
 
@@ -35,9 +34,9 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
 
   func setupUI() {
     view.backgroundColor = .white
-    view.addSubview(scrollView)
+    view.addSubviews(scrollView, btnRegister)
     scrollView.addSubview(contentsView)
-    view.addSubview(btnRegister)
+
     contentsView.addSubviews(segRefrigerType, lblName, txtFoodName, lblRegister,
                              btnRegisterToday, txtRegisterDate, lblExpire, btnOneWeek,
                              btnOneMonth, txtExpireDate)
@@ -216,29 +215,23 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
   private lazy var segRefrigerType = UISegmentedControl(items: ["냉장고", "냉동실"]).then {
     $0.selectedSegmentIndex = 0
   }
-
   private lazy var lblName = UILabel().then {
     $0.text = "식품명"
     $0.font = UIFont.systemFont(ofSize: 17)
   }
   private lazy var txtFoodName = MJTextField()
-
   private lazy var lblRegister = UILabel().then {
     $0.text = "등록일"
     $0.font = UIFont.systemFont(ofSize: 17)
   }
-
   private lazy var btnRegisterToday = LabelButton(labelText: "오늘")
   private lazy var txtRegisterDate = MJTextField()
-
   private lazy var lblExpire = UILabel().then {
     $0.text = "유통기한"
     $0.font = UIFont.systemFont(ofSize: 17)
   }
-
   private lazy var btnOneWeek = LabelButton(labelText: "1주일")
   private lazy var btnOneMonth = LabelButton(labelText: "1달")
-
   private lazy var txtExpireDate = MJTextField()
   private lazy var btnRegister = UIButton().then {
     $0.setTitle("등록", for: .normal)

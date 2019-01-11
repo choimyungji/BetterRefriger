@@ -28,6 +28,6 @@ extension UIColor {
   }
 
   static var BRColorOnWarning = UIColor.orange
-  static var BRColorOnError = UIColor.colorFromRGB(0xd0021b)
-  static var BRColorOnActive = UIColor.colorFromRGB(0x3333ff)
+  static var BRColorOnError = UIColor(rgbHex: 0xd0021b)
+  static var BRColorOnActive = UIColor(rgbHex: 0x3333ff)
 }
