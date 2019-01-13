@@ -164,7 +164,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     foodInputModel.registerDate = food.value(forKey: "registerDate") as! Date
     foodInputModel.expireDate = food.value(forKey: "expireDate") as! Date
 
-    let foodInputController = FoodInputViewController.create(with: FoodInputViewModel())
+    let foodInputController = FoodInputViewController.create(with: FoodInputViewModel(initialData: foodInputModel, completion: nil))
     navigationController?.pushViewController(foodInputController, animated: true)
   }
 }

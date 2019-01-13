@@ -21,6 +21,7 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     return foodInputSubject.asObservable()
   }
 
+  private var seq: Int?
   private var selectedDate: Date?
   private var registerDate: Date?
   private var expireDate: Date?
@@ -116,6 +117,7 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     btnRegister.rx.tap
       .subscribe(onNext: { [weak self] _ in
         let food = FoodInputModel()
+        food.seq = self!.seq!
         food.refrigerType = RefrigerType(keyString: self?.segRefrigerType.selectedSegmentIndex == 0 ? "refriger" : "freezer")
         food.foodName = self!.txtFoodName.text!
         food.registerDate = self!.registerDate!
@@ -174,6 +176,18 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
   }
 
   func setupUIBinding() {
+    segRefrigerType.selectedSegmentIndex = viewModel.spaceType.keyString == "refriger" ? 0 : 1
+    seq = viewModel.seq
+    txtFoodName.text = viewModel.foodName
+    registerDate = viewModel.registerDate
+    expireDate = viewModel.expireDate
+
+    guard let registerDate = registerDate, let expireDate = expireDate else { return }
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+
+    txtRegisterDate.text = dateFormatter.string(from: registerDate)
+    txtExpireDate.text = dateFormatter.string(from: expireDate)
 
   }
 
