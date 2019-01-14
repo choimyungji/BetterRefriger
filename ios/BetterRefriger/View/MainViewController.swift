@@ -159,6 +159,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let food = viewModel.foods(refrigerType: RefrigerType(keyString: self.refrigerString))[indexPath.row]
     let foodInputModel = FoodInputModel()
+    foodInputModel.refrigerType = RefrigerType(keyString: self.refrigerString)
     foodInputModel.seq = food.value(forKey: "seq") as! Int
     foodInputModel.foodName = food.value(forKey: "name") as! String
     foodInputModel.registerDate = food.value(forKey: "registerDate") as! Date
