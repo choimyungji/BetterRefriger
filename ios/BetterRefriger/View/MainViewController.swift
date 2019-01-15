@@ -80,6 +80,8 @@ class MainViewController: UIViewController, ViewType {
     refrigerButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
         self?.refrigerString = "refriger"
+        self?.freezeButton.isSelected = false
+        self?.refrigerButton.isSelected = true
         self?.tableView.reloadData()
       })
       .disposed(by: disposeBag)
@@ -87,6 +89,8 @@ class MainViewController: UIViewController, ViewType {
     freezeButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
         self?.refrigerString = "freezer"
+        self?.freezeButton.isSelected = true
+        self?.refrigerButton.isSelected = false
         self?.tableView.reloadData()
       })
       .disposed(by: disposeBag)
@@ -109,6 +113,7 @@ class MainViewController: UIViewController, ViewType {
 
   private lazy var refrigerButton = SelectAreaButton().then {
     $0.setTitle("냉장", for: .normal)
+    $0.isSelected = true
   }
 
   private lazy var freezeButton = SelectAreaButton().then {

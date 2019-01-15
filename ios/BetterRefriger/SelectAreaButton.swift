@@ -25,8 +25,9 @@ class SelectAreaButton: UIButton {
     snp.makeConstraints {
       $0.width.height.equalTo(54)
     }
-    backgroundColor = UIColor(rgbHex: 0xCCCCCC)
-    setTitleColor(UIColor.black, for: .normal)
+    backgroundColor = UIColor(rgbHex: 0xAAAAAA)
+    setTitleColor(UIColor(rgbHex: 0xFFFFFF), for: .normal)
+    setTitleColor(UIColor.BRColorOnActive, for: .selected)
   }
 
   override func layoutSubviews() {
