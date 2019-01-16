@@ -94,6 +94,23 @@ class MainViewController: UIViewController, ViewType {
         self?.tableView.reloadData()
       })
       .disposed(by: disposeBag)
+
+    tableView.rx.itemSelected
+      .subscribe(onNext: { [weak self] indexPath in
+        let food = self!.viewModel.foods(refrigerType: RefrigerType(keyString: self!.refrigerString))[indexPath.row]
+        let foodInputModel = FoodInputModel()
+        foodInputModel.refrigerType = RefrigerType(keyString: self!.refrigerString)
+        foodInputModel.seq = food.value(forKey: "seq") as! Int
+        foodInputModel.foodName = food.value(forKey: "name") as! String
+        foodInputModel.registerDate = food.value(forKey: "registerDate") as! Date
+        foodInputModel.expireDate = food.value(forKey: "expireDate") as! Date
+
+        let foodInputController = FoodInputViewController.create(with: FoodInputViewModel(initialData: foodInputModel, completion: nil))
+        self?.navigationController?.pushViewController(foodInputController, animated: true)
+      }, onCompleted: {
+        print("COMPLETED")
+      })
+      .disposed(by: disposeBag)
   }
 
   func setupUIBinding() {
@@ -159,18 +176,5 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     return [delete]
-  }
-
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let food = viewModel.foods(refrigerType: RefrigerType(keyString: self.refrigerString))[indexPath.row]
-    let foodInputModel = FoodInputModel()
-    foodInputModel.refrigerType = RefrigerType(keyString: self.refrigerString)
-    foodInputModel.seq = food.value(forKey: "seq") as! Int
-    foodInputModel.foodName = food.value(forKey: "name") as! String
-    foodInputModel.registerDate = food.value(forKey: "registerDate") as! Date
-    foodInputModel.expireDate = food.value(forKey: "expireDate") as! Date
-
-    let foodInputController = FoodInputViewController.create(with: FoodInputViewModel(initialData: foodInputModel, completion: nil))
-    navigationController?.pushViewController(foodInputController, animated: true)
   }
 }
