@@ -1,5 +1,5 @@
 //
-//  RefrigerType.swift
+//  SpaceType.swift
 //  BetterRefriger
 //
 //  Created by 최명지 on 08/01/2019.
@@ -8,15 +8,10 @@
 
 import UIKit
 
-class RefrigerType: NSObject {
+class SpaceType: NSObject {
     var keyString: String
 
     init(keyString: String = "") {
-//        self.init()
         self.keyString = keyString
     }
-//
-//    var keyString: String {
-//        return keyString
-//    }
 }

@@ -67,7 +67,7 @@ class MainViewController: UIViewController, ViewType {
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { [weak self] food in
         print(food)
-        self?.save(refrigerType: food.refrigerType,
+        self?.save(spaceType: food.spaceType,
                                name: food.foodName,
                                registerDate: food.registerDate,
                                expireDate: food.expireDate)
@@ -97,9 +97,9 @@ class MainViewController: UIViewController, ViewType {
 
     tableView.rx.itemSelected
       .subscribe(onNext: { [weak self] indexPath in
-        let food = self!.viewModel.foods(refrigerType: RefrigerType(keyString: self!.refrigerString))[indexPath.row]
+        let food = self!.viewModel.foods(spaceType: SpaceType(keyString: self!.refrigerString))[indexPath.row]
         let foodInputModel = FoodInputModel()
-        foodInputModel.refrigerType = RefrigerType(keyString: self!.refrigerString)
+        foodInputModel.spaceType = SpaceType(keyString: self!.refrigerString)
         foodInputModel.seq = food.value(forKey: "seq") as! Int
         foodInputModel.foodName = food.value(forKey: "name") as! String
         foodInputModel.registerDate = food.value(forKey: "registerDate") as! Date
@@ -123,8 +123,8 @@ class MainViewController: UIViewController, ViewType {
     return foodInputVC.inputFood
   }
 
-  func inputFoodCompleted(_ refrigerType: RefrigerType, foodName: String, registerDate: Date, expireDate: Date) {
-    save(refrigerType: refrigerType, name: foodName, registerDate: registerDate, expireDate: expireDate )
+  func inputFoodCompleted(_ spaceType: SpaceType, foodName: String, registerDate: Date, expireDate: Date) {
+    save(spaceType: spaceType, name: foodName, registerDate: registerDate, expireDate: expireDate )
     tableView.reloadData()
   }
 
@@ -137,8 +137,8 @@ class MainViewController: UIViewController, ViewType {
     $0.setTitle("냉동", for: .normal)
   }
 
-  func save(refrigerType: RefrigerType, name: String, registerDate: Date, expireDate: Date) {
-    viewModel.save(refrigerType: refrigerType, name: name, registerDate: registerDate, expireDate: expireDate)
+  func save(spaceType: SpaceType, name: String, registerDate: Date, expireDate: Date) {
+    viewModel.save(spaceType: spaceType, name: name, registerDate: registerDate, expireDate: expireDate)
     tableView.reloadData()
 
     let noti = NotificationManager()
@@ -150,7 +150,7 @@ class MainViewController: UIViewController, ViewType {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewModel.foods(refrigerType: RefrigerType(keyString: self.refrigerString)).count
+    return viewModel.foods(spaceType: SpaceType(keyString: self.refrigerString)).count
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -158,7 +158,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let food = viewModel.foods(refrigerType: RefrigerType(keyString: self.refrigerString))[indexPath.row]
+    let food = viewModel.foods(spaceType: SpaceType(keyString: self.refrigerString))[indexPath.row]
 
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as? FoodListTableViewCell
     cell?.seq = food.value(forKey: "seq") as? Int

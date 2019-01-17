@@ -48,9 +48,9 @@ class SpaceManager: NSObject {
         }
     }
 
-    func data(refrigerType: RefrigerType) -> [NSManagedObject] {
+    func data(spaceType: SpaceType) -> [NSManagedObject] {
         let food = spaces.filter({ food -> Bool in
-            food.value(forKey: "refrigerType") as? String == refrigerType.keyString
+            food.value(forKey: "refrigerType") as? String == spaceType.keyString
         })
         return food
     }

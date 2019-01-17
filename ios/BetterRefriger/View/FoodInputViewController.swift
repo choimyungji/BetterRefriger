@@ -38,7 +38,7 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     view.addSubviews(scrollView, btnRegister)
     scrollView.addSubview(contentsView)
 
-    contentsView.addSubviews(segRefrigerType, lblName, txtFoodName, lblRegister,
+    contentsView.addSubviews(segSpaceType, lblName, txtFoodName, lblRegister,
                              btnRegisterToday, txtRegisterDate, lblExpire, btnOneWeek,
                              btnOneMonth, txtExpireDate)
 
@@ -51,14 +51,14 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
       $0.height.greaterThanOrEqualToSuperview()
     }
 
-    segRefrigerType.snp.makeConstraints {
+    segSpaceType.snp.makeConstraints {
       $0.top.equalToSuperview().offset(16)
       $0.left.right.equalToSuperview().inset(16)
       $0.height.equalTo(40)
     }
 
     lblName.snp.makeConstraints {
-      $0.top.equalTo(segRefrigerType.snp.bottom).offset(16)
+      $0.top.equalTo(segSpaceType.snp.bottom).offset(16)
       $0.left.right.equalToSuperview().inset(16)
     }
 
@@ -118,7 +118,7 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
       .subscribe(onNext: { [weak self] _ in
         let food = FoodInputModel()
         food.seq = self!.seq!
-        food.refrigerType = RefrigerType(keyString: self?.segRefrigerType.selectedSegmentIndex == 0 ? "refriger" : "freezer")
+        food.spaceType = SpaceType(keyString: self?.segSpaceType.selectedSegmentIndex == 0 ? "refriger" : "freezer")
         food.foodName = self!.txtFoodName.text!
         food.registerDate = self!.registerDate!
         food.expireDate = self!.expireDate!
@@ -176,7 +176,7 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
   }
 
   func setupUIBinding() {
-    segRefrigerType.selectedSegmentIndex = viewModel.spaceType.keyString == "refriger" ? 0 : 1
+    segSpaceType.selectedSegmentIndex = viewModel.spaceType.keyString == "refriger" ? 0 : 1
     seq = viewModel.seq
     txtFoodName.text = viewModel.foodName
     registerDate = viewModel.registerDate
@@ -226,7 +226,7 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
 
   private lazy var scrollView =  UIScrollView()
   private lazy var contentsView = UIView()
-  private lazy var segRefrigerType = UISegmentedControl(items: ["냉장고", "냉동실"]).then {
+  private lazy var segSpaceType = UISegmentedControl(items: ["냉장고", "냉동실"]).then {
     $0.selectedSegmentIndex = 0
   }
   private lazy var lblName = UILabel().then {

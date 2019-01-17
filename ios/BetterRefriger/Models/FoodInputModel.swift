@@ -8,19 +8,10 @@
 
 import UIKit
 
-//enum RefrigerType: Int {
-//  case refriger, freezer
-//}
-
 class FoodInputModel: NSObject {
-  var refrigerType = RefrigerType()
+  var spaceType = SpaceType()
   var seq = Int()
   var foodName = String()
   var registerDate = Date()
   var expireDate = Date()
-
-//  override init() {
-//    super.init()
-//    print("nothing")
-//  }
 }

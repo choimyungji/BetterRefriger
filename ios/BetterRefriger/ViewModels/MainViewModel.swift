@@ -19,30 +19,21 @@ struct MainViewModel: MainViewModelType {
 //  let didTapRightBarButton = PublishSubject<Void>()
 //  let editSetting: Driver<FoodInputViewModelType>
 
-//  var tabName: String {
-//    switch refrigerType {
-//    case .freezer:
-//      return "냉동실"
-//    case .refriger:
-//      return "냉장실"
-//    }
-//  }
-
-  var refrigerType: RefrigerType
+  var spaceType: SpaceType
   var foodService: FoodModelService
 
-  init(refrigerType: RefrigerType,
+  init(spaceType: SpaceType,
        service: FoodModelService = FoodModelService()) {
-    self.refrigerType = refrigerType
+    self.spaceType = spaceType
     self.foodService = service
   }
 
-  func foods(refrigerType: RefrigerType) -> [NSManagedObject] {
-    return foodService.data(refrigerType: refrigerType)
+  func foods(spaceType: SpaceType) -> [NSManagedObject] {
+    return foodService.data(spaceType: spaceType)
   }
 
-  func save(refrigerType: RefrigerType, name: String, registerDate: Date, expireDate: Date) {
-    foodService.save(refrigerType: refrigerType,
+  func save(spaceType: SpaceType, name: String, registerDate: Date, expireDate: Date) {
+    foodService.save(spaceType: spaceType,
                      name: name,
                      registerDate: registerDate,
                      expireDate: expireDate)

@@ -12,7 +12,7 @@ protocol FoodInputViewModelType: ViewModelType {
 }
 
 struct FoodInputViewModel: FoodInputViewModelType {
-  var spaceType: RefrigerType
+  var spaceType: SpaceType
   var seq: Int
   var foodName: String
   var registerDate: Date
@@ -22,7 +22,7 @@ struct FoodInputViewModel: FoodInputViewModelType {
        completion: ((FoodInputModel) -> Void)? = nil) {
     var currentFood = initialData
 
-    spaceType = initialData.refrigerType
+    spaceType = initialData.spaceType
     foodName = initialData.foodName
     registerDate = initialData.registerDate
     expireDate = initialData.expireDate
