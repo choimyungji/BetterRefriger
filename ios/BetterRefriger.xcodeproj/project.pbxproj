@@ -25,6 +25,7 @@
 		FA319BB01E506DD500402ECA /* BetterRefriger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA319BAE1E506DD500402ECA /* BetterRefriger.xcdatamodeld */; };
 		FA319BB21E506DD500402ECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA319BB11E506DD500402ECA /* Assets.xcassets */; };
 		FA319BB51E506DD500402ECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA319BB31E506DD500402ECA /* LaunchScreen.storyboard */; };
+		FA3F879421F0C60800ED49CD /* MainViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3F879321F0C60800ED49CD /* MainViewTest.swift */; };
 		FA466D7A21B6B032000F1B17 /* LabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA466D7921B6B032000F1B17 /* LabelButton.swift */; };
 		FA66D56A21C494DB00944066 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66D56921C494DB00944066 /* NotificationManager.swift */; };
 		FA66D56D21CA6E9500944066 /* MainPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66D56C21CA6E9500944066 /* MainPagerViewController.swift */; };
@@ -71,6 +72,7 @@
 		FA319BB11E506DD500402ECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA319BB41E506DD500402ECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA319BB61E506DD500402ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA3F879321F0C60800ED49CD /* MainViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTest.swift; sourceTree = "<group>"; };
 		FA466D7921B6B032000F1B17 /* LabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelButton.swift; sourceTree = "<group>"; };
 		FA574553218C9CB200B4775E /* BetterRefriger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BetterRefriger.entitlements; sourceTree = "<group>"; };
 		FA66D56921C494DB00944066 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			children = (
 				FAAAC66A21D3C245008CC382 /* BetterRefrigerTests.swift */,
 				FAAAC66C21D3C245008CC382 /* Info.plist */,
+				FA3F879321F0C60800ED49CD /* MainViewTest.swift */,
 			);
 			path = BetterRefrigerTests;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAAAC66B21D3C245008CC382 /* BetterRefrigerTests.swift in Sources */,
+				FA3F879421F0C60800ED49CD /* MainViewTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
