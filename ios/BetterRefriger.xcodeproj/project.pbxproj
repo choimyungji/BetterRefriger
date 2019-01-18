@@ -10,7 +10,7 @@
 		8F1AF4F721ACBB8A0034267E /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1AF4F521ACBB8A0034267E /* ViewType.swift */; };
 		8F1AF4F821ACBB8A0034267E /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1AF4F621ACBB8A0034267E /* ViewModelType.swift */; };
 		8F6A7CAF21E424DB004BBD5B /* SpaceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6A7CAE21E424DB004BBD5B /* SpaceType.swift */; };
-		8F6A7CB121E4280B004BBD5B /* RefrigerTypeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6A7CB021E4280B004BBD5B /* RefrigerTypeManager.swift */; };
+		8F6A7CB121E4280B004BBD5B /* SpaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6A7CB021E4280B004BBD5B /* SpaceManager.swift */; };
 		8FF717C021A38EFF009428D4 /* FoodModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF717BF21A38EFF009428D4 /* FoodModelService.swift */; };
 		8FF717C421A4E087009428D4 /* UIView+Subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF717C321A4E087009428D4 /* UIView+Subviews.swift */; };
 		D5448BB9DFC1F54BFEF4DB70 /* Pods_BetterRefriger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55503C3B39F686E7611DFB40 /* Pods_BetterRefriger.framework */; };
@@ -54,7 +54,7 @@
 		8F1AF4F521ACBB8A0034267E /* ViewType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
 		8F1AF4F621ACBB8A0034267E /* ViewModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		8F6A7CAE21E424DB004BBD5B /* SpaceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceType.swift; sourceTree = "<group>"; };
-		8F6A7CB021E4280B004BBD5B /* RefrigerTypeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigerTypeManager.swift; sourceTree = "<group>"; };
+		8F6A7CB021E4280B004BBD5B /* SpaceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceManager.swift; sourceTree = "<group>"; };
 		8FF717BF21A38EFF009428D4 /* FoodModelService.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodModelService.swift; sourceTree = "<group>"; tabWidth = 2; };
 		8FF717C321A4E087009428D4 /* UIView+Subviews.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "UIView+Subviews.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		9824B7B4658D5C874FE81DCD /* Pods-BetterRefriger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefriger.release.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger.release.xcconfig"; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 			children = (
 				8FF717BF21A38EFF009428D4 /* FoodModelService.swift */,
 				FA66D56921C494DB00944066 /* NotificationManager.swift */,
-				8F6A7CB021E4280B004BBD5B /* RefrigerTypeManager.swift */,
+				8F6A7CB021E4280B004BBD5B /* SpaceManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -447,7 +447,7 @@
 				FA66D56D21CA6E9500944066 /* MainPagerViewController.swift in Sources */,
 				FA24006F21AAE73300AF8203 /* FoodInputModel.swift in Sources */,
 				8F1AF4F721ACBB8A0034267E /* ViewType.swift in Sources */,
-				8F6A7CB121E4280B004BBD5B /* RefrigerTypeManager.swift in Sources */,
+				8F6A7CB121E4280B004BBD5B /* SpaceManager.swift in Sources */,
 				FA20D65D2153DC7600E6C093 /* String+substring.swift in Sources */,
 				FA26C34F214FEA400081A506 /* UIToolbar+PickerOKButton.swift in Sources */,
 				FAAAC65F21CDFF12008CC382 /* FoodStatusLabel.swift in Sources */,
