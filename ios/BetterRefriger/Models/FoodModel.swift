@@ -1,5 +1,5 @@
 //
-//  FoodInputModel.swift
+//  FoodModel.swift
 //  BetterRefriger
 //
 //  Created by Myungji Choi on 25/11/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FoodInputModel: NSObject {
+class FoodModel: NSObject {
   var spaceType = SpaceType()
   var seq = Int()
   var foodName = String()

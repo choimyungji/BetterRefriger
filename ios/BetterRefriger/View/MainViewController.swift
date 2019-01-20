@@ -71,8 +71,8 @@ class MainViewController: UIViewController, ViewType {
                                name: food.foodName,
                                registerDate: food.registerDate,
                                expireDate: food.expireDate)
-        }, onError: { error in
-          print(error)
+      }, onError: { error in
+        print(error)
       }, onCompleted: {
         print("completed")
       }).disposed(by: disposeBag)
@@ -98,14 +98,14 @@ class MainViewController: UIViewController, ViewType {
     tableView.rx.itemSelected
       .subscribe(onNext: { [weak self] indexPath in
         let food = self!.viewModel.foods(spaceType: SpaceType(keyString: self!.refrigerString))[indexPath.row]
-        let foodInputModel = FoodInputModel()
-        foodInputModel.spaceType = SpaceType(keyString: self!.refrigerString)
-        foodInputModel.seq = food.value(forKey: "seq") as! Int
-        foodInputModel.foodName = food.value(forKey: "name") as! String
-        foodInputModel.registerDate = food.value(forKey: "registerDate") as! Date
-        foodInputModel.expireDate = food.value(forKey: "expireDate") as! Date
+        let foodModel = FoodModel()
+        foodModel.spaceType = SpaceType(keyString: self!.refrigerString)
+        foodModel.seq = food.value(forKey: "seq") as! Int
+        foodModel.foodName = food.value(forKey: "name") as! String
+        foodModel.registerDate = food.value(forKey: "registerDate") as! Date
+        foodModel.expireDate = food.value(forKey: "expireDate") as! Date
 
-        let foodInputController = FoodInputViewController.create(with: FoodInputViewModel(initialData: foodInputModel, completion: nil))
+        let foodInputController = FoodInputViewController.create(with: FoodInputViewModel(initialData: foodModel, completion: nil))
         self?.navigationController?.pushViewController(foodInputController, animated: true)
       }, onCompleted: {
         print("COMPLETED")
@@ -116,7 +116,7 @@ class MainViewController: UIViewController, ViewType {
   func setupUIBinding() {
   }
 
-  func selectedColor() -> Observable<FoodInputModel> {
+  func selectedColor() -> Observable<FoodModel> {
     let foodInputViewModel = FoodInputViewModel()
     let foodInputVC = FoodInputViewController.create(with: foodInputViewModel)
     navigationController?.pushViewController(foodInputVC, animated: true)

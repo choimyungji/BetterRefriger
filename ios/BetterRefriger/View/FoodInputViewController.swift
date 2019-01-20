@@ -16,8 +16,8 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
   var viewModel: FoodInputViewModel!
   var disposeBag: DisposeBag!
 
-  private let foodInputSubject = PublishSubject<FoodInputModel>()
-  var inputFood: Observable<FoodInputModel> {
+  private let foodInputSubject = PublishSubject<FoodModel>()
+  var inputFood: Observable<FoodModel> {
     return foodInputSubject.asObservable()
   }
 
@@ -116,7 +116,7 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
   func setupEventBinding() {
     btnRegister.rx.tap
       .subscribe(onNext: { [weak self] _ in
-        let food = FoodInputModel()
+        let food = FoodModel()
         food.seq = self!.seq!
         food.spaceType = SpaceType(keyString: self?.segSpaceType.selectedSegmentIndex == 0 ? "refriger" : "freezer")
         food.foodName = self!.txtFoodName.text!
@@ -326,7 +326,7 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     view.endEditing(true)
   }
 
-  func complete(food: FoodInputModel) {
+  func complete(food: FoodModel) {
     self.foodInputSubject.onNext(food)
     self.foodInputSubject.onCompleted()
   }

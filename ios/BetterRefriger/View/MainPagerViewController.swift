@@ -52,7 +52,7 @@ class MainPagerViewController: ButtonBarPagerTabStripViewController {
       }).disposed(by: disposeBag)
   }
 
-  func selectedColor() -> Observable<FoodInputModel> {
+  func selectedColor() -> Observable<FoodModel> {
     let foodInputViewModel = FoodInputViewModel()
     let foodInputVC = FoodInputViewController.create(with: foodInputViewModel)
     navigationController?.pushViewController(foodInputVC, animated: true)

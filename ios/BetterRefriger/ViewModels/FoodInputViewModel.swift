@@ -18,8 +18,8 @@ struct FoodInputViewModel: FoodInputViewModelType {
   var registerDate: Date
   var expireDate: Date
 
-  init(initialData: FoodInputModel = FoodInputModel(),
-       completion: ((FoodInputModel) -> Void)? = nil) {
+  init(initialData: FoodModel = FoodModel(),
+       completion: ((FoodModel) -> Void)? = nil) {
     var currentFood = initialData
 
     spaceType = initialData.spaceType
