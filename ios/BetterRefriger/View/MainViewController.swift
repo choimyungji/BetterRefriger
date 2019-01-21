@@ -15,6 +15,7 @@ import XLPagerTabStrip
 
 class MainViewController: UIViewController, ViewType {
 
+
   private let cellId = "FoodListTableViewCell"
   private var tableView = UITableView()
   private var refrigerString = "refriger"
@@ -95,22 +96,22 @@ class MainViewController: UIViewController, ViewType {
       })
       .disposed(by: disposeBag)
 
-    tableView.rx.itemSelected
-      .subscribe(onNext: { [weak self] indexPath in
-        let food = self!.viewModel.foods(spaceType: SpaceType(keyString: self!.refrigerString))[indexPath.row]
-        let foodModel = FoodModel()
-        foodModel.spaceType = SpaceType(keyString: self!.refrigerString)
-        foodModel.seq = food.value(forKey: "seq") as! Int
-        foodModel.foodName = food.value(forKey: "name") as! String
-        foodModel.registerDate = food.value(forKey: "registerDate") as! Date
-        foodModel.expireDate = food.value(forKey: "expireDate") as! Date
-
-        let foodInputController = FoodInputViewController.create(with: FoodInputViewModel(initialData: foodModel, completion: nil))
-        self?.navigationController?.pushViewController(foodInputController, animated: true)
-      }, onCompleted: {
-        print("COMPLETED")
-      })
-      .disposed(by: disposeBag)
+//    tableView.rx.itemSelected
+//      .subscribe(onNext: { [weak self] indexPath in
+//        let food = self!.viewModel.foods(spaceType: SpaceType(keyString: self!.refrigerString))[indexPath.row]
+//        let foodModel = FoodModel()
+//        foodModel.spaceType = SpaceType(keyString: self!.refrigerString)
+//        foodModel.seq = food.value(forKey: "seq") as! Int
+//        foodModel.foodName = food.value(forKey: "name") as! String
+//        foodModel.registerDate = food.value(forKey: "registerDate") as! Date
+//        foodModel.expireDate = food.value(forKey: "expireDate") as! Date
+//
+//        let foodInputController = FoodInputViewController.create(with: FoodInputViewModel(initialData: foodModel, completion: nil))
+//        self?.navigationController?.pushViewController(foodInputController, animated: true)
+//      }, onCompleted: {
+//        print("COMPLETED")
+//      })
+//      .disposed(by: disposeBag)
   }
 
   func setupUIBinding() {
@@ -123,10 +124,10 @@ class MainViewController: UIViewController, ViewType {
     return foodInputVC.inputFood
   }
 
-  func inputFoodCompleted(_ spaceType: SpaceType, foodName: String, registerDate: Date, expireDate: Date) {
-    save(spaceType: spaceType, name: foodName, registerDate: registerDate, expireDate: expireDate )
-    tableView.reloadData()
-  }
+//  func inputFoodCompleted(_ spaceType: SpaceType, foodName: String, registerDate: Date, expireDate: Date) {
+//    save(spaceType: spaceType, name: foodName, registerDate: registerDate, expireDate: expireDate )
+//    tableView.reloadData()
+//  }
 
   private lazy var refrigerButton = SelectAreaButton().then {
     $0.setTitle("냉장", for: .normal)
@@ -177,4 +178,26 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
     return [delete]
   }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let food = viewModel.foods(spaceType: SpaceType(keyString: refrigerString))[indexPath.row]
+    let foodModel = FoodModel()
+    foodModel.spaceType = SpaceType(keyString: refrigerString)
+    foodModel.seq = food.value(forKey: "seq") as! Int
+    foodModel.foodName = food.value(forKey: "name") as! String
+    foodModel.registerDate = food.value(forKey: "registerDate") as! Date
+    foodModel.expireDate = food.value(forKey: "expireDate") as! Date
+
+    let foodInputController = FoodInputViewController.create(with: FoodInputViewModel(initialData: foodModel, completion: nil))
+    foodInputController.delegate = self
+    navigationController?.pushViewController(foodInputController, animated: true)
+
+  }
 }
+
+extension MainViewController: FoodInputViewControllerDelegate {
+  func inputFoodCompleted(food: FoodModel) {
+    print("1")
+  }
+}
+
