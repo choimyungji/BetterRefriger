@@ -12,14 +12,9 @@ import RxSwift
 import SnapKit
 import Then
 
-protocol FoodInputViewControllerDelegate: NSObjectProtocol {
-  func inputFoodCompleted(food: FoodModel)
-}
-
 class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate, UITextFieldDelegate {
   var viewModel: FoodInputViewModel!
   var disposeBag: DisposeBag!
-  weak var delegate: FoodInputViewControllerDelegate?
 
   private let foodInputSubject = PublishSubject<FoodModel>()
   var inputFood: Observable<FoodModel> {
