@@ -39,6 +39,14 @@ struct MainViewModel: MainViewModelType {
                      expireDate: expireDate)
   }
 
+  func update(spaceType: SpaceType, seq: Int, name: String, registerDate: Date, expireDate: Date) {
+    foodService.update(spaceType: spaceType,
+                       seq: seq,
+                       name: name,
+                       registerDate: registerDate,
+                       expireDate: expireDate)
+  }
+
   func remove(indexAt seq: Int) {
     foodService.remove(indexAt: seq)
   }

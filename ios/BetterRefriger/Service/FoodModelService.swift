@@ -56,6 +56,29 @@ class FoodModelService: NSObject {
     }
   }
 
+  func update(spaceType: SpaceType, seq: Int, name: String, registerDate: Date, expireDate: Date) {
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
+    fetchRequest.predicate = NSPredicate(format: "refrigerType = %@ AND seq = %@",
+                                         argumentArray: [spaceType.keyString, seq])
+
+    do {
+      let results = try managedContext.fetch(fetchRequest) as? [NSManagedObject]
+      if results?.count != 0 {
+        results![0].setValue(name, forKey: "name")
+        results![0].setValue(registerDate, forKey: "registerDate")
+        results![0].setValue(expireDate, forKey: "expireDate")
+      }
+    } catch {
+      print("Fetch Failed: \(error)")
+    }
+
+    do {
+      try managedContext.save()
+    } catch {
+      print("Saving Core Data Failed: \(error)")
+    }
+  }
+
   func data(spaceType: SpaceType) -> [NSManagedObject] {
     let food = foods.filter({ food -> Bool in
       food.value(forKey: "refrigerType") as? String == spaceType.keyString

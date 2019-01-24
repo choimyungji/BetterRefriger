@@ -112,10 +112,11 @@ class MainViewController: UIViewController, ViewType {
         let foodInputController = FoodInputViewController.create(with: FoodInputViewModel(initialData: foodModel, completion: nil))
         foodInputController.inputFood
           .subscribe(onNext: { food in
-            self?.save(spaceType: food.spaceType,
-                       name: food.foodName,
-                       registerDate: food.registerDate,
-                       expireDate: food.expireDate)
+            self?.update(spaceType: food.spaceType,
+                         seq: food.seq,
+                         name: food.foodName,
+                         registerDate: food.registerDate,
+                         expireDate: food.expireDate)
           })
           .disposed(by: self!.disposeBag)
         self?.navigationController?.pushViewController(foodInputController, animated: true)
@@ -146,6 +147,16 @@ class MainViewController: UIViewController, ViewType {
 
   func save(spaceType: SpaceType, name: String, registerDate: Date, expireDate: Date) {
     viewModel.save(spaceType: spaceType, name: name, registerDate: registerDate, expireDate: expireDate)
+    tableView.reloadData()
+
+    let noti = NotificationManager()
+    noti.name = name
+    noti.expireDate = expireDate
+    noti.requestNotification()
+  }
+
+  func update(spaceType: SpaceType, seq: Int, name: String, registerDate: Date, expireDate: Date) {
+    viewModel.update(spaceType: spaceType, seq: seq, name: name, registerDate: registerDate, expireDate: expireDate)
     tableView.reloadData()
 
     let noti = NotificationManager()
