@@ -189,7 +189,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let delete = UITableViewRowAction(style: .destructive, title: "삭제") { (_, indexPath) in
-      self.viewModel.remove(indexAt: indexPath.row)
+      let food = self.viewModel.foods(spaceType: SpaceType(keyString: self.refrigerString))[indexPath.row]
+      self.viewModel.remove(indexAt: food.value(forKey: "seq") as! Int)
       tableView.deleteRows(at: [indexPath], with: .fade)
     }
 

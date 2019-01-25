@@ -88,9 +88,7 @@ class FoodModelService: NSObject {
 
   func remove(indexAt seq: Int) {
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
-
-    let predicate = NSPredicate(format: "seq = %i", self.foods[seq].value(forKey: "seq") as? Int ?? 0)
-    print(self.foods[seq].value(forKey: "seq") as? Int ?? 0)
+    let predicate = NSPredicate(format: "seq = %i", seq)
 
     fetchRequest.predicate = predicate
     do {
