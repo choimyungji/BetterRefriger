@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     let navBarAppearance = UINavigationBar.appearance()
     navBarAppearance.barTintColor = .BRColorOnActive
-    navBarAppearance.tintColor = .white
+    navBarAppearance.tintColor = .BRColorBlack
     navBarAppearance.titleTextAttributes = [
-      NSAttributedString.Key.foregroundColor: UIColor.white,
+      NSAttributedString.Key.foregroundColor: UIColor.BRColorBlack,
       NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]
     navBarAppearance.isTranslucent = false
 
@@ -66,6 +66,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     let handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { dynamiclink, error in
       guard error != nil else { return }
       print(dynamiclink?.description ?? "")
+      Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+        AnalyticsParameterItemID: "id-url",
+        AnalyticsParameterItemName: userActivity.webpageURL?.absoluteString ?? "",
+        AnalyticsParameterContentType: "cont"
+        ])
     }
 
     return handled

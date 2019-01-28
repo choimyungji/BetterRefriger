@@ -228,6 +228,7 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
   private lazy var contentsView = UIView()
   private lazy var segSpaceType = UISegmentedControl(items: ["냉장고", "냉동실"]).then {
     $0.selectedSegmentIndex = 0
+    $0.tintColor = UIColor.BRColorBlack
   }
   private lazy var lblName = UILabel().then {
     $0.text = "식품명"
@@ -249,7 +250,7 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
   private lazy var txtExpireDate = MJTextField()
   private lazy var btnRegister = UIButton().then {
     $0.setTitle("등록", for: .normal)
-    $0.setTitleColor(.white, for: .normal)
+    $0.setTitleColor(.BRColorBlack, for: .normal)
     $0.backgroundColor = UIColor.BRColorOnActive
   }
 

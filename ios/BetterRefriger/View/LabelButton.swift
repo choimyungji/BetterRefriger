@@ -28,7 +28,7 @@ import UIKit
     backgroundColor = UIColor.BRColorOnActive
     let attrString = NSAttributedString(string: labelText,
                                         attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12),
-                                                     NSAttributedString.Key.foregroundColor: UIColor.white])
+                                                     NSAttributedString.Key.foregroundColor: UIColor.BRColorBlack])
     setAttributedTitle(attrString, for: .normal)
 
     layer.masksToBounds = true

@@ -22,9 +22,7 @@ class MainViewController: UIViewController, ViewType {
   var viewModel: MainViewModel!
   var disposeBag: DisposeBag!
 
-  private lazy var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil).then {
-    $0.tintColor = .white
-  }
+  private lazy var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
 
   func setupUI() {
     self.navigationItem.title = "더나은냉장고"
