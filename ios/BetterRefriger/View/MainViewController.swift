@@ -62,7 +62,8 @@ class MainViewController: UIViewController, ViewType {
 
     addButton.rx.tap
       .subscribe(onNext: { [weak self] _ in
-        let foodInputViewModel = FoodInputViewModel()
+        var foodInputViewModel = FoodInputViewModel()
+        foodInputViewModel.spaceType = SpaceType(keyString: self?.refrigerString ?? "")
         let foodInputVC = FoodInputViewController.create(with: foodInputViewModel)
         foodInputVC.inputFood
           .subscribe(onNext: { food in
@@ -71,10 +72,10 @@ class MainViewController: UIViewController, ViewType {
                        registerDate: food.registerDate,
                        expireDate: food.expireDate)
           })
-        .disposed(by: self!.disposeBag)
+          .disposed(by: self!.disposeBag)
         self?.navigationController?.pushViewController(foodInputVC, animated: true)
-      }, onError: { error in
-        print(error)
+        }, onError: { error in
+          print(error)
       }, onCompleted: {
         print("completed")
       }).disposed(by: disposeBag)
@@ -128,7 +129,8 @@ class MainViewController: UIViewController, ViewType {
   }
 
   func selectedColor() -> Observable<FoodModel> {
-    let foodInputViewModel = FoodInputViewModel()
+    var foodInputViewModel = FoodInputViewModel()
+    foodInputViewModel.spaceType = SpaceType(keyString: refrigerString)
     let foodInputVC = FoodInputViewController.create(with: foodInputViewModel)
     navigationController?.pushViewController(foodInputVC, animated: true)
     return foodInputVC.inputFood
