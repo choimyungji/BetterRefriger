@@ -104,11 +104,13 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
     }
 
     btnRegister.snp.makeConstraints {
-      $0.left.right.bottom.equalToSuperview()
+      $0.left.right.equalToSuperview()
+      $0.height.equalTo(48)
       if #available(iOS 11.0, *) {
-        $0.height.equalTo(48 + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0))
+        $0.bottom.equalToSuperview()
+          .inset(UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0)
       } else {
-        $0.height.equalTo(48)
+        $0.bottom.equalToSuperview()
       }
     }
   }
