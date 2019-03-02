@@ -11,18 +11,12 @@ import UserNotifications
 
 class NotificationManager {
   private let requestId = "expireNotification"
-
+  var foods: [FoodModel]
   var name: String?
   var expireDate: Date?
 
-  func makeNotificationContent() -> UNMutableNotificationContent? {
-    guard let name = self.name else { return nil }
-
-    let content = UNMutableNotificationContent()
-    content.categoryIdentifier = self.requestId
-    content.body = "\(name)의 유통기한이 다 되어갑니다."
-
-    return content
+  init(foods: [FoodModel]) {
+    self.foods = foods
   }
 
   func requestNotification() {
@@ -48,5 +42,15 @@ class NotificationManager {
         print(error?.localizedDescription ?? "")
       }
     }
+  }
+
+  private func makeNotificationContent() -> UNMutableNotificationContent? {
+    guard let name = self.name else { return nil }
+
+    let content = UNMutableNotificationContent()
+    content.categoryIdentifier = self.requestId
+    content.body = "\(name)의 유통기한이 다 되어갑니다."
+
+    return content
   }
 }
