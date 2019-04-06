@@ -9,7 +9,15 @@
 import UIKit
 
 class FoodModel: NSObject {
-  var spaceType = SpaceType()
+
+  convenience init(name: String, registerDate: Date, expireDate: Date) {
+    self.init()
+
+    self.foodName = name
+    self.registerDate = registerDate
+    self.expireDate = expireDate
+  }
+
   var seq = Int()
   var foodName = String()
   var registerDate = Date()
