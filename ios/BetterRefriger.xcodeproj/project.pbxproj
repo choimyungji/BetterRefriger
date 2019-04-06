@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7707B93C699B74F96B095757 /* Pods_BetterRefrigerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB589BBD777DB1F83664EDA9 /* Pods_BetterRefrigerTests.framework */; };
 		8F1AF4F721ACBB8A0034267E /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1AF4F521ACBB8A0034267E /* ViewType.swift */; };
 		8F1AF4F821ACBB8A0034267E /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1AF4F621ACBB8A0034267E /* ViewModelType.swift */; };
 		8F6A7CAF21E424DB004BBD5B /* SpaceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6A7CAE21E424DB004BBD5B /* SpaceType.swift */; };
@@ -28,7 +29,6 @@
 		FA3F879421F0C60800ED49CD /* MainViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3F879321F0C60800ED49CD /* MainViewTest.swift */; };
 		FA466D7A21B6B032000F1B17 /* LabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA466D7921B6B032000F1B17 /* LabelButton.swift */; };
 		FA66D56A21C494DB00944066 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66D56921C494DB00944066 /* NotificationManager.swift */; };
-		FA66D56D21CA6E9500944066 /* MainPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66D56C21CA6E9500944066 /* MainPagerViewController.swift */; };
 		FA6C976D21A43DDF0007CC1D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6C976C21A43DDF0007CC1D /* CoreDataStack.swift */; };
 		FA86D1FF2191AC780092E915 /* SelectAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */; };
 		FAA3EC461F754A81007F743E /* FoodInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3EC451F754A81007F743E /* FoodInputViewController.swift */; };
@@ -59,6 +59,9 @@
 		8FF717C321A4E087009428D4 /* UIView+Subviews.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "UIView+Subviews.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		9824B7B4658D5C874FE81DCD /* Pods-BetterRefriger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefriger.release.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger.release.xcconfig"; sourceTree = "<group>"; };
 		B75DF2EB9ACD5B0FF7A4B3C9 /* Pods-BetterRefriger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefriger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger.debug.xcconfig"; sourceTree = "<group>"; };
+		BB589BBD777DB1F83664EDA9 /* Pods_BetterRefrigerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BetterRefrigerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9F82603B7418FFAF9AC6086 /* Pods-BetterRefrigerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefrigerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefrigerTests/Pods-BetterRefrigerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F8138D0ACB51B3B869054E81 /* Pods-BetterRefrigerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefrigerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefrigerTests/Pods-BetterRefrigerTests.release.xcconfig"; sourceTree = "<group>"; };
 		FA20D65C2153DC7600E6C093 /* String+substring.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "String+substring.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		FA20D65E2155342700E6C093 /* FoodListTableViewCell.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodListTableViewCell.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FA24006921A6D7AD00AF8203 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -76,7 +79,6 @@
 		FA466D7921B6B032000F1B17 /* LabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelButton.swift; sourceTree = "<group>"; };
 		FA574553218C9CB200B4775E /* BetterRefriger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BetterRefriger.entitlements; sourceTree = "<group>"; };
 		FA66D56921C494DB00944066 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		FA66D56C21CA6E9500944066 /* MainPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagerViewController.swift; sourceTree = "<group>"; };
 		FA6C976C21A43DDF0007CC1D /* CoreDataStack.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SelectAreaButton.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FAA3EC451F754A81007F743E /* FoodInputViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodInputViewController.swift; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
@@ -102,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7707B93C699B74F96B095757 /* Pods_BetterRefrigerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				55503C3B39F686E7611DFB40 /* Pods_BetterRefriger.framework */,
+				BB589BBD777DB1F83664EDA9 /* Pods_BetterRefrigerTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -151,6 +155,8 @@
 			children = (
 				B75DF2EB9ACD5B0FF7A4B3C9 /* Pods-BetterRefriger.debug.xcconfig */,
 				9824B7B4658D5C874FE81DCD /* Pods-BetterRefriger.release.xcconfig */,
+				E9F82603B7418FFAF9AC6086 /* Pods-BetterRefrigerTests.debug.xcconfig */,
+				F8138D0ACB51B3B869054E81 /* Pods-BetterRefrigerTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -170,7 +176,6 @@
 				FA319BA91E506DD500402ECA /* MainViewController.swift */,
 				FAA3EC451F754A81007F743E /* FoodInputViewController.swift */,
 				FA466D7921B6B032000F1B17 /* LabelButton.swift */,
-				FA66D56C21CA6E9500944066 /* MainPagerViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -274,9 +279,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAAAC66F21D3C245008CC382 /* Build configuration list for PBXNativeTarget "BetterRefrigerTests" */;
 			buildPhases = (
+				58A312E7BA1747EE6BC12F11 /* [CP] Check Pods Manifest.lock */,
 				FAAAC66421D3C245008CC382 /* Sources */,
 				FAAAC66521D3C245008CC382 /* Frameworks */,
 				FAAAC66621D3C245008CC382 /* Resources */,
+				FD43EA05A75C97D27D17D017 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -370,7 +377,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -382,7 +388,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -393,6 +398,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BetterRefriger/Pods-BetterRefriger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		58A312E7BA1747EE6BC12F11 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BetterRefrigerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B934834F502ED5C32C86BB22 /* [CP] Check Pods Manifest.lock */ = {
@@ -427,6 +454,30 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
+		FD43EA05A75C97D27D17D017 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BetterRefrigerTests/Pods-BetterRefrigerTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BetterRefrigerTests/Pods-BetterRefrigerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -446,7 +497,6 @@
 				FADE5BAC213A4E8A0023BFF7 /* UIColor+MJColor.swift in Sources */,
 				8F1AF4F821ACBB8A0034267E /* ViewModelType.swift in Sources */,
 				FA319BA81E506DD500402ECA /* AppDelegate.swift in Sources */,
-				FA66D56D21CA6E9500944066 /* MainPagerViewController.swift in Sources */,
 				FA24006F21AAE73300AF8203 /* FoodModel.swift in Sources */,
 				8F1AF4F721ACBB8A0034267E /* ViewType.swift in Sources */,
 				8F6A7CB121E4280B004BBD5B /* SpaceManager.swift in Sources */,
@@ -615,6 +665,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/BetterRefriger/App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.maengji.BetterRefriger;
+				PRODUCT_MODULE_NAME = BetterRefriger;
 				PRODUCT_NAME = "더나은냉장고";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -631,6 +682,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/BetterRefriger/App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.maengji.BetterRefriger;
+				PRODUCT_MODULE_NAME = BetterRefriger;
 				PRODUCT_NAME = "더나은냉장고";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -639,6 +691,7 @@
 		};
 		FAAAC67021D3C245008CC382 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9F82603B7418FFAF9AC6086 /* Pods-BetterRefrigerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -663,6 +716,7 @@
 		};
 		FAAAC67121D3C245008CC382 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8138D0ACB51B3B869054E81 /* Pods-BetterRefrigerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;

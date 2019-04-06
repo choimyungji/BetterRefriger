@@ -24,4 +24,9 @@ post_install do |installer|
     end  end
 end
 
+target 'BetterRefrigerTests' do
+  inherit! :search_paths
+  pod 'Firebase'
+end
+
 end
