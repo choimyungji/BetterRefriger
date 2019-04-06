@@ -18,14 +18,15 @@ struct FoodInputViewModel: FoodInputViewModelType {
   var registerDate: Date
   var expireDate: Date
 
-  init(initialData: FoodModel = FoodModel(),
+  init(food: FoodModel = FoodModel(),
+       spaceType: SpaceType,
        completion: ((FoodModel) -> Void)? = nil) {
-    var currentFood = initialData
+    var currentFood = food
 
-    spaceType = initialData.spaceType
-    foodName = initialData.foodName
-    registerDate = initialData.registerDate
-    expireDate = initialData.expireDate
-    seq = initialData.seq
+    self.spaceType = spaceType
+    foodName = food.foodName
+    registerDate = food.registerDate
+    expireDate = food.expireDate
+    seq = food.seq
   }
 }

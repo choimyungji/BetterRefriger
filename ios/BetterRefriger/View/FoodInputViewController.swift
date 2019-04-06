@@ -120,11 +120,11 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
       .subscribe(onNext: { [weak self] _ in
         let food = FoodModel()
         food.seq = self!.seq!
-        food.spaceType = SpaceType(keyString: self?.segSpaceType.selectedSegmentIndex == 0 ? "refriger" : "freezer")
         food.foodName = self!.txtFoodName.text!
         food.registerDate = self!.registerDate!
         food.expireDate = self!.expireDate!
 
+        let spaceType = SpaceType(keyString: self?.segSpaceType.selectedSegmentIndex == 0 ? "refriger" : "freezer")
         self?.complete(food: food)
         self?.navigationController?.popViewController(animated: true)
       })
