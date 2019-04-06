@@ -9,14 +9,19 @@
 import Foundation
 import UserNotifications
 
-class NotificationManager {
-  private let requestId = "expireNotification"
-  var foods: [FoodModel]
+class NotificationManager: NSObject {
+  private let notificationType = "expireNotification"
+  var foods: [FoodModel]?
   var name: String?
   var expireDate: Date?
 
-  init(foods: [FoodModel]) {
-    self.foods = foods
+  static let getInstance = NotificationManager()
+  private override init() {
+    super.init()
+  }
+
+  func message(type: String = "expireNotification") -> String {
+    return ""
   }
 
   func requestNotification() {
@@ -36,7 +41,7 @@ class NotificationManager {
       components.minute = 12
 
       let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-      let request = UNNotificationRequest(identifier: self.requestId, content: content, trigger: trigger)
+      let request = UNNotificationRequest(identifier: self.notificationType, content: content, trigger: trigger)
       let center = UNUserNotificationCenter.current()
       center.add(request) { (error) in
         print(error?.localizedDescription ?? "")
@@ -48,7 +53,7 @@ class NotificationManager {
     guard let name = self.name else { return nil }
 
     let content = UNMutableNotificationContent()
-    content.categoryIdentifier = self.requestId
+    content.categoryIdentifier = notificationType
     content.body = "\(name)의 유통기한이 다 되어갑니다."
 
     return content
