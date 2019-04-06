@@ -108,7 +108,7 @@ class MainViewController: UIViewController, ViewType {
         foodModel.registerDate = food.value(forKey: "registerDate") as! Date
         foodModel.expireDate = food.value(forKey: "expireDate") as! Date
 
-        let foodInputController = FoodInputViewController.create(with: FoodInputViewModel(initialData: foodModel, completion: nil))
+        let foodInputController = FoodInputViewController.create(with: FoodInputViewModel(initialData: foodModel))
         foodInputController.inputFood
           .subscribe(onNext: { food in
             self?.update(spaceType: food.spaceType,
@@ -149,7 +149,7 @@ class MainViewController: UIViewController, ViewType {
     viewModel.save(spaceType: spaceType, name: name, registerDate: registerDate, expireDate: expireDate)
     tableView.reloadData()
 
-    let noti = NotificationManager()
+    let noti = NotificationManager(foods: [])
     noti.name = name
     noti.expireDate = expireDate
     noti.requestNotification()
@@ -159,7 +159,7 @@ class MainViewController: UIViewController, ViewType {
     viewModel.update(spaceType: spaceType, seq: seq, name: name, registerDate: registerDate, expireDate: expireDate)
     tableView.reloadData()
 
-    let noti = NotificationManager()
+    let noti = NotificationManager(foods: [])
     noti.name = name
     noti.expireDate = expireDate
     noti.requestNotification()
