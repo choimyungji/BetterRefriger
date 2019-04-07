@@ -11,9 +11,9 @@ import UserNotifications
 
 class NotificationManager: NSObject {
   private let notificationType = "expireNotification"
-  var foods: [FoodModel]?
-  var name: String?
-  var expireDate: Date?
+  var foods: [FoodModel] = []
+//  var name: String?
+//  var expireDate: Date?
 
   static let getInstance = NotificationManager()
   private override init() {
@@ -25,8 +25,9 @@ class NotificationManager: NSObject {
   }
 
   func requestNotification() {
-    guard let expireDate = self.expireDate else { return }
+    guard foods.count > 0 else { return }
 
+    let expireDate = foods[0].expireDate
     let center = UNUserNotificationCenter.current()
     let options: UNAuthorizationOptions = [.alert, .sound]
 
@@ -50,7 +51,8 @@ class NotificationManager: NSObject {
   }
 
   private func makeNotificationContent() -> UNMutableNotificationContent? {
-    guard let name = self.name else { return nil }
+    guard foods.count > 0 else { return nil }
+    let name = foods[0].foodName
 
     let content = UNMutableNotificationContent()
     content.categoryIdentifier = notificationType

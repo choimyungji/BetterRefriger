@@ -63,15 +63,13 @@ class MainViewController: UIViewController, ViewType {
     addButton.rx.tap
       .subscribe(onNext: { [weak self] _ in
         let spaceType = SpaceType(keyString: self?.refrigerString ?? "")
-        var foodInputViewModel = FoodInputViewModel(spaceType: spaceType)
+        let foodInputViewModel = FoodInputViewModel(spaceType: spaceType)
 
         let foodInputVC = FoodInputViewController.create(with: foodInputViewModel)
         foodInputVC.inputFood
           .subscribe(onNext: { food in
             self?.save(spaceType: spaceType,
-                       name: food.foodName,
-                       registerDate: food.registerDate,
-                       expireDate: food.expireDate)
+                       food: food)
           }).disposed(by: self!.disposeBag)
         self?.navigationController?.pushViewController(foodInputVC, animated: true)
         },
@@ -149,24 +147,19 @@ class MainViewController: UIViewController, ViewType {
     $0.setTitle("냉동", for: .normal)
   }
 
-  func save(spaceType: SpaceType, name: String, registerDate: Date, expireDate: Date) {
-    viewModel.save(spaceType: spaceType, name: name, registerDate: registerDate, expireDate: expireDate)
+  func save(spaceType: SpaceType, food: FoodModel) {
+    viewModel.save(spaceType: spaceType, food: food)
     tableView.reloadData()
-
-    let noti = NotificationManager.getInstance
-    noti.name = name
-    noti.expireDate = expireDate
-    noti.requestNotification()
   }
 
   func update(spaceType: SpaceType, seq: Int, name: String, registerDate: Date, expireDate: Date) {
     viewModel.update(spaceType: spaceType, seq: seq, name: name, registerDate: registerDate, expireDate: expireDate)
     tableView.reloadData()
 
-    let noti = NotificationManager.getInstance
-    noti.name = name
-    noti.expireDate = expireDate
-    noti.requestNotification()
+//    let noti = NotificationManager.getInstance
+//    noti.name = name
+//    noti.expireDate = expireDate
+//    noti.requestNotification()
   }
 }
 

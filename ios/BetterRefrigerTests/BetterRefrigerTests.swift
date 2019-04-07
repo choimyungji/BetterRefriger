@@ -26,8 +26,8 @@ class BetterRefrigerTests: XCTestCase {
                          registerDate: Date(),
                          expireDate: Calendar.current.date(byAdding: .day, value: 3, to: Date())!)
 
-    let space = SpaceManager()
-    space.add(food)
+    let foodService = FoodModelService()
+    foodService.save(spaceType: SpaceType(keyString: "refriger"), food: food)
 
     let nextPushMessage = notiManager.message()
 

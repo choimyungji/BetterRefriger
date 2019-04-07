@@ -19,10 +19,11 @@ struct MainViewModel: MainViewModelType {
 //  let didTapRightBarButton = PublishSubject<Void>()
 //  let editSetting: Driver<FoodInputViewModelType>
 
-  var spaceType: SpaceType
+  var spaceType: SpaceType?
   var foodService: FoodModelService
+  var notiManager = NotificationManager.getInstance
 
-  init(spaceType: SpaceType,
+  init(spaceType: SpaceType? = nil,
        service: FoodModelService = FoodModelService()) {
     self.spaceType = spaceType
     self.foodService = service
@@ -32,11 +33,17 @@ struct MainViewModel: MainViewModelType {
     return foodService.data(spaceType: spaceType)
   }
 
-  func save(spaceType: SpaceType, name: String, registerDate: Date, expireDate: Date) {
-    foodService.save(spaceType: spaceType,
-                     name: name,
-                     registerDate: registerDate,
-                     expireDate: expireDate)
+  func save(spaceType: SpaceType, food: FoodModel) {    
+    foodService.save(spaceType: spaceType, food: food)
+    notiManager.foods = [food]
+    notiManager.requestNotification()
+  }
+
+  func save(food: FoodModel) {
+    guard let spaceType = spaceType else { return }
+    foodService.save(spaceType: spaceType, food: food)
+    notiManager.foods = [food]
+    notiManager.requestNotification()
   }
 
   func update(spaceType: SpaceType, seq: Int, name: String, registerDate: Date, expireDate: Date) {
