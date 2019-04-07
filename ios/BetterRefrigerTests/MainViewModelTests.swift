@@ -7,27 +7,23 @@
 //
 
 import XCTest
+@testable import BetterRefriger
 
 class MainViewModelTests: XCTestCase {
+  override func setUp() {
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+  }
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+  override func tearDown() {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+  }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+  func test_식품을_저장하면_dataObject_만들고_알림을_생성한다() {
+    let mainViewModel = MainViewModel(spaceType: SpaceType(keyString: "refriger"))
+    let food = FoodModel(name: "egg",
+                         registerDate: Date(),
+                         expireDate: Calendar.current.date(byAdding: .day, value: 3, to: Date())!)
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+    mainViewModel.save(food: food)
+  }
 }
