@@ -36,6 +36,7 @@
 		FAAAC66B21D3C245008CC382 /* BetterRefrigerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAAC66A21D3C245008CC382 /* BetterRefrigerTests.swift */; };
 		FADE5B6F21381D090023BFF7 /* MJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE5B6E21381D090023BFF7 /* MJTextField.swift */; };
 		FADE5BAC213A4E8A0023BFF7 /* UIColor+MJColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE5BAB213A4E8A0023BFF7 /* UIColor+MJColor.swift */; };
+		FAED744922599742000ACE6D /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED744822599742000ACE6D /* MainViewModelTests.swift */; };
 		FAFFAA1C2180A0440016E400 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAFFAA1B2180A0440016E400 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		FAAAC66C21D3C245008CC382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FADE5B6E21381D090023BFF7 /* MJTextField.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MJTextField.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FADE5BAB213A4E8A0023BFF7 /* UIColor+MJColor.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "UIColor+MJColor.swift"; sourceTree = "<group>"; tabWidth = 2; };
+		FAED744822599742000ACE6D /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
 		FAFFAA1B2180A0440016E400 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,6 +240,7 @@
 				FAAAC66A21D3C245008CC382 /* BetterRefrigerTests.swift */,
 				FAAAC66C21D3C245008CC382 /* Info.plist */,
 				FA3F879321F0C60800ED49CD /* MainViewTest.swift */,
+				FAED744822599742000ACE6D /* MainViewModelTests.swift */,
 			);
 			path = BetterRefrigerTests;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAED744922599742000ACE6D /* MainViewModelTests.swift in Sources */,
 				FAAAC66B21D3C245008CC382 /* BetterRefrigerTests.swift in Sources */,
 				FA3F879421F0C60800ED49CD /* MainViewTest.swift in Sources */,
 			);
