@@ -21,17 +21,28 @@ class BetterRefrigerTests: XCTestCase {
 
   func test_식품을_등록하면_푸시메시지를_새로_생성한다() {
     let notiManager = NotificationManager.getInstance
-    let prevPushMessage = notiManager.message()
-    let food = FoodModel(name: "egg",
-                         registerDate: Date(),
-                         expireDate: Calendar.current.date(byAdding: .day, value: 3, to: Date())!)
+    let mainViewModel = MainViewModel(spaceType: SpaceType(keyString: "refriger"))
 
-    let foodService = FoodModelService()
-    foodService.save(spaceType: SpaceType(keyString: "refriger"), food: food)
+    let prevfood = FoodModel(name: "Egg",
+                             registerDate: Date(),
+                             expireDate: Calendar.current.date(byAdding: .day, value: 3, to: Date())!)
+    mainViewModel.save(food: prevfood)
+    var prevMessage: String?
+    notiManager.message { message in
+      prevMessage = message
+    }
 
-    let nextPushMessage = notiManager.message()
+    let nextfood = FoodModel(name: "Milk",
+                             registerDate: Date(),
+                             expireDate: Calendar.current.date(byAdding: .day, value: 3, to: Date())!)
+    mainViewModel.save(food: nextfood)
 
-    XCTAssertEqual(prevPushMessage, nextPushMessage)
+    var nextMessage: String?
+    notiManager.message { message in
+      nextMessage = message
+    }
+
+    XCTAssertEqual(prevMessage, nextMessage)
   }
 
   func test_식품을_삭제하면_푸시메시지를_새로_생성한다() {
