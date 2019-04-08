@@ -11,24 +11,26 @@ import UserNotifications
 
 class NotificationManager: NSObject {
   private let notificationType = "expireNotification"
+
+  private let center = UNUserNotificationCenter.current()
   var foods: [FoodModel] = []
-//  var name: String?
-//  var expireDate: Date?
 
   static let getInstance = NotificationManager()
   private override init() {
     super.init()
   }
 
-  func message(type: String = "expireNotification") -> String {
-    return ""
+  func message(type: String = "expireNotification",
+               completion: @escaping (String) -> Void) {
+    center.getPendingNotificationRequests(completionHandler: { req in
+      completion(req[0].content.body)
+    })
   }
 
   func requestNotification() {
     guard foods.count > 0 else { return }
 
     let expireDate = foods[0].expireDate
-    let center = UNUserNotificationCenter.current()
     let options: UNAuthorizationOptions = [.alert, .sound]
 
     center.requestAuthorization(options: options) { (granted, error) in
@@ -43,8 +45,7 @@ class NotificationManager: NSObject {
 
       let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
       let request = UNNotificationRequest(identifier: self.notificationType, content: content, trigger: trigger)
-      let center = UNUserNotificationCenter.current()
-      center.add(request) { (error) in
+      self.center.add(request) { (error) in
         print(error?.localizedDescription ?? "")
       }
     }
