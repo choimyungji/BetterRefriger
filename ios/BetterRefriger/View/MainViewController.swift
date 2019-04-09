@@ -62,16 +62,17 @@ class MainViewController: UIViewController, ViewType {
 
     addButton.rx.tap
       .subscribe(onNext: { [weak self] _ in
-        let spaceType = SpaceType(keyString: self?.refrigerString ?? "")
+        guard let self = self else { return }
+        let spaceType = SpaceType(keyString: self.refrigerString ?? "")
         let foodInputViewModel = FoodInputViewModel(spaceType: spaceType)
 
         let foodInputVC = FoodInputViewController.create(with: foodInputViewModel)
         foodInputVC.inputFood
           .subscribe(onNext: { food in
-            self?.save(spaceType: spaceType,
+            self.save(spaceType: spaceType,
                        food: food)
-          }).disposed(by: self!.disposeBag)
-        self?.navigationController?.pushViewController(foodInputVC, animated: true)
+          }).disposed(by: self.disposeBag)
+        self.navigationController?.pushViewController(foodInputVC, animated: true)
         },
                  onError: { error in
                   print(error)
@@ -82,19 +83,21 @@ class MainViewController: UIViewController, ViewType {
 
     refrigerButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
-        self?.refrigerString = "refriger"
-        self?.freezeButton.isSelected = false
-        self?.refrigerButton.isSelected = true
-        self?.tableView.reloadData()
+        guard let self = self else { return }
+        self.refrigerString = "refriger"
+        self.freezeButton.isSelected = false
+        self.refrigerButton.isSelected = true
+        self.tableView.reloadData()
       })
       .disposed(by: disposeBag)
 
     freezeButton.rx.tap
       .subscribe(onNext: {[weak self] _ in
-        self?.refrigerString = "freezer"
-        self?.freezeButton.isSelected = true
-        self?.refrigerButton.isSelected = false
-        self?.tableView.reloadData()
+        guard let self = self else { return }
+        self.refrigerString = "freezer"
+        self.freezeButton.isSelected = true
+        self.refrigerButton.isSelected = false
+        self.tableView.reloadData()
       })
       .disposed(by: disposeBag)
 
@@ -155,11 +158,6 @@ class MainViewController: UIViewController, ViewType {
   func update(spaceType: SpaceType, seq: Int, name: String, registerDate: Date, expireDate: Date) {
     viewModel.update(spaceType: spaceType, seq: seq, name: name, registerDate: registerDate, expireDate: expireDate)
     tableView.reloadData()
-
-//    let noti = NotificationManager.getInstance
-//    noti.name = name
-//    noti.expireDate = expireDate
-//    noti.requestNotification()
   }
 }
 
@@ -185,7 +183,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-    let delete = UITableViewRowAction(style: .destructive, title: "삭제") { (_, indexPath) in
+    let delete = UITableViewRowAction(style: .destructive, title: "삭제") { _, indexPath in
       let food = self.viewModel.foods(spaceType: SpaceType(keyString: self.refrigerString))[indexPath.row]
       self.viewModel.remove(indexAt: food.value(forKey: "seq") as! Int)
       tableView.deleteRows(at: [indexPath], with: .fade)
