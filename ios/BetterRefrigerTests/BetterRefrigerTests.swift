@@ -42,10 +42,43 @@ class BetterRefrigerTests: XCTestCase {
       nextMessage = message
     }
 
-    XCTAssertEqual(prevMessage, nextMessage)
+    XCTAssertNotEqual(prevMessage, nextMessage)
+  }
+
+  func test_식품을_추가하면_index를_반환한다() {
+
+  }
+
+  func test_식품은_현위치를_통해_삭제할수_있다() {
+
   }
 
   func test_식품을_삭제하면_푸시메시지를_새로_생성한다() {
+    var prevMessage: String?
+    var nextMessage: String?
 
+    let notiManager = NotificationManager.getInstance
+    let mainViewModel = MainViewModel(spaceType: SpaceType(keyString: "refriger"))
+
+    let prevfood = FoodModel(name: "Egg",
+                             registerDate: Date(),
+                             expireDate: Calendar.current.date(byAdding: .day, value: 3, to: Date())!)
+    mainViewModel.save(food: prevfood)
+    notiManager.message { message in
+        prevMessage = message
+    }
+
+    let nextfood = FoodModel(name: "Milk",
+                             registerDate: Date(),
+                             expireDate: Calendar.current.date(byAdding: .day, value: 3, to: Date())!)
+    mainViewModel.save(food: nextfood) { seq in
+      mainViewModel.remove(indexAt: seq)
+
+      notiManager.message { message in
+        nextMessage = message
+      }
+    }
+
+    XCTAssertNotEqual(prevMessage, nextMessage)
   }
 }
