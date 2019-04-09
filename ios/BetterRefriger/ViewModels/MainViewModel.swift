@@ -33,17 +33,27 @@ struct MainViewModel: MainViewModelType {
     return foodService.data(spaceType: spaceType)
   }
 
-  func save(spaceType: SpaceType, food: FoodModel) {    
-    foodService.save(spaceType: spaceType, food: food)
+  func save(spaceType: SpaceType,
+            food: FoodModel,
+            completion: ((Int, Error?) -> Void)? = nil) {
+    let seq = foodService.save(spaceType: spaceType, food: food)
     notiManager.foods = [food]
-    notiManager.requestNotification()
+    notiManager.requestNotification { error in
+      if error != nil {
+        completion?(0, error)
+      } else {
+        completion?(seq, nil)
+      }
+    }
   }
 
-  func save(food: FoodModel) {
+  func save(food: FoodModel,
+            completion: ((Int) -> Void)? = nil) {
     guard let spaceType = spaceType else { return }
-    foodService.save(spaceType: spaceType, food: food)
+    let seq = foodService.save(spaceType: spaceType, food: food)
     notiManager.foods = [food]
     notiManager.requestNotification()
+    completion?(seq)
   }
 
   func update(spaceType: SpaceType, seq: Int, name: String, registerDate: Date, expireDate: Date) {

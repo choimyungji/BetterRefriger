@@ -27,7 +27,7 @@ class NotificationManager: NSObject {
     })
   }
 
-  func requestNotification() {
+    func requestNotification(completion: ((Error?) -> Void)? = nil) {
     guard foods.count > 0 else { return }
 
     let expireDate = foods[0].expireDate
@@ -45,8 +45,8 @@ class NotificationManager: NSObject {
 
       let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
       let request = UNNotificationRequest(identifier: self.notificationType, content: content, trigger: trigger)
-      self.center.add(request) { (error) in
-        print(error?.localizedDescription ?? "")
+      self.center.add(request) { error in
+        completion?(error)
       }
     }
   }

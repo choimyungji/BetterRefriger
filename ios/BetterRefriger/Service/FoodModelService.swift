@@ -33,15 +33,19 @@ class FoodModelService: NSObject {
     }
   }
 
-  func save(spaceType: SpaceType, food: FoodModel) {
-    save(spaceType: spaceType, name: food.foodName, registerDate: food.registerDate, expireDate: food.expireDate)
+  func save(spaceType: SpaceType, food: FoodModel) -> Int {
+    return save(spaceType: spaceType,
+                name: food.foodName,
+                registerDate: food.registerDate,
+                expireDate: food.expireDate)
   }
   
-  func save(spaceType: SpaceType, name: String, registerDate: Date, expireDate: Date) {
+  func save(spaceType: SpaceType, name: String, registerDate: Date, expireDate: Date) -> Int {
 
     let lastSeq = foods.reduce(0) { (startValue: Int, food: NSManagedObject) -> Int in
       return [startValue, food.value(forKey: "seq") as? Int ?? 0].max()!
     }
+    let seq = lastSeq + 1
 
     let entity = NSEntityDescription.entity(forEntityName: "Food", in: managedContext)!
     let food = NSManagedObject(entity: entity, insertInto: managedContext)
@@ -55,8 +59,10 @@ class FoodModelService: NSObject {
     do {
       try managedContext.save()
       foods.append(food)
+      return seq
     } catch let error as NSError {
       print("Could not save. \(error), \(error.userInfo)")
+      return -1
     }
   }
 
