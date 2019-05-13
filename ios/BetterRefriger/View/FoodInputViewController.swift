@@ -290,7 +290,6 @@ class FoodInputViewController: UIViewController, ViewType, UIPickerViewDelegate,
 
   func textFieldDidBeginEditing(_ textField: UITextField) {
     activeField = textField as? MJTextField
-
     if textField == txtRegisterDate {
       selectedDate = Date()
       datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControl.Event.valueChanged)

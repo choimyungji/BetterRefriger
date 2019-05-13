@@ -65,7 +65,7 @@
 		F8138D0ACB51B3B869054E81 /* Pods-BetterRefrigerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefrigerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefrigerTests/Pods-BetterRefrigerTests.release.xcconfig"; sourceTree = "<group>"; };
 		FA20D65C2153DC7600E6C093 /* String+substring.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "String+substring.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		FA20D65E2155342700E6C093 /* FoodListTableViewCell.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodListTableViewCell.swift; sourceTree = "<group>"; tabWidth = 2; };
-		FA24006921A6D7AD00AF8203 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		FA24006921A6D7AD00AF8203 /* MainViewModel.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FA24006B21A9845500AF8203 /* FoodInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInputViewModel.swift; sourceTree = "<group>"; };
 		FA24006E21AAE73300AF8203 /* FoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodModel.swift; sourceTree = "<group>"; };
 		FA26C34E214FEA400081A506 /* UIToolbar+PickerOKButton.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "UIToolbar+PickerOKButton.swift"; sourceTree = "<group>"; tabWidth = 2; };
@@ -85,7 +85,7 @@
 		FAA3EC451F754A81007F743E /* FoodInputViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodInputViewController.swift; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		FAAAC65E21CDFF12008CC382 /* FoodStatusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodStatusLabel.swift; sourceTree = "<group>"; };
 		FAAAC66821D3C245008CC382 /* BetterRefrigerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetterRefrigerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FAAAC66A21D3C245008CC382 /* BetterRefrigerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterRefrigerTests.swift; sourceTree = "<group>"; };
+		FAAAC66A21D3C245008CC382 /* BetterRefrigerTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = BetterRefrigerTests.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FAAAC66C21D3C245008CC382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FADE5B6E21381D090023BFF7 /* MJTextField.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MJTextField.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FADE5BAB213A4E8A0023BFF7 /* UIColor+MJColor.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "UIColor+MJColor.swift"; sourceTree = "<group>"; tabWidth = 2; };
@@ -324,6 +324,7 @@
 					};
 					FAAAC66721D3C245008CC382 = {
 						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = JVM82SQA75;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = FA319BA31E506DD500402ECA;
@@ -704,6 +705,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JVM82SQA75;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = BetterRefrigerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -729,6 +731,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JVM82SQA75;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = BetterRefrigerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;

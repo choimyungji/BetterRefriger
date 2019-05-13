@@ -38,7 +38,7 @@ struct MainViewModel: MainViewModelType {
             completion: ((Int, Error?) -> Void)? = nil) {
     let seq = foodService.save(spaceType: spaceType, food: food)
     notiManager.foods = [food]
-    notiManager.requestNotification { error in
+    notiManager.requestNotification { _, error in
       if error != nil {
         completion?(0, error)
       } else {
@@ -52,8 +52,9 @@ struct MainViewModel: MainViewModelType {
     guard let spaceType = spaceType else { return }
     let seq = foodService.save(spaceType: spaceType, food: food)
     notiManager.foods = [food]
-    notiManager.requestNotification()
-    completion?(seq)
+    notiManager.requestNotification { (_, _) in
+      completion?(seq)
+    }
   }
 
   func update(spaceType: SpaceType, seq: Int, name: String, registerDate: Date, expireDate: Date) {

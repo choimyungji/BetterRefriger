@@ -27,16 +27,16 @@ class NotificationManager: NSObject {
     })
   }
 
-    func requestNotification(completion: ((Error?) -> Void)? = nil) {
+    func requestNotification(completion: ((String?, Error?) -> Void)? = nil) {
     guard foods.count > 0 else { return }
 
     let expireDate = foods[0].expireDate
     let options: UNAuthorizationOptions = [.alert, .sound]
 
     center.requestAuthorization(options: options) { (granted, error) in
+        print("요청")
       guard granted else { return }
       guard let content = self.makeNotificationContent() else { return }
-
       let calendar = Calendar.current
       var components = calendar.dateComponents([.hour, .minute, .second], from: expireDate)
 
@@ -46,7 +46,11 @@ class NotificationManager: NSObject {
       let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
       let request = UNNotificationRequest(identifier: self.notificationType, content: content, trigger: trigger)
       self.center.add(request) { error in
-        completion?(error)
+        print("완료")
+        self.center.getPendingNotificationRequests(completionHandler: { req in
+            completion?(req[0].content.body, nil)
+        })
+        completion?(nil, error)
       }
     }
   }
