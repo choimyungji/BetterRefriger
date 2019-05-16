@@ -7,6 +7,8 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:betrefriger.page.link</string>
+		<string>applinks:choimyungji.github.io</string>
+		<string>applinks:app.wadizcorp.com</string>
 	</array>
 </dict>
 </plist>
