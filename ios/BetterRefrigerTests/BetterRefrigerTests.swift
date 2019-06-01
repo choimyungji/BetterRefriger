@@ -45,15 +45,6 @@ class BetterRefrigerTests: XCTestCase {
     let notiManager = NotificationManager.getInstance
     let mainViewModel = MainViewModel(spaceType: SpaceType(keyString: "refriger"))
 
-//    var prevMessageObserver = PublishSubject<String>()
-//    var nextMessageObserver = PublishSubject<String>()
-//    let observable = Observable
-//      .combineLatest(prevMessageObserver, nextMessageObserver, resultSelector: { (lastLeft, lastRight) in
-//        "\(lastLeft) \(lastRight)"
-//      })
-
-//    let disposable = observable.subscribe(onNext: { (string) in print(string) })
-
     let prevfood = FoodModel(name: "Egg",
                              registerDate: Date(),
                              expireDate: Calendar.current.date(byAdding: .day, value: 3, to: Date())!)
@@ -67,22 +58,19 @@ class BetterRefrigerTests: XCTestCase {
 
     mainViewModel.save(food: prevfood) { _ in
       notiManager.message { message in
-        print(message)
         prevMessage = message
-//        prevMessageObserver.onNext(message)
 
         mainViewModel.save(food: nextfood) { _ in
           notiManager.message { message in
-            print(message)
             nextMessage = message
-//            nextMessageObserver.onNext(message)
           }
         }
       }
     }
 
     sleep(5)
-
+    XCTAssertEqual(nextMessage, "Egg의 유통기한이 다 되어갑니다.")
+    XCTAssertEqual(nextMessage, "Milk의 유통기한이 다 되어갑니다.")
     print(prevMessage, nextMessage)
 
   }
