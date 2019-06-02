@@ -23,19 +23,23 @@ class BetterRefrigerTests: XCTestCase {
 
   func test_식품을_등록하면_푸시메시지를_새로_생성한다1() {
     let notiManager = NotificationManager.getInstance
-    let mainViewModel = MainViewModel(spaceType: SpaceType(keyString: "refriger"))
+    let foodModelService = FoodModelService()
+//    let mainViewModel = MainViewModel(spaceType: SpaceType(keyString: "refriger"))
 
     let prevfood = FoodModel(name: "Chocolate",
                              registerDate: Date(),
                              expireDate: Calendar.current.date(byAdding: .day, value: 3, to: Date())!)
 
     var expectation: String?
-    mainViewModel.save(food: prevfood) { _ in
+    foodModelService.save(spaceType: "refriger", food: prevfood) { _ in
       notiManager.message { message in
         expectation = message
         print(message)
       }
     }
+//    mainViewModel.save(food: prevfood) { _ in
+//
+//    }
     sleep(5)
 
      XCTAssertEqual(expectation, "Chocolate의 유통기한이 다 되어갑니다.")
@@ -69,7 +73,7 @@ class BetterRefrigerTests: XCTestCase {
     }
 
     sleep(5)
-    XCTAssertEqual(nextMessage, "Egg의 유통기한이 다 되어갑니다.")
+    XCTAssertEqual(prevMessage, "Egg의 유통기한이 다 되어갑니다.")
     XCTAssertEqual(nextMessage, "Milk의 유통기한이 다 되어갑니다.")
     print(prevMessage, nextMessage)
 
