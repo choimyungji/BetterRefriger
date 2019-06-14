@@ -33,13 +33,15 @@ class FoodModelService: NSObject {
     }
   }
 
-  func save(spaceType: SpaceType, food: FoodModel) -> Int {
-    return save(spaceType: spaceType,
-                name: food.foodName,
-                registerDate: food.registerDate,
-                expireDate: food.expireDate)
+  func save(spaceType: SpaceType, food: FoodModel, completion: ((Int, Error?) -> Void)? = nil) {
+    let seq = save(spaceType: spaceType,
+                   name: food.foodName,
+                   registerDate: food.registerDate,
+                   expireDate: food.expireDate)
+
+    completion?(seq, nil)
   }
-  
+
   func save(spaceType: SpaceType, name: String, registerDate: Date, expireDate: Date) -> Int {
 
     let lastSeq = foods.reduce(0) { (startValue: Int, food: NSManagedObject) -> Int in

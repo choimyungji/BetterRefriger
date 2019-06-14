@@ -36,13 +36,14 @@ struct MainViewModel: MainViewModelType {
   func save(spaceType: SpaceType,
             food: FoodModel,
             completion: ((Int, Error?) -> Void)? = nil) {
-    let seq = foodService.save(spaceType: spaceType, food: food)
-    notiManager.foods = [food]
-    notiManager.requestNotification { _, error in
-      if error != nil {
-        completion?(0, error)
-      } else {
-        completion?(seq, nil)
+    foodService.save(spaceType: spaceType, food: food) { (seq, error) in
+      self.notiManager.foods = [food]
+      self.notiManager.requestNotification { _, error in
+        if error != nil {
+          completion?(0, error)
+        } else {
+          completion?(seq, nil)
+        }
       }
     }
   }
@@ -50,10 +51,11 @@ struct MainViewModel: MainViewModelType {
   func save(food: FoodModel,
             completion: ((Int) -> Void)? = nil) {
     guard let spaceType = spaceType else { return }
-    let seq = foodService.save(spaceType: spaceType, food: food)
-    notiManager.foods = [food]
-    notiManager.requestNotification { (_, _) in
-      completion?(seq)
+    foodService.save(spaceType: spaceType, food: food) { (seq, _) in
+      self.notiManager.foods = [food]
+      self.notiManager.requestNotification { (_, _) in
+        completion?(seq)
+      }
     }
   }
 
