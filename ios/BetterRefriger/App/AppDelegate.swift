@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     let navBarAppearance = UINavigationBar.appearance()
     navBarAppearance.barTintColor = .BRColorOnActive
-    navBarAppearance.tintColor = .BRColorBlack
+    navBarAppearance.tintColor = .white
     navBarAppearance.titleTextAttributes = [
-      NSAttributedString.Key.foregroundColor: UIColor.BRColorBlack,
+      NSAttributedString.Key.foregroundColor: UIColor.white,
       NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]
     navBarAppearance.isTranslucent = false
 
