@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-protocol ViewType: class {
+protocol ViewType: AnyObject {
   associatedtype ViewModelType
   var viewModel: ViewModelType! { get set }
   var disposeBag: DisposeBag! { get set }
