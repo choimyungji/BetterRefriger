@@ -63,7 +63,7 @@ class MainViewController: UIViewController, ViewType {
     addButton.rx.tap
       .subscribe(onNext: { [weak self] _ in
         guard let self = self else { return }
-        let spaceType = SpaceType(keyString: self.refrigerString ?? "")
+        let spaceType = SpaceType(keyString: self.refrigerString)
         let foodInputViewModel = FoodInputViewModel(spaceType: spaceType)
 
         let foodInputVC = FoodInputViewController.create(with: foodInputViewModel)
