@@ -28,13 +28,9 @@ class MainViewController: UIViewController, ViewType {
     self.navigationItem.title = "더나은냉장고"
     self.navigationItem.rightBarButtonItem = addButton
 
-    let view = self.view!
-
-    if #available(iOS 11.0, *) {
-      let guide = view.safeAreaLayoutGuide
-      view.topAnchor.constraint(equalTo: guide.topAnchor).isActive = false
-      view.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = false
-    }
+    let guide = view.safeAreaLayoutGuide
+    view.topAnchor.constraint(equalTo: guide.topAnchor).isActive = false
+    view.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = false
 
     view.addSubviews(tableView, freezeButton, refrigerButton)
 
