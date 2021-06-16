@@ -14,41 +14,8 @@ import Firebase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
-  var window: UIWindow?
-
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    window = UIWindow(frame: UIScreen.main.bounds)
-
-    let navBarAppearance = UINavigationBar.appearance()
-    navBarAppearance.barTintColor = .BRColorOnActive
-    navBarAppearance.tintColor = .white
-    navBarAppearance.titleTextAttributes = [
-      NSAttributedString.Key.foregroundColor: UIColor.white,
-      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]
-    navBarAppearance.isTranslucent = false
-
-    let mainView = MainViewController.create(with: MainViewModel(spaceType: SpaceType()))
-    let navigation = UINavigationController(rootViewController: mainView)
-
-    window?.rootViewController = navigation
-    window?.makeKeyAndVisible()
-
-    FirebaseApp.configure()
-    UNUserNotificationCenter.current().delegate = self
-
-    let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-    UNUserNotificationCenter.current().requestAuthorization(
-      options: authOptions,
-      completionHandler: {_, _ in })
-
-    window?.tintColor = UIColor.BRColorOnActive
-    application.registerForRemoteNotifications()
-
-    Messaging.messaging().delegate = self
-    let token = Messaging.messaging().fcmToken
-    print("FCM token: \(token ?? "")")
-
     return true
   }
 
@@ -101,7 +68,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     })
     return container
   }()
+  
+  func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+  }
 
+  func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+    
+  }
   // MARK: - Core Data Saving support
   func saveContext () {
     let context = persistentContainer.viewContext
