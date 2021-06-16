@@ -37,6 +37,7 @@
 		FADE5B6F21381D090023BFF7 /* MJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE5B6E21381D090023BFF7 /* MJTextField.swift */; };
 		FADE5BAC213A4E8A0023BFF7 /* UIColor+MJColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE5BAB213A4E8A0023BFF7 /* UIColor+MJColor.swift */; };
 		FAED744922599742000ACE6D /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED744822599742000ACE6D /* MainViewModelTests.swift */; };
+		FAFE1023267A3BA5008B4121 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE1022267A3BA5008B4121 /* SceneDelegate.swift */; };
 		FAFFAA1C2180A0440016E400 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAFFAA1B2180A0440016E400 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		FADE5B6E21381D090023BFF7 /* MJTextField.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MJTextField.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FADE5BAB213A4E8A0023BFF7 /* UIColor+MJColor.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "UIColor+MJColor.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		FAED744822599742000ACE6D /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
+		FAFE1022267A3BA5008B4121 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FAFFAA1B2180A0440016E400 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,6 +228,7 @@
 		FA86D21521A2ED400092E915 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				FAFE1022267A3BA5008B4121 /* SceneDelegate.swift */,
 				FA574553218C9CB200B4775E /* BetterRefriger.entitlements */,
 				FA319BA71E506DD500402ECA /* AppDelegate.swift */,
 				FA319BB61E506DD500402ECA /* Info.plist */,
@@ -530,6 +533,7 @@
 				FA26C34F214FEA400081A506 /* UIToolbar+PickerOKButton.swift in Sources */,
 				FAAAC65F21CDFF12008CC382 /* FoodStatusLabel.swift in Sources */,
 				FA20D65F2155342700E6C093 /* FoodListTableViewCell.swift in Sources */,
+				FAFE1023267A3BA5008B4121 /* SceneDelegate.swift in Sources */,
 				FAA3EC461F754A81007F743E /* FoodInputViewController.swift in Sources */,
 				FADE5B6F21381D090023BFF7 /* MJTextField.swift in Sources */,
 				FA24006C21A9845500AF8203 /* FoodInputViewModel.swift in Sources */,
