@@ -15,15 +15,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
-
-//        let contentView = ContentView()
-        let mainView = MainViewController.create(with: MainViewModel(spaceType: SpaceType()))
-        let navigation = UINavigationController(rootViewController: mainView)
-
+        
+        let mainView = MainView(foods: [])
+        
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = navigation
-//                UIHostingController(rootView: contentView)
+            window.rootViewController =  UIHostingController(rootView: mainView)
             
             self.window = window
             window.makeKeyAndVisible()
