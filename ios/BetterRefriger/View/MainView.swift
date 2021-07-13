@@ -16,13 +16,18 @@ struct MainView: View {
             List {
                 Text("Hello, world!")
                     .padding()
-                Text("Hello, world!")
-                    .padding()
-                Text("Hello, world!")
-                    .padding()
             }
-            Circle()
-                .size(CGSize(width: 50, height: 50))
+            HStack {
+                VStack {
+                    Spacer()
+                    SelectAreaButtonSU()
+                        .frame(width: 54, height: 54)
+                    SelectAreaButtonSU()
+                        .frame(width: 54, height: 54)
+                }
+                Spacer()
+            }
+            .padding(.leading, 16)
         }
     }
 }
