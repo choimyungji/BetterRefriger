@@ -31,6 +31,8 @@
 		FA66D56A21C494DB00944066 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66D56921C494DB00944066 /* NotificationManager.swift */; };
 		FA6C976D21A43DDF0007CC1D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6C976C21A43DDF0007CC1D /* CoreDataStack.swift */; };
 		FA86D1FF2191AC780092E915 /* SelectAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */; };
+		FA93AB0F269DD0D8001DF133 /* SelectAreaButtonSU.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93AB0E269DD0D8001DF133 /* SelectAreaButtonSU.swift */; };
+		FA93AB11269DD8C6001DF133 /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93AB10269DD8C6001DF133 /* Color+extension.swift */; };
 		FAA3EC461F754A81007F743E /* FoodInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3EC451F754A81007F743E /* FoodInputViewController.swift */; };
 		FAAAC65F21CDFF12008CC382 /* FoodStatusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAAC65E21CDFF12008CC382 /* FoodStatusLabel.swift */; };
 		FAAAC66B21D3C245008CC382 /* BetterRefrigerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAAC66A21D3C245008CC382 /* BetterRefrigerTests.swift */; };
@@ -84,6 +86,8 @@
 		FA66D56921C494DB00944066 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		FA6C976C21A43DDF0007CC1D /* CoreDataStack.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SelectAreaButton.swift; sourceTree = "<group>"; tabWidth = 2; };
+		FA93AB0E269DD0D8001DF133 /* SelectAreaButtonSU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAreaButtonSU.swift; sourceTree = "<group>"; };
+		FA93AB10269DD8C6001DF133 /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
 		FAA3EC451F754A81007F743E /* FoodInputViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodInputViewController.swift; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		FAAAC65E21CDFF12008CC382 /* FoodStatusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodStatusLabel.swift; sourceTree = "<group>"; };
 		FAAAC66821D3C245008CC382 /* BetterRefrigerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetterRefrigerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +156,7 @@
 				FA20D65C2153DC7600E6C093 /* String+substring.swift */,
 				FADE5BAB213A4E8A0023BFF7 /* UIColor+MJColor.swift */,
 				8FF717C321A4E087009428D4 /* UIView+Subviews.swift */,
+				FA93AB10269DD8C6001DF133 /* Color+extension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 				FADE5B6E21381D090023BFF7 /* MJTextField.swift */,
 				FA20D65E2155342700E6C093 /* FoodListTableViewCell.swift */,
 				FA86D1FE2191AC780092E915 /* SelectAreaButton.swift */,
+				FA93AB0E269DD0D8001DF133 /* SelectAreaButtonSU.swift */,
 				FAAAC65E21CDFF12008CC382 /* FoodStatusLabel.swift */,
 			);
 			path = BetterRefriger;
@@ -529,12 +535,14 @@
 				FA319BAA1E506DD500402ECA /* MainViewController.swift in Sources */,
 				FADE5BAC213A4E8A0023BFF7 /* UIColor+MJColor.swift in Sources */,
 				8F1AF4F821ACBB8A0034267E /* ViewModelType.swift in Sources */,
+				FA93AB0F269DD0D8001DF133 /* SelectAreaButtonSU.swift in Sources */,
 				FA319BA81E506DD500402ECA /* AppDelegate.swift in Sources */,
 				FA24006F21AAE73300AF8203 /* FoodModel.swift in Sources */,
 				8F1AF4F721ACBB8A0034267E /* ViewType.swift in Sources */,
 				8F6A7CB121E4280B004BBD5B /* SpaceManager.swift in Sources */,
 				FA20D65D2153DC7600E6C093 /* String+substring.swift in Sources */,
 				FA26C34F214FEA400081A506 /* UIToolbar+PickerOKButton.swift in Sources */,
+				FA93AB11269DD8C6001DF133 /* Color+extension.swift in Sources */,
 				FAAAC65F21CDFF12008CC382 /* FoodStatusLabel.swift in Sources */,
 				FA20D65F2155342700E6C093 /* FoodListTableViewCell.swift in Sources */,
 				FAFE1023267A3BA5008B4121 /* SceneDelegate.swift in Sources */,
