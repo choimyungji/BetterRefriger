@@ -9,15 +9,22 @@
 import SwiftUI
 
 struct SelectAreaButtonSU: View {
+    var title: String
+
     var body: some View {
+        ZStack {
             Circle()
                 .size(CGSize(width: 54, height: 54))
                 .foregroundColor(Color(rgbHex: 0xAAAAAA))
+            Button(title) {
+                print(title)
+            }
+        }
     }
 }
 
 struct SelectAreaButtonSU_Previews: PreviewProvider {
     static var previews: some View {
-        SelectAreaButtonSU()
+        SelectAreaButtonSU(title: "냉장")
     }
 }
