@@ -15,6 +15,13 @@
 		8FF717C021A38EFF009428D4 /* FoodModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF717BF21A38EFF009428D4 /* FoodModelService.swift */; };
 		8FF717C421A4E087009428D4 /* UIView+Subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF717C321A4E087009428D4 /* UIView+Subviews.swift */; };
 		D5448BB9DFC1F54BFEF4DB70 /* Pods_BetterRefriger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55503C3B39F686E7611DFB40 /* Pods_BetterRefriger.framework */; };
+		FA1D0C2026B3DFBB00768432 /* RefrigerClipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D0C1F26B3DFBB00768432 /* RefrigerClipApp.swift */; };
+		FA1D0C2226B3DFBB00768432 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D0C2126B3DFBB00768432 /* ContentView.swift */; };
+		FA1D0C2426B3DFBB00768432 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA1D0C2326B3DFBB00768432 /* Assets.xcassets */; };
+		FA1D0C2726B3DFBB00768432 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA1D0C2626B3DFBB00768432 /* Preview Assets.xcassets */; };
+		FA1D0C3326B3DFBC00768432 /* RefrigerClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D0C3226B3DFBC00768432 /* RefrigerClipTests.swift */; };
+		FA1D0C3E26B3DFBC00768432 /* RefrigerClipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D0C3D26B3DFBC00768432 /* RefrigerClipUITests.swift */; };
+		FA1D0C4226B3DFBC00768432 /* RefrigerClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = FA1D0C1D26B3DFBB00768432 /* RefrigerClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FA20D65D2153DC7600E6C093 /* String+substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20D65C2153DC7600E6C093 /* String+substring.swift */; };
 		FA20D65F2155342700E6C093 /* FoodListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20D65E2155342700E6C093 /* FoodListTableViewCell.swift */; };
 		FA24006A21A6D7AD00AF8203 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24006921A6D7AD00AF8203 /* MainViewModel.swift */; };
@@ -45,6 +52,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FA1D0C2F26B3DFBC00768432 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA319B9C1E506DD500402ECA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA1D0C1C26B3DFBB00768432;
+			remoteInfo = RefrigerClip;
+		};
+		FA1D0C3A26B3DFBC00768432 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA319B9C1E506DD500402ECA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA1D0C1C26B3DFBB00768432;
+			remoteInfo = RefrigerClip;
+		};
+		FA1D0C4026B3DFBC00768432 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA319B9C1E506DD500402ECA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA1D0C1C26B3DFBB00768432;
+			remoteInfo = RefrigerClip;
+		};
 		FAAAC66D21D3C245008CC382 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA319B9C1E506DD500402ECA /* Project object */;
@@ -53,6 +81,20 @@
 			remoteInfo = BetterRefriger;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FA1D0C4326B3DFBC00768432 /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				FA1D0C4226B3DFBC00768432 /* RefrigerClip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		55503C3B39F686E7611DFB40 /* Pods_BetterRefriger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BetterRefriger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +109,19 @@
 		BB589BBD777DB1F83664EDA9 /* Pods_BetterRefrigerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BetterRefrigerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9F82603B7418FFAF9AC6086 /* Pods-BetterRefrigerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefrigerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefrigerTests/Pods-BetterRefrigerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F8138D0ACB51B3B869054E81 /* Pods-BetterRefrigerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterRefrigerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BetterRefrigerTests/Pods-BetterRefrigerTests.release.xcconfig"; sourceTree = "<group>"; };
+		FA1D0C1D26B3DFBB00768432 /* RefrigerClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RefrigerClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA1D0C1F26B3DFBB00768432 /* RefrigerClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigerClipApp.swift; sourceTree = "<group>"; };
+		FA1D0C2126B3DFBB00768432 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FA1D0C2326B3DFBB00768432 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA1D0C2626B3DFBB00768432 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FA1D0C2826B3DFBB00768432 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA1D0C2926B3DFBB00768432 /* RefrigerClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RefrigerClip.entitlements; sourceTree = "<group>"; };
+		FA1D0C2E26B3DFBC00768432 /* RefrigerClipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RefrigerClipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA1D0C3226B3DFBC00768432 /* RefrigerClipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigerClipTests.swift; sourceTree = "<group>"; };
+		FA1D0C3426B3DFBC00768432 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA1D0C3926B3DFBC00768432 /* RefrigerClipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RefrigerClipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA1D0C3D26B3DFBC00768432 /* RefrigerClipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigerClipUITests.swift; sourceTree = "<group>"; };
+		FA1D0C3F26B3DFBC00768432 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA20D65C2153DC7600E6C093 /* String+substring.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "String+substring.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		FA20D65E2155342700E6C093 /* FoodListTableViewCell.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FoodListTableViewCell.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FA24006921A6D7AD00AF8203 /* MainViewModel.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; tabWidth = 2; };
@@ -102,6 +157,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FA1D0C1A26B3DFBB00768432 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA1D0C2B26B3DFBC00768432 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA1D0C3626B3DFBC00768432 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA319BA11E506DD500402ECA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,6 +257,45 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		FA1D0C1E26B3DFBB00768432 /* RefrigerClip */ = {
+			isa = PBXGroup;
+			children = (
+				FA1D0C1F26B3DFBB00768432 /* RefrigerClipApp.swift */,
+				FA1D0C2126B3DFBB00768432 /* ContentView.swift */,
+				FA1D0C2326B3DFBB00768432 /* Assets.xcassets */,
+				FA1D0C2826B3DFBB00768432 /* Info.plist */,
+				FA1D0C2926B3DFBB00768432 /* RefrigerClip.entitlements */,
+				FA1D0C2526B3DFBB00768432 /* Preview Content */,
+			);
+			path = RefrigerClip;
+			sourceTree = "<group>";
+		};
+		FA1D0C2526B3DFBB00768432 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FA1D0C2626B3DFBB00768432 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FA1D0C3126B3DFBC00768432 /* RefrigerClipTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA1D0C3226B3DFBC00768432 /* RefrigerClipTests.swift */,
+				FA1D0C3426B3DFBC00768432 /* Info.plist */,
+			);
+			path = RefrigerClipTests;
+			sourceTree = "<group>";
+		};
+		FA1D0C3C26B3DFBC00768432 /* RefrigerClipUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FA1D0C3D26B3DFBC00768432 /* RefrigerClipUITests.swift */,
+				FA1D0C3F26B3DFBC00768432 /* Info.plist */,
+			);
+			path = RefrigerClipUITests;
+			sourceTree = "<group>";
+		};
 		FA24006621A6D6B400AF8203 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +312,9 @@
 			children = (
 				FA319BA61E506DD500402ECA /* BetterRefriger */,
 				FAAAC66921D3C245008CC382 /* BetterRefrigerTests */,
+				FA1D0C1E26B3DFBB00768432 /* RefrigerClip */,
+				FA1D0C3126B3DFBC00768432 /* RefrigerClipTests */,
+				FA1D0C3C26B3DFBC00768432 /* RefrigerClipUITests */,
 				FA319BA51E506DD500402ECA /* Products */,
 				97EFD72D3AC6C43380822605 /* Pods */,
 				800500C82E6464A70D214F96 /* Frameworks */,
@@ -208,6 +326,9 @@
 			children = (
 				FA319BA41E506DD500402ECA /* 더나은냉장고.app */,
 				FAAAC66821D3C245008CC382 /* BetterRefrigerTests.xctest */,
+				FA1D0C1D26B3DFBB00768432 /* RefrigerClip.app */,
+				FA1D0C2E26B3DFBC00768432 /* RefrigerClipTests.xctest */,
+				FA1D0C3926B3DFBC00768432 /* RefrigerClipUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -270,6 +391,59 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FA1D0C1C26B3DFBB00768432 /* RefrigerClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA1D0C4A26B3DFBC00768432 /* Build configuration list for PBXNativeTarget "RefrigerClip" */;
+			buildPhases = (
+				FA1D0C1926B3DFBB00768432 /* Sources */,
+				FA1D0C1A26B3DFBB00768432 /* Frameworks */,
+				FA1D0C1B26B3DFBB00768432 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RefrigerClip;
+			productName = RefrigerClip;
+			productReference = FA1D0C1D26B3DFBB00768432 /* RefrigerClip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
+		FA1D0C2D26B3DFBC00768432 /* RefrigerClipTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA1D0C4B26B3DFBC00768432 /* Build configuration list for PBXNativeTarget "RefrigerClipTests" */;
+			buildPhases = (
+				FA1D0C2A26B3DFBC00768432 /* Sources */,
+				FA1D0C2B26B3DFBC00768432 /* Frameworks */,
+				FA1D0C2C26B3DFBC00768432 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA1D0C3026B3DFBC00768432 /* PBXTargetDependency */,
+			);
+			name = RefrigerClipTests;
+			productName = RefrigerClipTests;
+			productReference = FA1D0C2E26B3DFBC00768432 /* RefrigerClipTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FA1D0C3826B3DFBC00768432 /* RefrigerClipUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA1D0C4C26B3DFBC00768432 /* Build configuration list for PBXNativeTarget "RefrigerClipUITests" */;
+			buildPhases = (
+				FA1D0C3526B3DFBC00768432 /* Sources */,
+				FA1D0C3626B3DFBC00768432 /* Frameworks */,
+				FA1D0C3726B3DFBC00768432 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA1D0C3B26B3DFBC00768432 /* PBXTargetDependency */,
+			);
+			name = RefrigerClipUITests;
+			productName = RefrigerClipUITests;
+			productReference = FA1D0C3926B3DFBC00768432 /* RefrigerClipUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		FA319BA31E506DD500402ECA /* BetterRefriger */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA319BB91E506DD500402ECA /* Build configuration list for PBXNativeTarget "BetterRefriger" */;
@@ -280,10 +454,12 @@
 				FA319BA21E506DD500402ECA /* Resources */,
 				4DCDD3D5F5C190809709AC34 /* [CP] Embed Pods Frameworks */,
 				FADE5BAD213C220D0023BFF7 /* Run Script */,
+				FA1D0C4326B3DFBC00768432 /* Embed App Clips */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FA1D0C4126B3DFBC00768432 /* PBXTargetDependency */,
 			);
 			name = BetterRefriger;
 			productName = BetterRefriger;
@@ -316,10 +492,27 @@
 		FA319B9C1E506DD500402ECA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = maengji.com;
 				TargetAttributes = {
+					FA1D0C1C26B3DFBB00768432 = {
+						CreatedOnToolsVersion = 12.5.1;
+						DevelopmentTeam = JVM82SQA75;
+						ProvisioningStyle = Automatic;
+					};
+					FA1D0C2D26B3DFBC00768432 = {
+						CreatedOnToolsVersion = 12.5.1;
+						DevelopmentTeam = JVM82SQA75;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FA1D0C1C26B3DFBB00768432;
+					};
+					FA1D0C3826B3DFBC00768432 = {
+						CreatedOnToolsVersion = 12.5.1;
+						DevelopmentTeam = JVM82SQA75;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FA1D0C1C26B3DFBB00768432;
+					};
 					FA319BA31E506DD500402ECA = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = JVM82SQA75;
@@ -359,11 +552,37 @@
 			targets = (
 				FA319BA31E506DD500402ECA /* BetterRefriger */,
 				FAAAC66721D3C245008CC382 /* BetterRefrigerTests */,
+				FA1D0C1C26B3DFBB00768432 /* RefrigerClip */,
+				FA1D0C2D26B3DFBC00768432 /* RefrigerClipTests */,
+				FA1D0C3826B3DFBC00768432 /* RefrigerClipUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FA1D0C1B26B3DFBB00768432 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA1D0C2726B3DFBB00768432 /* Preview Assets.xcassets in Resources */,
+				FA1D0C2426B3DFBB00768432 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA1D0C2C26B3DFBC00768432 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA1D0C3726B3DFBC00768432 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA319BA21E506DD500402ECA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -519,6 +738,31 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FA1D0C1926B3DFBB00768432 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA1D0C2226B3DFBB00768432 /* ContentView.swift in Sources */,
+				FA1D0C2026B3DFBB00768432 /* RefrigerClipApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA1D0C2A26B3DFBC00768432 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA1D0C3326B3DFBC00768432 /* RefrigerClipTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA1D0C3526B3DFBC00768432 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA1D0C3E26B3DFBC00768432 /* RefrigerClipUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA319BA01E506DD500402ECA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -566,6 +810,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		FA1D0C3026B3DFBC00768432 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA1D0C1C26B3DFBB00768432 /* RefrigerClip */;
+			targetProxy = FA1D0C2F26B3DFBC00768432 /* PBXContainerItemProxy */;
+		};
+		FA1D0C3B26B3DFBC00768432 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA1D0C1C26B3DFBB00768432 /* RefrigerClip */;
+			targetProxy = FA1D0C3A26B3DFBC00768432 /* PBXContainerItemProxy */;
+		};
+		FA1D0C4126B3DFBC00768432 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA1D0C1C26B3DFBB00768432 /* RefrigerClip */;
+			targetProxy = FA1D0C4026B3DFBC00768432 /* PBXContainerItemProxy */;
+		};
 		FAAAC66E21D3C245008CC382 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FA319BA31E506DD500402ECA /* BetterRefriger */;
@@ -585,6 +844,159 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		FA1D0C4426B3DFBC00768432 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = RefrigerClip/RefrigerClip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.4.0;
+				DEVELOPMENT_ASSET_PATHS = "\"RefrigerClip/Preview Content\"";
+				DEVELOPMENT_TEAM = JVM82SQA75;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RefrigerClip/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maengji.BetterRefriger.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		FA1D0C4526B3DFBC00768432 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = RefrigerClip/RefrigerClip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.4.0;
+				DEVELOPMENT_ASSET_PATHS = "\"RefrigerClip/Preview Content\"";
+				DEVELOPMENT_TEAM = JVM82SQA75;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RefrigerClip/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.4;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maengji.BetterRefriger.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		FA1D0C4626B3DFBC00768432 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JVM82SQA75;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RefrigerClipTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maengji.BetterRefriger.RefrigerClipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RefrigerClip.app/RefrigerClip";
+			};
+			name = Debug;
+		};
+		FA1D0C4726B3DFBC00768432 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JVM82SQA75;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RefrigerClipTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maengji.BetterRefriger.RefrigerClipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RefrigerClip.app/RefrigerClip";
+			};
+			name = Release;
+		};
+		FA1D0C4826B3DFBC00768432 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JVM82SQA75;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RefrigerClipUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maengji.BetterRefriger.RefrigerClipUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RefrigerClip;
+			};
+			name = Debug;
+		};
+		FA1D0C4926B3DFBC00768432 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JVM82SQA75;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RefrigerClipUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maengji.BetterRefriger.RefrigerClipUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RefrigerClip;
+			};
+			name = Release;
+		};
 		FA319BB71E506DD500402ECA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -704,6 +1116,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B75DF2EB9ACD5B0FF7A4B3C9 /* Pods-BetterRefriger.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BetterRefriger/App/BetterRefriger.entitlements;
 				DEVELOPMENT_TEAM = JVM82SQA75;
@@ -722,6 +1135,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9824B7B4658D5C874FE81DCD /* Pods-BetterRefriger.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BetterRefriger/App/BetterRefriger.entitlements;
 				DEVELOPMENT_TEAM = JVM82SQA75;
@@ -790,6 +1204,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FA1D0C4A26B3DFBC00768432 /* Build configuration list for PBXNativeTarget "RefrigerClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA1D0C4426B3DFBC00768432 /* Debug */,
+				FA1D0C4526B3DFBC00768432 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA1D0C4B26B3DFBC00768432 /* Build configuration list for PBXNativeTarget "RefrigerClipTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA1D0C4626B3DFBC00768432 /* Debug */,
+				FA1D0C4726B3DFBC00768432 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA1D0C4C26B3DFBC00768432 /* Build configuration list for PBXNativeTarget "RefrigerClipUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA1D0C4826B3DFBC00768432 /* Debug */,
+				FA1D0C4926B3DFBC00768432 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FA319B9F1E506DD500402ECA /* Build configuration list for PBXProject "BetterRefriger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
