@@ -10,14 +10,7 @@ import CoreData
 import RxSwift
 import RxCocoa
 
-protocol MainViewModelType: ViewModelType {
-//  var didTapRightBarButton: PublishSubject<Void> { get }
-//  var editSetting: Driver<FoodInputViewModelType> { get }
-}
-
-struct MainViewModel: MainViewModelType {
-//  let didTapRightBarButton = PublishSubject<Void>()
-//  let editSetting: Driver<FoodInputViewModelType>
+struct MainViewModel {
 
   var spaceType: SpaceType?
   var foodService: FoodModelService
@@ -29,8 +22,17 @@ struct MainViewModel: MainViewModelType {
     self.foodService = service
   }
 
-  func foods(spaceType: SpaceType) -> [NSManagedObject] {
-    return foodService.data(spaceType: spaceType)
+  func foods(spaceType: SpaceType) -> [FoodModel] {
+    var foods: [FoodModel] = []
+    let data = foodService.data(spaceType: spaceType)
+    data.forEach { object in
+      foods.append(FoodModel(id: object.value(forKey: "seq") as? Int ?? 0,
+                              name: object.value(forKey: "name") as? String ?? "",
+                             registerDate: object.value(forKey: "registerDate") as? Date ?? Date(),
+                             expireDate: object.value(forKey: "expireDate") as? Date ?? Date()))
+    }
+
+    return foods
   }
 
   func save(spaceType: SpaceType,

@@ -57,7 +57,7 @@ class NotificationManager: NSObject {
 
   private func makeNotificationContent() -> UNMutableNotificationContent? {
     guard foods.count > 0 else { return nil }
-    let name = foods[0].foodName
+    let name = foods[0].name
 
     let content = UNMutableNotificationContent()
     content.categoryIdentifier = notificationType

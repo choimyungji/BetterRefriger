@@ -35,7 +35,7 @@ class FoodModelService: NSObject {
 
   func save(spaceType: SpaceType, food: FoodModel, completion: ((Int, Error?) -> Void)? = nil) {
     let seq = save(spaceType: spaceType,
-                   name: food.foodName,
+                   name: food.name,
                    registerDate: food.registerDate,
                    expireDate: food.expireDate)
 

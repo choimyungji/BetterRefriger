@@ -13,20 +13,20 @@ protocol FoodInputViewModelType: ViewModelType {
 
 struct FoodInputViewModel: FoodInputViewModelType {
   var spaceType: SpaceType
-  var seq: Int
+//  var seq: Int
   var foodName: String
   var registerDate: Date
   var expireDate: Date
 
-  init(food: FoodModel = FoodModel(),
+  init(food: FoodModel,
        spaceType: SpaceType,
        completion: ((FoodModel) -> Void)? = nil) {
     var currentFood = food
 
     self.spaceType = spaceType
-    foodName = food.foodName
+    foodName = food.name
     registerDate = food.registerDate
     expireDate = food.expireDate
-    seq = food.seq
+//    seq = food.seq
   }
 }
