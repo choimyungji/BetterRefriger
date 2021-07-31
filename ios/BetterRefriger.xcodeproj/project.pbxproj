@@ -29,7 +29,6 @@
 		FA24006F21AAE73300AF8203 /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24006E21AAE73300AF8203 /* FoodModel.swift */; };
 		FA26C34F214FEA400081A506 /* UIToolbar+PickerOKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA26C34E214FEA400081A506 /* UIToolbar+PickerOKButton.swift */; };
 		FA319BA81E506DD500402ECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA319BA71E506DD500402ECA /* AppDelegate.swift */; };
-		FA319BAA1E506DD500402ECA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA319BA91E506DD500402ECA /* MainViewController.swift */; };
 		FA319BB01E506DD500402ECA /* BetterRefriger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA319BAE1E506DD500402ECA /* BetterRefriger.xcdatamodeld */; };
 		FA319BB21E506DD500402ECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA319BB11E506DD500402ECA /* Assets.xcassets */; };
 		FA319BB51E506DD500402ECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA319BB31E506DD500402ECA /* LaunchScreen.storyboard */; };
@@ -130,7 +129,6 @@
 		FA26C34E214FEA400081A506 /* UIToolbar+PickerOKButton.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "UIToolbar+PickerOKButton.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		FA319BA41E506DD500402ECA /* 더나은냉장고.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "더나은냉장고.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA319BA71E506DD500402ECA /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 2; };
-		FA319BA91E506DD500402ECA /* MainViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FA319BAF1E506DD500402ECA /* BetterRefriger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BetterRefriger.xcdatamodel; sourceTree = "<group>"; };
 		FA319BB11E506DD500402ECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA319BB41E506DD500402ECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -299,7 +297,6 @@
 		FA24006621A6D6B400AF8203 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FA319BA91E506DD500402ECA /* MainViewController.swift */,
 				FAFE1020267A3B67008B4121 /* MainView.swift */,
 				FAA3EC451F754A81007F743E /* FoodInputViewController.swift */,
 				FA466D7921B6B032000F1B17 /* LabelButton.swift */,
@@ -776,7 +773,6 @@
 				FA6C976D21A43DDF0007CC1D /* CoreDataStack.swift in Sources */,
 				8FF717C421A4E087009428D4 /* UIView+Subviews.swift in Sources */,
 				FA466D7A21B6B032000F1B17 /* LabelButton.swift in Sources */,
-				FA319BAA1E506DD500402ECA /* MainViewController.swift in Sources */,
 				FADE5BAC213A4E8A0023BFF7 /* UIColor+MJColor.swift in Sources */,
 				8F1AF4F821ACBB8A0034267E /* ViewModelType.swift in Sources */,
 				FA93AB0F269DD0D8001DF133 /* SelectAreaButtonSU.swift in Sources */,
