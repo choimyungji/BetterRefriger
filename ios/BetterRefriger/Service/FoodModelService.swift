@@ -6,7 +6,7 @@
 //  Copyright © 2018 maengji.com. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import CoreData
 
 class FoodModelService: NSObject {

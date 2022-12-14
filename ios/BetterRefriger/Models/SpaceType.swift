@@ -6,7 +6,7 @@
 //  Copyright © 2019 maengji.com. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 var baseSpaces: [SpaceType] = [
     SpaceType(keyString: "refriger", name: "냉장"),
