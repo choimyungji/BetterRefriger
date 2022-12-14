@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol FoodInputViewModelType: ViewModelType {
+protocol FoodInputViewModelType {
 }
 
 struct FoodInputViewModel: FoodInputViewModelType {
