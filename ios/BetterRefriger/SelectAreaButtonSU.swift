@@ -20,6 +20,7 @@ struct SelectAreaButtonSU: View {
                 print(title)
             }
         }
+        .frame(width: 54, height: 54)
     }
 }
 
