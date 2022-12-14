@@ -38,7 +38,6 @@
 		FA93AB11269DD8C6001DF133 /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93AB10269DD8C6001DF133 /* Color+extension.swift */; };
 		FAAAC65F21CDFF12008CC382 /* FoodStatusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAAC65E21CDFF12008CC382 /* FoodStatusLabel.swift */; };
 		FAAAC66B21D3C245008CC382 /* BetterRefrigerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAAC66A21D3C245008CC382 /* BetterRefrigerTests.swift */; };
-		FADE5B6F21381D090023BFF7 /* MJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE5B6E21381D090023BFF7 /* MJTextField.swift */; };
 		FADE5BAC213A4E8A0023BFF7 /* UIColor+MJColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE5BAB213A4E8A0023BFF7 /* UIColor+MJColor.swift */; };
 		FAEC5B7D28A89D5200C4D4EA /* FoodInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEC5B7C28A89D5200C4D4EA /* FoodInputView.swift */; };
 		FAEC5B7F28A8BAD500C4D4EA /* RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEC5B7E28A8BAD500C4D4EA /* RegisterButton.swift */; };
@@ -137,7 +136,6 @@
 		FAAAC66821D3C245008CC382 /* BetterRefrigerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetterRefrigerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAAAC66A21D3C245008CC382 /* BetterRefrigerTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = BetterRefrigerTests.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FAAAC66C21D3C245008CC382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FADE5B6E21381D090023BFF7 /* MJTextField.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MJTextField.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FADE5BAB213A4E8A0023BFF7 /* UIColor+MJColor.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "UIColor+MJColor.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		FAEC5B7B28A6A14D00C4D4EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAEC5B7C28A89D5200C4D4EA /* FoodInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInputView.swift; sourceTree = "<group>"; };
@@ -325,7 +323,6 @@
 				FA319BB11E506DD500402ECA /* Assets.xcassets */,
 				FA319BB31E506DD500402ECA /* LaunchScreen.storyboard */,
 				FA319BAE1E506DD500402ECA /* BetterRefriger.xcdatamodeld */,
-				FADE5B6E21381D090023BFF7 /* MJTextField.swift */,
 				FA93AB0E269DD0D8001DF133 /* SelectAreaButtonSU.swift */,
 				FAAAC65E21CDFF12008CC382 /* FoodStatusLabel.swift */,
 			);
@@ -593,10 +590,6 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -610,10 +603,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -707,7 +696,6 @@
 				FA8353A528A9D732001F8EAC /* LabelButton+SwiftUI.swift in Sources */,
 				FAFE1023267A3BA5008B4121 /* SceneDelegate.swift in Sources */,
 				FAEC5B7F28A8BAD500C4D4EA /* RegisterButton.swift in Sources */,
-				FADE5B6F21381D090023BFF7 /* MJTextField.swift in Sources */,
 				FA24006C21A9845500AF8203 /* FoodInputViewModel.swift in Sources */,
 				FA24006A21A6D7AD00AF8203 /* MainViewModel.swift in Sources */,
 			);
