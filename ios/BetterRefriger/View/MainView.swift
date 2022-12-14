@@ -9,35 +9,35 @@ import SwiftUI
 import CoreData
 
 struct MainView: View {
-    var viewModel: MainViewModel!
-    var foods: [FoodModel] {
-        viewModel.foods(spaceType: SpaceType())
-    }
+
+    @State var presentingModal = false
+    @State var food: String = ""
+    @State var spaceType = SpaceType()
+
+    var viewModel: MainViewModel
 
     var body: some View {
         NavigationView {
             ZStack {
                 List {
-                    ForEach(foods) { food in
-                        Text(food.name)
+                    ForEach(viewModel.foods(spaceType: spaceType)) { food in
+                        FoodGridView(viewModel: FoodGridViewModel(food: food))
                     }
                 }
                 HStack {
                     VStack {
                         Spacer()
                         SelectAreaButtonSU(title: "냉장")
-                            .frame(width: 54, height: 54)
                         SelectAreaButtonSU(title: "냉동")
-                            .frame(width: 54, height: 54)
                     }
                     Spacer()
                 }
-                .padding(.leading, 16)
+                .padding(16)
             }
             .navigationBarTitle("더나은냉장고")
             .navigationBarItems(trailing:
                                     Button(action: {
-                print("Done something")
+                self.presentingModal = true
             }, label: {
                 Image(systemName: "plus")
                     .resizable()
@@ -46,7 +46,10 @@ struct MainView: View {
                     .background(Color.blue)
                     .clipShape(Circle())
                     .foregroundColor(.white)
-            }))
+            }).sheet(isPresented: $presentingModal) {
+                FoodInputView(presentedAsModal: self.$presentingModal,
+                              food: $food)
+            })
         }
     }
 }

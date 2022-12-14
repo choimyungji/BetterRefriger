@@ -14,4 +14,9 @@ extension Color {
                   green: Double((rgbHex & 0x00FF00) >> 8) / 255.0,
                   blue: Double(rgbHex & 0x0000FF) / 255.0)
     }
+    
+    static var onActive = Color(rgbHex: 0xfff5cb)
+    static var brBlack  = Color(rgbHex: 0x1d2129)
+
+    static var textfieldBackground = Color(rgbHex: 0xcccccc)
 }
