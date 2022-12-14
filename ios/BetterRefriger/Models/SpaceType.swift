@@ -8,10 +8,16 @@
 
 import UIKit
 
-class SpaceType: NSObject {
-    var keyString: String
+var baseSpaces: [SpaceType] = [
+    SpaceType(keyString: "refriger", name: "냉장"),
+    SpaceType(keyString: "freezer", name: "냉동")]
 
-    init(keyString: String = "") {
+struct SpaceType {
+    var keyString: String
+    var name: String?
+
+    init(keyString: String = "refriger", name: String = "냉장") {
         self.keyString = keyString
+        self.name = name
     }
 }

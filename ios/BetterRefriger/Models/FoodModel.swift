@@ -9,7 +9,7 @@
 import UIKit
 
 struct FoodModel: Hashable, Identifiable {
-    var id: Int
+    var id: Int?
 
     var name: String
     var registerDate: Date

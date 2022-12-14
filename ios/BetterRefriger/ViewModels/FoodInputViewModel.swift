@@ -12,21 +12,17 @@ protocol FoodInputViewModelType {
 }
 
 struct FoodInputViewModel: FoodInputViewModelType {
-  var spaceType: SpaceType
-//  var seq: Int
-  var foodName: String
-  var registerDate: Date
-  var expireDate: Date
+    var spaceType: SpaceType
+    var food: FoodModel
+    let foodService = FoodModelService()
 
-  init(food: FoodModel,
-       spaceType: SpaceType,
-       completion: ((FoodModel) -> Void)? = nil) {
-    var currentFood = food
+    init(food: FoodModel? = nil,
+         spaceType: SpaceType) {
+        self.spaceType = spaceType
+        self.food = food ?? FoodModel(id: nil, name: "", registerDate: Date(), expireDate: Date())
+    }
 
-    self.spaceType = spaceType
-    foodName = food.name
-    registerDate = food.registerDate
-    expireDate = food.expireDate
-//    seq = food.seq
-  }
+    func add(food: FoodModel) {
+        foodService.save(spaceType: spaceType, food: food)
+    }
 }
