@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import RxSwift
 
 @testable import BetterRefriger
 
@@ -22,31 +21,32 @@ class BetterRefrigerTests: XCTestCase {
   }
 
   func test_식품을_등록하면_푸시메시지를_새로_생성한다1() {
-    let notiManager = NotificationManager.getInstance
+    let notiManager = NotificationManager.shared
     let foodModelService = FoodModelService()
-//    let mainViewModel = MainViewModel(spaceType: SpaceType(keyString: "refriger"))
+    //    let mainViewModel = MainViewModel(spaceType: SpaceType(keyString: "refriger"))
 
     let prevfood = FoodModel(name: "Chocolate",
                              registerDate: Date(),
                              expireDate: Calendar.current.date(byAdding: .day, value: 3, to: Date())!)
 
-    var expectation: String?
-    foodModelService.save(spaceType: "refriger", food: prevfood) { _ in
+    var expectation = expectation(description: "message")
+    var expectedMessage: String = ""
+    foodModelService.save(spaceType: SpaceType(keyString: "refriger", name: "냉장"),
+                          food: prevfood) { seq, error in
       notiManager.message { message in
-        expectation = message
-        print(message)
+
+        expectedMessage = message
+        expectation.fulfill()
       }
     }
-//    mainViewModel.save(food: prevfood) { _ in
-//
-//    }
-    sleep(5)
-
-     XCTAssertEqual(expectation, "Chocolate의 유통기한이 다 되어갑니다.")
+//    Thread.sleep(forTimeInterval: 2)
+//    sleep(2)
+wait(for: [expectation], timeout: 2)
+    XCTAssertEqual(expectedMessage, "Chocolate의 유통기한이 다 되어갑니다.")
   }
 
   func test_식품을_등록하면_푸시메시지를_새로_생성한다() {
-    let notiManager = NotificationManager.getInstance
+    let notiManager = NotificationManager.shared
     let mainViewModel = MainViewModel(spaceType: SpaceType(keyString: "refriger"))
 
     let prevfood = FoodModel(name: "Egg",
@@ -91,7 +91,7 @@ class BetterRefrigerTests: XCTestCase {
     var prevMessage: String?
     var nextMessage: String?
 
-    let notiManager = NotificationManager.getInstance
+    let notiManager = NotificationManager.shared
     let mainViewModel = MainViewModel(spaceType: SpaceType(keyString: "refriger"))
 
     let prevfood = FoodModel(name: "Egg",
