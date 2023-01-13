@@ -23,6 +23,7 @@ struct FoodInputView: View {
     var body: some View {
         ZStack {
             ScrollView {
+                Spacer(minLength: 16)
                 Picker("What is your favorite color?", selection: $favoriteColor) {
                     Text("냉장고").tag(0)
                     Text("냉동실").tag(1)
