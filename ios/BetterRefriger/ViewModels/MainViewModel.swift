@@ -12,7 +12,7 @@ struct MainViewModel {
 
   var spaceType: SpaceType?
   var foodService: FoodModelService
-  var notiManager = NotificationManager.getInstance
+  var notiManager = NotificationManager.shared
 
   init(spaceType: SpaceType? = nil,
        service: FoodModelService = FoodModelService()) {

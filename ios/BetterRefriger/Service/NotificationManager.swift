@@ -15,7 +15,7 @@ class NotificationManager: NSObject {
   private let center = UNUserNotificationCenter.current()
   var foods: [FoodModel] = []
 
-  static let getInstance = NotificationManager()
+  static let shared = NotificationManager()
   private override init() {
     super.init()
   }
