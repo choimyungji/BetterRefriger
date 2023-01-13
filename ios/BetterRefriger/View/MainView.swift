@@ -24,32 +24,34 @@ struct MainView: View {
                         FoodGridView(viewModel: FoodGridViewModel(food: food))
                     }
                 }
-                HStack {
-                    VStack {
-                        Spacer()
-                        SelectAreaButtonSU(title: "냉장")
-                        SelectAreaButtonSU(title: "냉동")
-                    }
-                    Spacer()
+                VStack {
+                    SelectAreaButtonSU(title: "냉장")
+                    SelectAreaButtonSU(title: "냉동")
                 }
                 .padding(16)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .bottomLeading)
+                VStack {
+                    Button(action: {
+                        self.presentingModal = true
+                    }, label: {
+                        Image(systemName: "plus")
+                            .resizable()
+                            .padding(6)
+                            .frame(width: 40, height: 40)
+                            .background(Color.blue)
+                            .clipShape(Circle())
+                            .foregroundColor(.white)
+                    }).sheet(isPresented: $presentingModal) {
+                        FoodInputView(presentedAsModal: self.$presentingModal,
+                                      food: $food)
+
+                    }.padding(16)
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .bottomTrailing)
+
             }
+
             .navigationBarTitle("더나은냉장고")
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                self.presentingModal = true
-            }, label: {
-                Image(systemName: "plus")
-                    .resizable()
-                    .padding(6)
-                    .frame(width: 24, height: 24)
-                    .background(Color.blue)
-                    .clipShape(Circle())
-                    .foregroundColor(.white)
-            }).sheet(isPresented: $presentingModal) {
-                FoodInputView(presentedAsModal: self.$presentingModal,
-                              food: $food)
-            })
         }
     }
 }
